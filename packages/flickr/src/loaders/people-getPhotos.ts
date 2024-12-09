@@ -4,6 +4,7 @@ import { AstroError } from 'astro/errors'
 import { createFlickr } from 'flickr-sdk'
 import { DEFAULT_OPTIONS } from '../constants.js'
 import { NormalizedPhoto } from '../schema.js'
+import { getUserIdFromUsername } from '../utils/get-user-id.js'
 import { normalizePhoto } from '../utils/normalize.js'
 import { paginate } from '../utils/paginate.js'
 
@@ -13,9 +14,9 @@ export interface FlickrPeopleGetPhotosLoaderOptions {
    */
   api_key?: string
   /**
-   * User ID
+   * Flickr username
    */
-  user_id: string
+  username: string
   /**
    * Optional query parameters you can pass to the request. By passing options here you will override any defaults that may be set.
    */
@@ -27,7 +28,7 @@ export interface FlickrPeopleGetPhotosLoaderOptions {
  */
 export function flickrPeopleGetPhotosLoader({
   api_key = import.meta.env.FLICKR_API_KEY,
-  user_id,
+  username,
   queryParams,
 }: FlickrPeopleGetPhotosLoaderOptions): Loader {
   if (!api_key) {
@@ -39,6 +40,15 @@ export function flickrPeopleGetPhotosLoader({
     name: 'flickr-people-get-photos-loader',
     load: async ({ logger, parseData, store }) => {
       logger.info('Fetching photostream photos')
+      let user_id: string
+
+      try {
+        user_id = await getUserIdFromUsername(username, flickr)
+      }
+      catch (e) {
+        logger.error('Failed to get user ID from username. Original error:')
+        throw e
+      }
 
       function getPhotos(page: number) {
         return flickr('flickr.people.getPhotos', {

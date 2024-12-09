@@ -29,6 +29,9 @@ interface Content {
  * ---------------
  */
 
+/**
+ * Query parameters you can pass to the request. Check the Flickr API documentation for more details.
+ */
 export interface GetPhotosQueryParams {
   content_types?: string
   safe_search?: string
@@ -48,6 +51,9 @@ export interface GetPhotosQueryParams {
  * ---------------
  */
 
+/**
+ * A minimal photo object from Flickr's API.
+ */
 interface FlickrMinimalPhoto {
   id: string
   owner: string
