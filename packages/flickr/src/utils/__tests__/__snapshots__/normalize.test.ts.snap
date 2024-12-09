@@ -3,7 +3,7 @@
 exports[`normalizePhoto > should normalize people-getPhotos response 1`] = `
 {
   "date_last_update": 2023-08-24T14:22:22.000Z,
-  "date_taken": 2023-07-20T19:04:31.000Z,
+  "date_taken": 2023-07-20T21:04:31.000Z,
   "description": "Photo",
   "id": "53077440094",
   "imageUrls": {

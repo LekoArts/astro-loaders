@@ -1,6 +1,6 @@
 # Astro Flickr loader
 
-This package provides an Astro Flickr content loader for Astro's [content layer](https://docs.astro.build/en/guides/content-collections/). TODO
+This package provides multiple Astro [Flickr](https://flickr.com/) content loader for Astro's [content layer](https://docs.astro.build/en/guides/content-collections/). Each loader corresponds to a Flickr API endpoint but isn't just a wrapper around it. The data returned from Flickr is normalized and cleaned up, so that each loader's response is similar and easy to work with.
 
 ## Prerequisites
 
