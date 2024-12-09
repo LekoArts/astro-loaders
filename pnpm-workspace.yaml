@@ -1,0 +1,13 @@
+packages:
+  - 'packages/*'
+  - 'demos/*'
+
+catalogs:
+  astro:
+    astro: 5.0.3
+  repo:
+    tsup: 8.3.5
+    typescript: 5.7.2
+  linting:
+    '@arethetypeswrong/cli': 0.17.0
+    publint: 0.2.12

@@ -1,0 +1,14 @@
+name: Build Packages
+
+on: workflow_call
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Install dependencies
+        uses: ./.github/actions/pnpm-install
+      - name: Build Packages
+        run: pnpm run build

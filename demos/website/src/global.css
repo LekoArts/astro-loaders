@@ -1,0 +1,5 @@
+.force-square-aspect-ratio {
+  aspect-ratio: 1 !important;
+  object-fit: cover;
+  max-height: 100% !important;
+}

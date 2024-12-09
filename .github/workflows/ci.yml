@@ -1,0 +1,24 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+concurrency:
+  group: ci-${{ github.head_ref || github.run_id }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    name: Build Packages
+    uses: ./.github/workflows/build.yml
+  unit-testing:
+    name: Unit Testing
+    needs: build
+    uses: ./.github/workflows/unit-testing.yml
+  lint:
+    name: Publint & Attw
+    needs: build
+    uses: ./.github/workflows/lint.yml

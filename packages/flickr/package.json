@@ -1,0 +1,45 @@
+{
+  "name": "@lekoarts/flickr-loader",
+  "type": "module",
+  "version": "1.0.0",
+  "description": "Astro content loader for Flickr",
+  "author": "LekoArts",
+  "license": "MIT",
+  "homepage": "https://github.com/LekoArts/astro-loaders",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com:LekoArts/astro-loaders.git",
+    "directory": "packages/flickr"
+  },
+  "keywords": [
+    "withastro",
+    "astro-loader"
+  ],
+  "exports": {
+    ".": "./dist/index.js"
+  },
+  "main": "dist/index.js",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "prepublishOnly": "node --run build",
+    "check": "publint && attw --pack . --ignore-rules=cjs-resolves-to-esm",
+    "test": "vitest"
+  },
+  "peerDependencies": {
+    "astro": "^5.0.0"
+  },
+  "dependencies": {
+    "flickr-sdk": "^7.0.0-beta.9"
+  },
+  "devDependencies": {
+    "@arethetypeswrong/cli": "catalog:linting",
+    "astro": "catalog:astro",
+    "publint": "catalog:linting",
+    "tsup": "catalog:repo",
+    "typescript": "catalog:repo"
+  }
+}

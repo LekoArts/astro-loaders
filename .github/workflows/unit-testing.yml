@@ -1,0 +1,20 @@
+name: Unit Testing
+
+on: workflow_call
+
+jobs:
+  unit-testing:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        version: [18, 20, 22]
+    name: Node.js ${{ matrix.version }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Install dependencies
+        uses: ./.github/actions/pnpm-install
+        with:
+          node-version: ${{ matrix.version }}
+      - name: Run Vitest
+        run: pnpm run test

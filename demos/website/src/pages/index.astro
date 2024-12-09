@@ -1,0 +1,21 @@
+---
+import PeopleGetPhotos from '../components/flickr/PeopleGetPhotos.astro';
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout>
+	<main class="mx-auto container px-6 py-8">
+		<h1 class="text-slate-950 dark:text-white text-balance font-bold tracking-tight text-center text-3xl/9 sm:text-5xl md:text-6xl">Astro Loaders by LekoArts</h1>
+		<p class="mt-4 max-w-2xl text-base/6 text-slate-600 dark:text-slate-400 sm:text-lg mx-auto text-center">Need to pull in content using Astro's content layer? Reach for one of the provided loaders below and stop dealing with complicated third-party APIs.</p>
+		<section class="mt-12 border-dashed border-2 border-slate-200 dark:border-slate-700 rounded-lg pt-3 md:pt-6 px-3 md:px-6">
+			<div>
+				<h2 class="text-slate-950 dark:text-slate-200">Flickr</h2>
+			</div>
+			<h3 class="text-slate-950 dark:text-slate-200"><code>flickrPeopleGetPhotosLoader</code> (people.getPhotos)</h3>
+			<PeopleGetPhotos />
+		</section>
+	</main>
+	<footer class="mx-auto container text-center text-slate-950 dark:text-slate-200">
+		Made by <a href="https://www.lekoarts.de">LekoArts</a>. View the <a href="https://github.com/LekoArts/astro-loaders">source code</a>.
+	</footer>
+</Layout>

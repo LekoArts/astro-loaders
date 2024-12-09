@@ -1,0 +1,92 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`normalizePhoto > should normalize people-getPhotos response 1`] = `
+{
+  "date_last_update": 2023-08-24T14:22:22.000Z,
+  "date_taken": 2023-07-20T19:04:31.000Z,
+  "description": "Photo",
+  "id": "53077440094",
+  "imageUrls": {
+    "100px": {
+      "height": 56,
+      "orientation": "landscape",
+      "url": "URL",
+      "width": 100,
+    },
+    "1024px": {
+      "height": 576,
+      "orientation": "landscape",
+      "url": "URL",
+      "width": 1024,
+    },
+    "1600px": {
+      "height": 576,
+      "orientation": "landscape",
+      "url": "URL",
+      "width": 1024,
+    },
+    "2048px": {
+      "height": 1024,
+      "orientation": "square",
+      "url": "URL",
+      "width": 1024,
+    },
+    "240px": {
+      "height": 135,
+      "orientation": "landscape",
+      "url": "URL",
+      "width": 240,
+    },
+    "320px": {
+      "height": 180,
+      "orientation": "landscape",
+      "url": "URL",
+      "width": 320,
+    },
+    "500px": {
+      "height": 281,
+      "orientation": "landscape",
+      "url": "URL",
+      "width": 500,
+    },
+    "640px": {
+      "height": 360,
+      "orientation": "landscape",
+      "url": "URL",
+      "width": 640,
+    },
+    "800px": {
+      "height": 450,
+      "orientation": "landscape",
+      "url": "URL",
+      "width": 800,
+    },
+    "original": {
+      "height": 3000,
+      "orientation": "portrait",
+      "url": "URL",
+      "width": 1024,
+    },
+    "sq_150px": {
+      "height": 150,
+      "orientation": "square",
+      "url": "URL",
+      "width": 150,
+    },
+    "sq_75px": {
+      "height": 75,
+      "orientation": "square",
+      "url": "URL",
+      "width": 75,
+    },
+  },
+  "is_family": false,
+  "is_friend": false,
+  "is_public": true,
+  "media": "photo",
+  "media_status": "ready",
+  "owner": "192975453@N04",
+  "title": "DSCF1603",
+  "views": 24,
+}
+`;

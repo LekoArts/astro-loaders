@@ -1,0 +1,35 @@
+{
+  "name": "astro-loaders",
+  "packageManager": "pnpm@9.14.4",
+  "author": "LekoArts",
+  "license": "MIT",
+  "scripts": {
+    "test": "pnpm run --filter @lekoarts/* test",
+    "build": "pnpm run --filter @lekoarts/* build",
+    "check": "pnpm run --filter @lekoarts/* check",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "changeset": "changeset",
+    "version": "changeset version",
+    "version:ci": "changeset version && pnpm install --lockfile-only",
+    "release": "changeset publish"
+  },
+  "devDependencies": {
+    "@antfu/eslint-config": "^3.11.2",
+    "@changesets/changelog-github": "^0.5.0",
+    "@changesets/cli": "^2.27.10",
+    "@types/node": "^22.10.1",
+    "eslint": "^9.15.0",
+    "eslint-plugin-format": "^0.1.2",
+    "lint-staged": "^15.2.10",
+    "simple-git-hooks": "^2.11.1",
+    "vite": "^6.0.3",
+    "vitest": "^2.1.8"
+  },
+  "simple-git-hooks": {
+    "pre-commit": "pnpm lint-staged"
+  },
+  "lint-staged": {
+    "*": "eslint --fix"
+  }
+}

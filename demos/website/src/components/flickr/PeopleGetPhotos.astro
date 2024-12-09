@@ -1,0 +1,21 @@
+---
+import { getCollection } from 'astro:content';
+import ArtImage from '../ArtImage.astro';
+
+const allPeopleGetPhotos = await getCollection('peopleGetPhotos')
+---
+
+<div class="columns-3 md:columns-6 gap-3 md:gap-6">
+  {allPeopleGetPhotos.slice(0, 6).map(({ data: photo }) => {
+    const sm = photo.imageUrls['640px']
+    const md = photo.imageUrls['800px']
+    const lg = photo.imageUrls['1024px']
+
+    return (<ArtImage photoId={photo.id} images={{
+      sm: { url: sm!.url, height: sm!.height, width: sm!.width },
+      md: { url: md!.url, height: md!.height, width: md!.width },
+      lg: { url: lg!.url, height: lg!.height, width: lg!.width }
+    }} alt={photo.description ?? ''} class="force-square-aspect-ratio mb-3 md:mb-6 rounded-lg" />
+    )
+  })}
+</div>

@@ -1,0 +1,54 @@
+---
+import type { HTMLAttributes } from 'astro/types'
+
+interface Props extends HTMLAttributes<'a'> {
+	images: IImages
+	photoId: string
+	alt: string
+	imgClass?: string
+}
+
+interface IImageSize {
+	url: string
+	width: number
+	height: number
+}
+
+interface IImages {
+	lg: IImageSize
+	md: IImageSize
+	sm: IImageSize
+}
+
+const getSrcSet = (images: IImages) => {
+	const { lg, md, sm } = images
+
+	return `
+    ${lg.url} ${lg.width}w,
+    ${md.url} ${md.width}w,
+    ${sm.url} ${sm.width}w
+  `
+}
+
+const { images, alt, class: className } = Astro.props
+
+const src = images.lg.url
+const { width: maxWidth, height: maxHeight } = images.lg
+const aspectRatio = maxWidth / maxHeight
+---
+
+<img
+	loading="lazy"
+	decoding="async"
+	src={src}
+	sizes={`(min-width: ${maxWidth}px) ${maxWidth}px, 100vw`}
+	srcset={getSrcSet(images)}
+	alt={alt}
+	class={className}
+	style={{
+		maxWidth: `${maxWidth}px`,
+		maxHeight: `${maxHeight}px`,
+		aspectRatio: `${aspectRatio} / 1`,
+		width: '100%',
+	}}
+/>
