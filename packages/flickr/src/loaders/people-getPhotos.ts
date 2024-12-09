@@ -32,7 +32,7 @@ export function flickrPeopleGetPhotosLoader({
   queryParams,
 }: FlickrPeopleGetPhotosLoaderOptions): Loader {
   if (!api_key) {
-    throw new AstroError('Missing Flickr API key. Set it in the FLICKR_API_KEY environment variable or pass it as an option.')
+    throw new AstroError('Missing Flickr API key. Define the FLICKR_API_KEY environment variable or pass it as an option.')
   }
   const { flickr } = createFlickr(api_key)
 

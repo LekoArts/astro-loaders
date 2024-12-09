@@ -5,8 +5,6 @@ This package provides multiple Astro [Flickr](https://flickr.com/) content loade
 ## Prerequisites
 
 - Astro 5 or later installed
-- A Flickr ID
-  - You can get it by visiting the profile and extracting it from the URL: With `https://www.flickr.com/people/192975453@N04/` the user ID is `192975453@N04`
 - Your Flickr API key
   - Create an account on Flickr, go to [App Garden](https://www.flickr.com/services/apps/create/) to register an app and copy the `Key`
 
@@ -36,7 +34,7 @@ import { defineCollection } from 'astro:content'
 
 const peopleGetPhotos = defineCollection({
   loader: flickrPeopleGetPhotosLoader({
-    user_id: 'user-id',
+    username: 'flickr-username',
   }),
 })
 
