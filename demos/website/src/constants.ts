@@ -1,1 +1,1 @@
-export const FLICKR_USER_ID = '192975453@N04'
+export const FLICKR_USERNAME = 'ars_aurea'
