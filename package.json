@@ -4,7 +4,7 @@
   "author": "LekoArts",
   "license": "MIT",
   "scripts": {
-    "test": "TZ=UTC pnpm run --filter @lekoarts/* test",
+    "test": "pnpm run --filter @lekoarts/* test",
     "build": "pnpm run --filter @lekoarts/* build",
     "check": "pnpm run --filter @lekoarts/* check",
     "lint": "eslint .",

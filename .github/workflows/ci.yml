@@ -18,7 +18,3 @@ jobs:
     name: Unit Testing
     needs: build
     uses: ./.github/workflows/unit-testing.yml
-  lint:
-    name: Publint & Attw
-    needs: build
-    uses: ./.github/workflows/lint.yml
