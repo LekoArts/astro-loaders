@@ -1,5 +1,12 @@
 ---
 import "../global.css"
+
+const seo = {
+	title: 'Astro Loaders by LekoArts',
+	description: "Need to pull in content using Astro's content layer? Reach for one of the provided loaders and stop dealing with complicated third-party APIs.",
+	url: 'https://astro-loaders.lekoarts.de',
+	image: new URL('/og.png', Astro.url)
+}
 ---
 
 <!doctype html>
@@ -9,10 +16,28 @@ import "../global.css"
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='90'>🌋</text></svg>" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Astro Loaders by LekoArts</title>
+		<title>{seo.title}</title>
+		<meta name="image" content={seo.image} />
+		<link rel="canonical" href={seo.url} />
+		<meta property="og:title" content={seo.title} />
+		<meta property="og:url" content={seo.url} />
+		<meta property="og:description" content={seo.description} />
+		<meta property="og:image" content={seo.image} />
+		<meta property="og:type" content="website" />
+		<meta property="og:see_also" content="https://github.com/LekoArts" />
+		<meta property="og:see_also" content="https://www.behance.net/lekoarts" />
+		<meta property="og:see_also" content="https://bsky.app/profile/lekoarts.de" />
+		<meta property="og:see_also" content="https://mastodon.social/@lekoarts" />
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:title" content={seo.title} />
+		<meta name="twitter:url" content={seo.url} />
+		<meta name="twitter:description" content={seo.description} />
+		<meta name="twitter:image" content={seo.image} />
+		<meta name="creator" content="LekoArts" />
+		<meta name="fediverse:creator" content="@lekoarts@mastodon.social" />
 	</head>
-	<body>
-		<div class="bg-slate-50 dark:bg-slate-800 min-h-screen">
+	<body class="bg-slate-50 dark:bg-slate-800">
+		<div class="min-h-screen noise-bg">
 			<slot />
 		</div>
 	</body>
