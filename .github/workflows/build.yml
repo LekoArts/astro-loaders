@@ -12,3 +12,5 @@ jobs:
         uses: ./.github/actions/pnpm-install
       - name: Build Packages
         run: pnpm run build
+      - name: Run publint & attw
+        run: pnpm run check

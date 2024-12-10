@@ -1,12 +1,10 @@
 # Astro Flickr loader
 
-This package provides an Astro Flickr content loader for Astro's [content layer](https://docs.astro.build/en/guides/content-collections/). TODO
+This package provides multiple Astro [Flickr](https://flickr.com/) content loader for Astro's [content layer](https://docs.astro.build/en/guides/content-collections/). Each loader corresponds to a Flickr API endpoint but isn't just a wrapper around it. The data returned from Flickr is normalized and cleaned up, so that each loader's response is similar and easy to work with.
 
 ## Prerequisites
 
 - Astro 5 or later installed
-- A Flickr ID
-  - You can get it by visiting the profile and extracting it from the URL: With `https://www.flickr.com/people/192975453@N04/` the user ID is `192975453@N04`
 - Your Flickr API key
   - Create an account on Flickr, go to [App Garden](https://www.flickr.com/services/apps/create/) to register an app and copy the `Key`
 
@@ -36,7 +34,7 @@ import { defineCollection } from 'astro:content'
 
 const peopleGetPhotos = defineCollection({
   loader: flickrPeopleGetPhotosLoader({
-    user_id: 'user-id',
+    username: 'flickr-username',
   }),
 })
 

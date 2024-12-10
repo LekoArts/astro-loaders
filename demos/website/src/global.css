@@ -3,3 +3,20 @@
   object-fit: cover;
   max-height: 100% !important;
 }
+
+.noise-bg {
+  position: relative;
+}
+
+.noise-bg::before {
+  background-image: url('./assets/noise.png');
+  background-blend-mode: hard-light;
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  opacity: 0.25;
+  pointer-events: none;
+}
