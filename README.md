@@ -1,6 +1,8 @@
 # Astro Loaders by LekoArts
 
-Astro Loaders for Astro's [content layer](https://docs.astro.build/en/guides/content-collections/).
+Loaders for Astro's [content layer](https://docs.astro.build/en/guides/content-collections/).
+
+**Want to see an overview of all my loaders? Visit [astro-loaders.lekoarts.de](https://astro-loaders.lekoarts.de) ✨**
 
 ## Packages
 
