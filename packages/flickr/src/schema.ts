@@ -22,12 +22,11 @@ const imageUrls = z.object({
   'original': PhotoMeta.optional(),
 })
 
-export const NormalizedResponse = z.object({
+const AlwaysAvailable = z.object({
   id: z.string(),
-  owner: z.string(),
 })
 
-export const PeopleGetPhotos = NormalizedResponse.extend({
+const NormalizedPhoto = AlwaysAvailable.extend({
   title: z.string(),
   is_public: z.boolean(),
   is_friend: z.boolean(),
@@ -41,7 +40,12 @@ export const PeopleGetPhotos = NormalizedResponse.extend({
   imageUrls,
 })
 
-export const PhotosetsGetList = NormalizedResponse.extend({
+export const PeopleGetPhotos = NormalizedPhoto.extend({
+  owner: z.string(),
+})
+
+export const PhotosetsGetList = AlwaysAvailable.extend({
+  owner: z.string(),
   title: z.string(),
   description: z.string().optional(),
   username: z.string(),
@@ -52,4 +56,19 @@ export const PhotosetsGetList = NormalizedResponse.extend({
   videos: z.number().optional(),
   date_create: z.date().optional(),
   date_last_update: z.date().optional(),
+})
+
+export const PhotosetsGetPhotos = NormalizedPhoto.extend({
+  photoset: z.object({
+    id: z.string(),
+    primary: z.string(),
+    owner: z.string(),
+    ownername: z.string(),
+    title: z.string(),
+    total: z.number(),
+  }),
+})
+
+export const PhotosetsGetListWithPhotos = PhotosetsGetList.extend({
+  photos: z.array(NormalizedPhoto),
 })

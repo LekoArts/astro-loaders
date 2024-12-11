@@ -50,6 +50,10 @@ export function flickrPhotosetsGetListLoader({
       const flattenedResult = result.flatMap(r => r.photosets.photoset)
 
       for (const result of flattenedResult) {
+        if (!result.id) {
+          continue
+        }
+
         const normalized = normalize(result)
         const data = await parseData({ id: normalized.id, data: normalized })
 

@@ -3,6 +3,7 @@ import { normalize } from '../normalize'
 
 import peopleGetPhotosFixture from './fixtures/people-getPhotos.json'
 import photosetsGetList from './fixtures/photosets-getList.json'
+import photosetsGetPhotos from './fixtures/photosets-getPhotos.json'
 
 describe('normalize', () => {
   let originalTZ: string | undefined
@@ -24,6 +25,12 @@ describe('normalize', () => {
 
   it('should normalize photosets-getList response', () => {
     const normalized = normalize(photosetsGetList.photosets.photoset[0]!)
+
+    expect(normalized).toMatchSnapshot()
+  })
+
+  it('should normalize photosets-getPhotos response', () => {
+    const normalized = normalize(photosetsGetPhotos.photoset.photo[0]!)
 
     expect(normalized).toMatchSnapshot()
   })

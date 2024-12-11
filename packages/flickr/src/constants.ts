@@ -1,6 +1,6 @@
 export const DEFAULT_OPTIONS = {
   extras: 'description,last_update,date_taken,url_sq,url_t,url_s,url_q,url_m,url_n,url_z,url_c,url_l,url_o,media,views,original_format',
-  per_page: '100',
+  per_page: '300',
 }
 
 export const SIZES = {

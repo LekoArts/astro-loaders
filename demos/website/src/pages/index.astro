@@ -6,6 +6,8 @@ import flickrLogo from '../assets/flickr.svg';
 import NpmInstall from '../components/NpmInstall.astro';
 import ExampleOutput from '../components/ExampleOutput.astro';
 import PhotosetsGetList from '../components/flickr/PhotosetsGetList.astro';
+import PhotosetsGetPhotos from '../components/flickr/PhotosetsGetPhotos.astro';
+import PhotosetsGetListWithPhotos from '../components/flickr/PhotosetsGetListWithPhotos.astro';
 ---
 
 <Layout>
@@ -28,15 +30,25 @@ import PhotosetsGetList from '../components/flickr/PhotosetsGetList.astro';
 				</div>
 				<NpmInstall url="https://github.com/LekoArts/astro-loaders/tree/main/packages/flickr" name="@lekoarts/flickr-loader" />
 			</div>
-			<h3 class="text-slate-950 dark:text-slate-200 text-base sm:text-lg"><code>flickrPeopleGetPhotosLoader()</code></h3>
+			<h3 class="text-slate-950 dark:text-slate-200 text-base sm:text-lg break-words"><code>flickrPeopleGetPhotosLoader()</code></h3>
 			<p class="text-slate-600 dark:text-slate-400 text-base/6">Return photos from the given user's photostream. Only photos visible to the calling user will be returned.</p>
 			<ExampleOutput>
 				<PeopleGetPhotos />
 			</ExampleOutput>
-			<h3 class="text-slate-950 dark:text-slate-200 text-base sm:text-lg"><code>flickrPhotosetsGetListLoader()</code></h3>
+			<h3 class="text-slate-950 dark:text-slate-200 text-base sm:text-lg break-words"><code>flickrPhotosetsGetListLoader()</code></h3>
 			<p class="text-slate-600 dark:text-slate-400 text-base/6">Returns the photosets belonging to the specified user.</p>
 			<ExampleOutput>
 				<PhotosetsGetList />
+			</ExampleOutput>
+			<h3 class="text-slate-950 dark:text-slate-200 text-base sm:text-lg break-words"><code>flickrPhotosetsGetPhotosLoader()</code></h3>
+			<p class="text-slate-600 dark:text-slate-400 text-base/6">Get the list of photos in a photoset.</p>
+			<ExampleOutput>
+				<PhotosetsGetPhotos />
+			</ExampleOutput>
+			<h3 class="text-slate-950 dark:text-slate-200 text-base sm:text-lg break-words"><code>flickrPhotosetsGetListWithPhotosLoader()</code></h3>
+			<p class="text-slate-600 dark:text-slate-400 text-base/6">This loader combines the <code>flickrPhotosetsGetListLoader()</code> and <code>flickrPhotosetsGetPhotosLoader()</code> loaders to get the most out of photosets. You'll get back the photosets and their list of photos.</p>
+			<ExampleOutput>
+				<PhotosetsGetListWithPhotos />
 			</ExampleOutput>
 		</Section>
 	</main>
