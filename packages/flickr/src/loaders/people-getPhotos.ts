@@ -1,27 +1,13 @@
 import type { Loader } from 'astro/loaders'
-import type { GetPhotosQueryParams, GetPhotosResponse } from '../types/flickr'
+import type { GetPhotosResponse } from '../types/flickr'
+import type { FlickrPeopleGetPhotosLoaderOptions } from '../types/loader'
 import { AstroError } from 'astro/errors'
 import { createFlickr } from 'flickr-sdk'
 import { DEFAULT_OPTIONS } from '../constants.js'
-import { NormalizedPhoto } from '../schema.js'
+import { PeopleGetPhotos } from '../schema.js'
 import { getUserIdFromUsername } from '../utils/get-user-id.js'
-import { normalizePhoto } from '../utils/normalize.js'
+import { normalize } from '../utils/normalize.js'
 import { paginate } from '../utils/paginate.js'
-
-export interface FlickrPeopleGetPhotosLoaderOptions {
-  /**
-   * Your API application key. See here for more details: https://www.flickr.com/services/api/misc.api_keys.html
-   */
-  api_key?: string
-  /**
-   * Flickr username
-   */
-  username: string
-  /**
-   * Optional query parameters you can pass to the request. By passing options here you will override any defaults that may be set.
-   */
-  queryParams?: GetPhotosQueryParams
-}
 
 /**
  * Return photos from the given user's photostream. Only photos visible to the calling user will be returned.
@@ -37,7 +23,7 @@ export function flickrPeopleGetPhotosLoader({
   const { flickr } = createFlickr(api_key)
 
   return {
-    name: 'flickr-people-get-photos-loader',
+    name: 'flickr-people-get-photos',
     load: async ({ logger, parseData, store }) => {
       logger.info('Fetching photostream photos')
       let user_id: string
@@ -64,7 +50,7 @@ export function flickrPeopleGetPhotosLoader({
       const flattenedResult = result.flatMap(r => r.photos.photo)
 
       for (const result of flattenedResult) {
-        const normalized = normalizePhoto(result)
+        const normalized = normalize(result)
         const data = await parseData({ id: normalized.id, data: normalized })
 
         store.set({
@@ -75,6 +61,6 @@ export function flickrPeopleGetPhotosLoader({
 
       logger.info(`Loaded ${flattenedResult.length} photos`)
     },
-    schema: NormalizedPhoto,
+    schema: PeopleGetPhotos,
   }
 }
