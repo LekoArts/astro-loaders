@@ -22,9 +22,12 @@ const imageUrls = z.object({
   'original': PhotoMeta.optional(),
 })
 
-export const NormalizedPhoto = z.object({
+export const NormalizedResponse = z.object({
   id: z.string(),
   owner: z.string(),
+})
+
+export const PeopleGetPhotos = NormalizedResponse.extend({
   title: z.string(),
   is_public: z.boolean(),
   is_friend: z.boolean(),
@@ -38,4 +41,15 @@ export const NormalizedPhoto = z.object({
   imageUrls,
 })
 
-export const PeopleGetPhotos = NormalizedPhoto
+export const PhotosetsGetList = NormalizedResponse.extend({
+  title: z.string(),
+  description: z.string().optional(),
+  username: z.string(),
+  primary: z.string(),
+  views: z.number().optional(),
+  comments: z.number().optional(),
+  photos: z.number().optional(),
+  videos: z.number().optional(),
+  date_create: z.date().optional(),
+  date_last_update: z.date().optional(),
+})

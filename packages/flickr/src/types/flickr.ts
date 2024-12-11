@@ -54,13 +54,13 @@ export interface GetPhotosQueryParams {
 /**
  * A minimal photo object from Flickr's API.
  */
-interface FlickrMinimalPhoto {
+interface FlickrMinimalResponse {
   id: string
   owner: string
   secret: string
   server: string
   farm: number
-  title: string
+  title: string | { _content: string }
   ispublic: number
   isfriend: number
   isfamily: number
@@ -105,7 +105,25 @@ interface SizeInfo {
   width_o?: number | string
 }
 
-interface GetPhotosPhoto extends FlickrMinimalPhoto, SizeInfo {
+interface PhotosetsGetListEntry extends FlickrMinimalResponse {
+  username: string
+  primary: string
+  count_views: string
+  count_comments: string
+  count_photos: number
+  count_videos: number
+  description: Content
+  can_comment: number
+  date_create: string
+  date_update: string
+  sorting_option_id: string
+  photos: number
+  videos: number
+  visibility_can_see_set: number
+  needs_interstitial: number
+}
+
+interface GetPhotosPhoto extends FlickrMinimalResponse, SizeInfo {
   description?: Content
   lastupdate?: string
   datetaken?: string
@@ -116,14 +134,40 @@ interface GetPhotosPhoto extends FlickrMinimalPhoto, SizeInfo {
   media_status?: string
 }
 
-export interface FlickrPhoto extends GetPhotosPhoto {}
+export interface FlickrResponse extends Partial<GetPhotosPhoto>, Partial<PhotosetsGetListEntry> {}
 
 export interface GetPhotosResponse {
   photos: {
     page: number
     pages: number
     perpage: number
+    total: number
+    photo: GetPhotosPhoto[]
+  }
+}
+
+export interface PhotosetsGetListResponse {
+  photosets: {
+    page: number
+    pages: number
+    perpage: number
     total: string
+    photoset: PhotosetsGetListEntry[]
+  }
+}
+
+export interface PhotosetsGetPhotosResponse {
+  photoset: {
+    id: string
+    primary: string
+    owner: string
+    ownername: string
+    page: number
+    per_page: number
+    perpage: number
+    pages: number
+    title: string
+    total: number
     photo: GetPhotosPhoto[]
   }
 }

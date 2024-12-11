@@ -1,6 +1,6 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`normalizePhoto > should normalize people-getPhotos response 1`] = `
+exports[`normalize > should normalize people-getPhotos response 1`] = `
 {
   "date_last_update": 2023-08-24T14:22:22.000Z,
   "date_taken": 2023-07-20T21:04:31.000Z,
@@ -88,5 +88,22 @@ exports[`normalizePhoto > should normalize people-getPhotos response 1`] = `
   "owner": "192975453@N04",
   "title": "DSCF1603",
   "views": 24,
+}
+`;
+
+exports[`normalize > should normalize photosets-getList response 1`] = `
+{
+  "comments": 0,
+  "date_create": 2024-06-17T12:30:55.000Z,
+  "date_last_update": 2024-06-17T12:33:01.000Z,
+  "description": "",
+  "id": "72177720317993398",
+  "owner": "192975453@N04",
+  "photos": 5,
+  "primary": "53796202792",
+  "title": "Tallinn",
+  "username": "ars_aurea",
+  "videos": 0,
+  "views": 0,
 }
 `;

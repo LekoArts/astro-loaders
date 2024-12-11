@@ -5,6 +5,7 @@ import Section from '../components/Section.astro';
 import flickrLogo from '../assets/flickr.svg';
 import NpmInstall from '../components/NpmInstall.astro';
 import ExampleOutput from '../components/ExampleOutput.astro';
+import PhotosetsGetList from '../components/flickr/PhotosetsGetList.astro';
 ---
 
 <Layout>
@@ -27,10 +28,15 @@ import ExampleOutput from '../components/ExampleOutput.astro';
 				</div>
 				<NpmInstall url="https://github.com/LekoArts/astro-loaders/tree/main/packages/flickr" name="@lekoarts/flickr-loader" />
 			</div>
-			<h3 class="text-slate-950 dark:text-slate-200 text-lg"><code>flickrPeopleGetPhotosLoader()</code></h3>
+			<h3 class="text-slate-950 dark:text-slate-200 text-base sm:text-lg"><code>flickrPeopleGetPhotosLoader()</code></h3>
 			<p class="text-slate-600 dark:text-slate-400 text-base/6">Return photos from the given user's photostream. Only photos visible to the calling user will be returned.</p>
 			<ExampleOutput>
 				<PeopleGetPhotos />
+			</ExampleOutput>
+			<h3 class="text-slate-950 dark:text-slate-200 text-base sm:text-lg"><code>flickrPhotosetsGetListLoader()</code></h3>
+			<p class="text-slate-600 dark:text-slate-400 text-base/6">Returns the photosets belonging to the specified user.</p>
+			<ExampleOutput>
+				<PhotosetsGetList />
 			</ExampleOutput>
 		</Section>
 	</main>
