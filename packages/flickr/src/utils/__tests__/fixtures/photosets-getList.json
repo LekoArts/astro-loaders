@@ -1,0 +1,38 @@
+{
+  "photosets": {
+    "page": 1,
+    "pages": 1,
+    "perpage": 500,
+    "total": 21,
+    "photoset": [
+      {
+        "id": "72177720317993398",
+        "owner": "192975453@N04",
+        "username": "ars_aurea",
+        "primary": "53796202792",
+        "secret": "cc929e770a",
+        "server": "65535",
+        "farm": 66,
+        "count_views": "0",
+        "count_comments": "0",
+        "count_photos": 5,
+        "count_videos": 0,
+        "title": {
+          "_content": "Tallinn"
+        },
+        "description": {
+          "_content": ""
+        },
+        "can_comment": 0,
+        "date_create": "1718627455",
+        "date_update": "1718627581",
+        "sorting_option_id": "date-taken-asc",
+        "photos": 5,
+        "videos": 0,
+        "visibility_can_see_set": 1,
+        "needs_interstitial": 0
+      }
+    ]
+  },
+  "stat": "ok"
+}
