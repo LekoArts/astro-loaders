@@ -22,8 +22,13 @@ export function normalize(res: FlickrResponse): Res {
   const copy = { ...rest } as Partial<FlickrResponse>
   const output = {
     id: rest.id,
-    owner: rest.owner,
   } as Res
+
+  if (Object.prototype.hasOwnProperty.call(copy, 'owner')) {
+    if (typeof copy.owner !== 'undefined') {
+      output.owner = copy.owner
+    }
+  }
 
   ;(Object.keys(SIZES) as SizesArray).forEach((suffix) => {
     if (Object.prototype.hasOwnProperty.call(copy, `height_${suffix}`)) {

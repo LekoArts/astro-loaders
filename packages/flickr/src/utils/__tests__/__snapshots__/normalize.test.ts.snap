@@ -107,3 +107,75 @@ exports[`normalize > should normalize photosets-getList response 1`] = `
   "views": 0,
 }
 `;
+
+exports[`normalize > should normalize photosets-getPhotos response 1`] = `
+{
+  "date_last_update": 2024-06-17T12:30:55.000Z,
+  "date_taken": 2024-06-10T09:54:34.000Z,
+  "description": "Tallinn old town",
+  "id": "53796202792",
+  "imageUrls": {
+    "100px": {
+      "height": 100,
+      "orientation": "portrait",
+      "url": "https://live.staticflickr.com/65535/53796202792_cc929e770a_t.jpg",
+      "width": 67,
+    },
+    "1024px": {
+      "height": 1024,
+      "orientation": "portrait",
+      "url": "https://live.staticflickr.com/65535/53796202792_cc929e770a_b.jpg",
+      "width": 683,
+    },
+    "240px": {
+      "height": 240,
+      "orientation": "portrait",
+      "url": "https://live.staticflickr.com/65535/53796202792_cc929e770a_m.jpg",
+      "width": 160,
+    },
+    "320px": {
+      "height": 320,
+      "orientation": "portrait",
+      "url": "https://live.staticflickr.com/65535/53796202792_cc929e770a_n.jpg",
+      "width": 213,
+    },
+    "500px": {
+      "height": 500,
+      "orientation": "portrait",
+      "url": "https://live.staticflickr.com/65535/53796202792_cc929e770a.jpg",
+      "width": 333,
+    },
+    "640px": {
+      "height": 640,
+      "orientation": "portrait",
+      "url": "https://live.staticflickr.com/65535/53796202792_cc929e770a_z.jpg",
+      "width": 427,
+    },
+    "800px": {
+      "height": 800,
+      "orientation": "portrait",
+      "url": "https://live.staticflickr.com/65535/53796202792_cc929e770a_c.jpg",
+      "width": 533,
+    },
+    "sq_150px": {
+      "height": 150,
+      "orientation": "square",
+      "url": "https://live.staticflickr.com/65535/53796202792_cc929e770a_q.jpg",
+      "width": 150,
+    },
+    "sq_75px": {
+      "height": 75,
+      "orientation": "square",
+      "url": "https://live.staticflickr.com/65535/53796202792_cc929e770a_s.jpg",
+      "width": 75,
+    },
+  },
+  "is_family": false,
+  "is_friend": false,
+  "is_public": true,
+  "media": "photo",
+  "media_status": "ready",
+  "title": "DSCF5186",
+  "views": 20,
+}
+`;
