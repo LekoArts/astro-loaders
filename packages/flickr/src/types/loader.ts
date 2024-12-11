@@ -19,4 +19,31 @@ export interface FlickrPeopleGetPhotosLoaderOptions extends StandardOptions {}
 
 export interface FlickrPhotosetsGetListLoaderOptions extends StandardOptions {}
 
-export interface FlickrPhotosetsGetListWithPhotosLoaderOptions extends StandardOptions {}
+export interface FlickrPhotosetsGetPhotosLoaderOptions extends StandardOptions {
+  /**
+   * The ID of the photoset you want to fetch photos from
+   */
+  photoset_id: string
+}
+
+type FlickrPhotosetsGetListWithPhotos = {
+  /**
+   * Array of photoset IDs to match against
+   */
+  in?: string[]
+  /**
+   * Array of photoset IDs to exclude
+   */
+  nin?: never
+} | {
+  /**
+   * Array of photoset IDs to match against
+   */
+  in?: never
+  /**
+   * Array of photoset IDs to exclude
+   */
+  nin?: string[]
+}
+
+export type FlickrPhotosetsGetListWithPhotosLoaderOptions = StandardOptions & FlickrPhotosetsGetListWithPhotos
