@@ -1,12 +1,11 @@
 import type { Loader } from 'astro/loaders'
 import type { z } from 'astro/zod'
-import type { PhotosetsGetPhotosResponse } from '../types/flickr'
 import type { FlickrPhotosetsGetPhotosLoaderOptions } from '../types/loader'
 import { AstroError } from 'astro/errors'
-import { createFlickr } from 'flickr-sdk'
 import { DEFAULT_OPTIONS } from '../constants.js'
 import { PhotosetsGetPhotos } from '../schema.js'
 import { getUserIdFromUsername } from '../utils/get-user-id.js'
+import { createFlickr } from '../utils/ky.js'
 import { normalize } from '../utils/normalize.js'
 import { paginate } from '../utils/paginate.js'
 
@@ -48,7 +47,7 @@ export function flickrPhotosetsGetPhotosLoader({
           page: page.toString(),
           extras: DEFAULT_OPTIONS.extras,
           ...queryParams,
-        }) as Promise<PhotosetsGetPhotosResponse>
+        })
       }
 
       const result = await paginate(getPhotosetsPhotos)
