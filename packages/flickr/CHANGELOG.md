@@ -1,5 +1,11 @@
 # @lekoarts/flickr-loader
 
+## 1.2.1
+
+### Patch Changes
+
+- [#11](https://github.com/LekoArts/astro-loaders/pull/11) [`b6bee0b`](https://github.com/LekoArts/astro-loaders/commit/b6bee0b09647388ceaeac04e8237af29f962c40d) Thanks [@LekoArts](https://github.com/LekoArts)! - Internal change: Use generateDigest
+
 ## 1.2.0
 
 ### Minor Changes
