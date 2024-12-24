@@ -1,0 +1,28 @@
+name: CR
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    types: [opened, synchronize, labeled]
+
+permissions: {}
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.number }}
+  cancel-in-progress: true
+
+jobs:
+  release:
+    if: github.repository == 'LekoArts/astro-loaders' && (github.ref == 'refs/heads/main' || contains(github.event.pull_request.labels.*.name, 'snapshot'))
+    runs-on: ubuntu-latest
+    name: 'Release: pkg.pr.new'
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Install dependencies
+        uses: ./.github/actions/pnpm-install
+      - name: Build Packages
+        run: pnpm run build
+      - name: Publish to StackBlitz
+        run: pnpx pkg-pr-new publish --compact --no-template --pnpm './packages/*'
