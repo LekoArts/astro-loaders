@@ -17,7 +17,7 @@ export function isPhotosetsGetPhotosResponse(response: Response): response is Ph
 }
 
 /**
- * Unwrap data into key and data
+ * Unwrap data to have access to "pages" and "page" properties.
  */
 function unwrap(response: Response) {
   if (isGetPhotosResponse(response)) {

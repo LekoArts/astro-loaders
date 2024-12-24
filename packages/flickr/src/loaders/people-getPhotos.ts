@@ -24,7 +24,7 @@ export function flickrPeopleGetPhotosLoader({
 
   return {
     name: 'flickr-people-get-photos',
-    load: async ({ logger, parseData, store }) => {
+    load: async ({ logger, parseData, store, generateDigest }) => {
       logger.info('Fetching photostream photos')
       let user_id: string
 
@@ -56,10 +56,12 @@ export function flickrPeopleGetPhotosLoader({
 
         const normalized = normalize(result)
         const data = await parseData({ id: normalized.id, data: normalized })
+        const digest = generateDigest(data)
 
         store.set({
           id: normalized.id,
           data,
+          digest,
         })
       }
 

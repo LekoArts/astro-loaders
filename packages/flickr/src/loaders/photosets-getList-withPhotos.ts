@@ -26,7 +26,7 @@ export function flickrPhotosetsGetListWithPhotosLoader({
 
   return {
     name: 'flickr-photosets-get-list-with-photos',
-    load: async ({ logger, parseData, store }) => {
+    load: async ({ logger, parseData, store, generateDigest }) => {
       logger.info('Fetching photosets list')
       let user_id: string
 
@@ -91,10 +91,12 @@ export function flickrPhotosetsGetListWithPhotosLoader({
           ...normalizedPhotoset,
           photos,
         } })
+        const digest = generateDigest(data)
 
         store.set({
           id: normalizedPhotoset.id,
           data,
+          digest,
         })
 
         photosetCounter++

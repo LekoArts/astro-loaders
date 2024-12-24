@@ -28,7 +28,7 @@ export function flickrPhotosetsGetPhotosLoader({
 
   return {
     name: 'flickr-photosets-get-photos',
-    load: async ({ logger, parseData, store }) => {
+    load: async ({ logger, parseData, store, generateDigest }) => {
       logger.info(`Fetching photos from photoset ${photoset_id}`)
       let user_id: string
 
@@ -70,10 +70,12 @@ export function flickrPhotosetsGetPhotosLoader({
 
         const normalized = normalize(result)
         const data = await parseData({ id: normalized.id, data: { ...normalized, photoset } })
+        const digest = generateDigest(data)
 
         store.set({
           id: normalized.id,
           data,
+          digest,
         })
       }
 
