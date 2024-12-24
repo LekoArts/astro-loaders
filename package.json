@@ -4,6 +4,7 @@
   "author": "LekoArts",
   "license": "MIT",
   "scripts": {
+    "bootstrap": "pnpm install && pnpm playwright:init",
     "test": "pnpm run --filter @lekoarts/* test",
     "build": "pnpm run --filter @lekoarts/* build",
     "check": "pnpm run --filter @lekoarts/* check",
@@ -12,12 +13,19 @@
     "changeset": "changeset",
     "version": "changeset version",
     "version:ci": "changeset version && pnpm install --lockfile-only",
-    "release": "changeset publish"
+    "release": "changeset publish",
+    "website:dev": "pnpm run --filter website dev",
+    "website:build": "pnpm run --filter website build",
+    "website:preview": "pnpm run --filter website preview",
+    "playwright:init": "playwright install chromium",
+    "e2e:dev": "playwright test --ui",
+    "e2e:build": "IS_BUILD=true playwright test"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^3.12.1",
     "@changesets/changelog-github": "^0.5.0",
     "@changesets/cli": "^2.27.11",
+    "@playwright/test": "^1.49.1",
     "@types/node": "^22.10.2",
     "eslint": "^9.17.0",
     "eslint-plugin-format": "^0.1.3",

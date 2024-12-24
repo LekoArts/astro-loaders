@@ -6,6 +6,6 @@ const allPhotosetsGetList = await getCollection('photosetsGetList')
 
 <div class="text-slate-600 dark:text-slate-400 text-base/6 flex flex-wrap flex-row gap-4 justify-center">
   {allPhotosetsGetList.slice(0, 6).map(({ data }) => (
-    <span>{data.title} ({data.photos})</span>
+    <span data-testid='flickr-photosetsGetList-item'>{data.title} ({data.photos})</span>
   ))}
 </div>
