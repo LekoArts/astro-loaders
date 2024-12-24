@@ -33,6 +33,7 @@ interface Content {
  * Query parameters you can pass to the request. Check the Flickr API documentation for more details.
  */
 export interface GetPhotosQueryParams {
+  user_id?: string
   content_types?: string
   safe_search?: string
   min_upload_date?: string
@@ -43,6 +44,29 @@ export interface GetPhotosQueryParams {
   extras?: string
   per_page?: string
   page?: string
+}
+
+export interface PhotosetsGetListParams {
+  user_id?: string
+  page?: string
+  per_page?: string
+  primary_photo_extras?: string
+  photo_ids?: string
+  sort_groups?: string
+}
+
+export interface PhotosetsGetPhotosParams {
+  user_id?: string
+  photoset_id: string
+  extras?: string
+  per_page?: string
+  page?: string
+  privacy_filter?: string
+  media?: string
+}
+
+export interface PeopleFindByUsernameParams {
+  username: string
 }
 
 /**
@@ -169,5 +193,15 @@ export interface PhotosetsGetPhotosResponse {
     title: string
     total: number
     photo: GetPhotosPhoto[]
+  }
+}
+
+export interface FindByUsernameResponse {
+  user: {
+    id: string
+    nsid: string
+    username: {
+      _content: string
+    }
   }
 }
