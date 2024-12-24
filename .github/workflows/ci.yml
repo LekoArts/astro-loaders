@@ -22,3 +22,4 @@ jobs:
     name: E2E Testing
     needs: build
     uses: ./.github/workflows/e2e.yml
+    secrets: inherit
