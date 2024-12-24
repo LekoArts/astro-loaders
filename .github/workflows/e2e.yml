@@ -1,0 +1,55 @@
+name: E2E Testing
+
+on: workflow_call
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.head_ref || github.run_id }}
+  cancel-in-progress: true
+
+jobs:
+  e2e-testing:
+    timeout-minutes: 60
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: lts/*
+      - uses: actions/cache@v4
+        id: playwright-cache
+        with:
+          path: |
+            ~/.cache/ms-playwright
+          key: ${{ runner.os }}-playwright-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-playwright-
+      - uses: actions/cache@v4
+        id: astro-cache
+        env:
+          files: >-
+            ${{ hashFiles('demos/website/astro.config.ts') }}-${{ hashFiles('demos/website/src/content.config.ts') }}
+        with:
+          path: |
+            demos/website/dist
+          key: ${{ runner.os }}-astro-${{ env.files }}-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-astro-
+      - name: Install dependencies
+        uses: ./.github/actions/pnpm-install
+      - name: Build Packages
+        run: pnpm run build
+      - name: Install Playwright
+        if: steps.playwright-cache.outputs.cache-hit != 'true'
+        run: npx playwright install chromium --with-deps
+      - name: Build Astro site
+        run: pnpm run website:build
+        env:
+          FLICKR_API_KEY: ${{ secrets.FLICKR_API_KEY }}
+      - name: Run Playwright
+        run: pnpm run e2e:build
+      - uses: actions/upload-artifact@v4
+        if: ${{ cancelled() || failure() }}
+        with:
+          name: playwright-traces-${{ github.run_id }}-${{ github.run-attempt }}
+          path: playwright-report/
+          retention-days: 1

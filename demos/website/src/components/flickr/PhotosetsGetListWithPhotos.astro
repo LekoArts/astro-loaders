@@ -6,8 +6,8 @@ const photosetsGetPhotos = await getCollection('photosetsGetListWithPhotos')
 ---
 
 {photosetsGetPhotos.slice(0,2).map(({ data: photoset }, index) => (
-<p class={`mb-4 text-slate-600 dark:text-slate-400 ${index === 1 ? 'mt-4' : ''}`}>Title: {photoset.title} - Total images: {photoset.photos.length}</p>
-<div class="grid grid-cols-3 md:grid-cols-6 gap-3 md:gap-6">
+<p class={`mb-4 text-slate-600 dark:text-slate-400 ${index === 1 ? 'mt-4' : ''}`} data-testid={`flickr-photosetsGetListWithPhotos-text-${index}`}>Title: {photoset.title} - Total images: {photoset.photos.length}</p>
+<div class="grid grid-cols-3 md:grid-cols-6 gap-3 md:gap-6" data-testid={`flickr-photosetsGetListWithPhotos-wrapper-${index}`}>
   {photoset.photos.slice(0, 6).map((photo) => {
     const sm = photo.imageUrls['640px']
     const md = photo.imageUrls['800px']

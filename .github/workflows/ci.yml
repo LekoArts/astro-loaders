@@ -18,3 +18,8 @@ jobs:
     name: Unit Testing
     needs: build
     uses: ./.github/workflows/unit-testing.yml
+  e2e-testing:
+    name: E2E Testing
+    needs: build
+    uses: ./.github/workflows/e2e.yml
+    secrets: inherit
