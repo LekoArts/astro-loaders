@@ -33,7 +33,7 @@
     "astro": "^5.0.0"
   },
   "dependencies": {
-    "flickr-sdk": "^7.0.0-beta.9"
+    "ky": "^1.7.4"
   },
   "devDependencies": {
     "@arethetypeswrong/cli": "catalog:linting",

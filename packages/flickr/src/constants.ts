@@ -3,6 +3,8 @@ export const DEFAULT_OPTIONS = {
   per_page: '300',
 }
 
+export const BASE_URL = 'https://api.flickr.com/services/rest/'
+
 export const SIZES = {
   sq: 'sq_75px',
   q: 'sq_150px',

@@ -1,6 +1,6 @@
-import type { GetPhotosQueryParams } from './flickr'
+import type { GetPhotosQueryParams, PhotosetsGetListParams, PhotosetsGetPhotosParams } from './flickr'
 
-interface StandardOptions {
+export interface StandardOptions {
   /**
    * Your API application key. See here for more details: https://www.flickr.com/services/api/misc.api_keys.html
    */
@@ -9,21 +9,31 @@ interface StandardOptions {
    * Flickr username
    */
   username: string
+}
+
+export interface FlickrPeopleGetPhotosLoaderOptions extends StandardOptions {
   /**
    * Optional query parameters you can pass to the request. By passing options here you will override any defaults that may be set.
    */
   queryParams?: GetPhotosQueryParams
 }
 
-export interface FlickrPeopleGetPhotosLoaderOptions extends StandardOptions {}
-
-export interface FlickrPhotosetsGetListLoaderOptions extends StandardOptions {}
+export interface FlickrPhotosetsGetListLoaderOptions extends StandardOptions {
+  /**
+   * Optional query parameters you can pass to the request. By passing options here you will override any defaults that may be set.
+   */
+  queryParams?: PhotosetsGetListParams
+}
 
 export interface FlickrPhotosetsGetPhotosLoaderOptions extends StandardOptions {
   /**
    * The ID of the photoset you want to fetch photos from
    */
   photoset_id: string
+  /**
+   * Optional query parameters you can pass to the request. By passing options here you will override any defaults that may be set.
+   */
+  queryParams?: PhotosetsGetPhotosParams
 }
 
 type FlickrPhotosetsGetListWithPhotos = {
@@ -46,4 +56,9 @@ type FlickrPhotosetsGetListWithPhotos = {
   nin?: string[]
 }
 
-export type FlickrPhotosetsGetListWithPhotosLoaderOptions = StandardOptions & FlickrPhotosetsGetListWithPhotos
+export type FlickrPhotosetsGetListWithPhotosLoaderOptions = StandardOptions & FlickrPhotosetsGetListWithPhotos & {
+  /**
+   * Optional query parameters you can pass to the request. By passing options here you will override any defaults that may be set.
+   */
+  queryParams?: PhotosetsGetListParams
+}
