@@ -1,11 +1,10 @@
 import type { Loader } from 'astro/loaders'
-import type { PhotosetsGetListResponse, PhotosetsGetPhotosResponse } from '../types/flickr'
 import type { FlickrPhotosetsGetListWithPhotosLoaderOptions } from '../types/loader'
-import { AstroError } from 'astro/errors'
-import { createFlickr } from 'flickr-sdk'
 import { DEFAULT_OPTIONS } from '../constants.js'
 import { PhotosetsGetListWithPhotos } from '../schema.js'
+import { missingApiKey } from '../utils/errors.js'
 import { getUserIdFromUsername } from '../utils/get-user-id.js'
+import { createFlickr } from '../utils/ky.js'
 import { normalize } from '../utils/normalize.js'
 import { paginate } from '../utils/paginate.js'
 
@@ -20,7 +19,7 @@ export function flickrPhotosetsGetListWithPhotosLoader({
   nin: _nin,
 }: FlickrPhotosetsGetListWithPhotosLoaderOptions): Loader {
   if (!api_key) {
-    throw new AstroError('Missing Flickr API key. Define the FLICKR_API_KEY environment variable or pass it as an option.')
+    missingApiKey()
   }
   const { flickr } = createFlickr(api_key)
 
@@ -43,9 +42,8 @@ export function flickrPhotosetsGetListWithPhotosLoader({
           user_id,
           per_page: DEFAULT_OPTIONS.per_page,
           page: page.toString(),
-          extras: DEFAULT_OPTIONS.extras,
           ...queryParams,
-        }) as Promise<PhotosetsGetListResponse>
+        })
       }
 
       const result = await paginate(getPhotosetsList)
@@ -79,7 +77,7 @@ export function flickrPhotosetsGetListWithPhotosLoader({
             page: page.toString(),
             extras: DEFAULT_OPTIONS.extras,
             ...queryParams,
-          }) as Promise<PhotosetsGetPhotosResponse>
+          })
         }
 
         // Fetch all images of the given photoset

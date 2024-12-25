@@ -1,11 +1,10 @@
 import type { Loader } from 'astro/loaders'
-import type { GetPhotosResponse } from '../types/flickr'
 import type { FlickrPeopleGetPhotosLoaderOptions } from '../types/loader'
-import { AstroError } from 'astro/errors'
-import { createFlickr } from 'flickr-sdk'
 import { DEFAULT_OPTIONS } from '../constants.js'
 import { PeopleGetPhotos } from '../schema.js'
+import { missingApiKey } from '../utils/errors.js'
 import { getUserIdFromUsername } from '../utils/get-user-id.js'
+import { createFlickr } from '../utils/ky.js'
 import { normalize } from '../utils/normalize.js'
 import { paginate } from '../utils/paginate.js'
 
@@ -18,7 +17,7 @@ export function flickrPeopleGetPhotosLoader({
   queryParams,
 }: FlickrPeopleGetPhotosLoaderOptions): Loader {
   if (!api_key) {
-    throw new AstroError('Missing Flickr API key. Define the FLICKR_API_KEY environment variable or pass it as an option.')
+    missingApiKey()
   }
   const { flickr } = createFlickr(api_key)
 
@@ -43,7 +42,7 @@ export function flickrPeopleGetPhotosLoader({
           page: page.toString(),
           extras: DEFAULT_OPTIONS.extras,
           ...queryParams,
-        }) as Promise<GetPhotosResponse>
+        })
       }
 
       const result = await paginate(getPhotos)
