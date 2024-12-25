@@ -1,5 +1,13 @@
 # @lekoarts/flickr-loader
 
+## 1.2.2
+
+### Patch Changes
+
+- [#15](https://github.com/LekoArts/astro-loaders/pull/15) [`003756a`](https://github.com/LekoArts/astro-loaders/commit/003756ac7f107d9d8eb04a6cb101531ee2bc7f37) Thanks [@LekoArts](https://github.com/LekoArts)! - Adjust TypeScript types to more accurately represent the `queryParams` you can pass as an option to the loaders.
+
+  Internally the `flickr-sdk` has been replaced with custom fetch calls making the package leaner.
+
 ## 1.2.1
 
 ### Patch Changes
