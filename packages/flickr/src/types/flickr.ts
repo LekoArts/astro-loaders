@@ -46,6 +46,9 @@ export interface GetPhotosQueryParams {
   page?: string
 }
 
+/**
+ * Query parameters you can pass to the request. Check the Flickr API documentation for more details.
+ */
 export interface PhotosetsGetListParams {
   user_id?: string
   page?: string
@@ -55,6 +58,9 @@ export interface PhotosetsGetListParams {
   sort_groups?: string
 }
 
+/**
+ * Query parameters you can pass to the request. Check the Flickr API documentation for more details.
+ */
 export interface PhotosetsGetPhotosParams {
   user_id?: string
   photoset_id: string
@@ -65,6 +71,9 @@ export interface PhotosetsGetPhotosParams {
   media?: string
 }
 
+/**
+ * Query parameters you can pass to the request. Check the Flickr API documentation for more details.
+ */
 export interface PeopleFindByUsernameParams {
   username: string
 }

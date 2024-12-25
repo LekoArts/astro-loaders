@@ -1,8 +1,8 @@
 import type { Loader } from 'astro/loaders'
 import type { FlickrPeopleGetPhotosLoaderOptions } from '../types/loader'
-import { AstroError } from 'astro/errors'
 import { DEFAULT_OPTIONS } from '../constants.js'
 import { PeopleGetPhotos } from '../schema.js'
+import { missingApiKey } from '../utils/errors.js'
 import { getUserIdFromUsername } from '../utils/get-user-id.js'
 import { createFlickr } from '../utils/ky.js'
 import { normalize } from '../utils/normalize.js'
@@ -17,7 +17,7 @@ export function flickrPeopleGetPhotosLoader({
   queryParams,
 }: FlickrPeopleGetPhotosLoaderOptions): Loader {
   if (!api_key) {
-    throw new AstroError('Missing Flickr API key. Define the FLICKR_API_KEY environment variable or pass it as an option.')
+    missingApiKey()
   }
   const { flickr } = createFlickr(api_key)
 
