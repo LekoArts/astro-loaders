@@ -10,7 +10,7 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/tailwind": "^5.1.4",
+    "@astrojs/tailwind": "^5.1.5",
     "@lekoarts/flickr-loader": "workspace:^",
     "astro": "catalog:astro",
     "tailwindcss": "^3.4.17"
