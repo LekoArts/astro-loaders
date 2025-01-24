@@ -13,6 +13,6 @@
     "@astrojs/tailwind": "^5.1.5",
     "@lekoarts/flickr-loader": "workspace:^",
     "astro": "catalog:astro",
-    "tailwindcss": "^3.4.17"
+    "tailwindcss": "^4.0.0"
   }
 }
