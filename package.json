@@ -4,7 +4,7 @@
   "author": "LekoArts",
   "license": "MIT",
   "scripts": {
-    "bootstrap": "pnpm install && pnpm playwright:init",
+    "bootstrap": "pnpm install && pnpm playwright:init && pnpm build",
     "test": "pnpm run --filter @lekoarts/* test",
     "build": "pnpm run --filter @lekoarts/* build",
     "check": "pnpm run --filter @lekoarts/* check",
