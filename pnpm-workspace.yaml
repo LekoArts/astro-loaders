@@ -9,5 +9,5 @@ catalogs:
     tsup: 8.3.6
     typescript: 5.7.3
   linting:
-    '@arethetypeswrong/cli': 0.17.3
+    '@arethetypeswrong/cli': 0.17.4
     publint: 0.3.6
