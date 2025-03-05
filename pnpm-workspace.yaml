@@ -4,7 +4,7 @@ packages:
 
 catalogs:
   astro:
-    astro: 5.4.1
+    astro: 5.4.2
   repo:
     tsup: 8.4.0
     typescript: 5.8.2
