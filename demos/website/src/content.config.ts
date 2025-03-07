@@ -1,3 +1,4 @@
+import { clerkLoader } from '@lekoarts/clerk-loader'
 import { flickrPeopleGetPhotosLoader, flickrPhotosetsGetListLoader, flickrPhotosetsGetListWithPhotosLoader, flickrPhotosetsGetPhotosLoader } from '@lekoarts/flickr-loader'
 import { defineCollection } from 'astro:content'
 import { FLICKR_USERNAME } from './constants'
@@ -28,9 +29,18 @@ const photosetsGetListWithPhotos = defineCollection({
   }),
 })
 
+const clerk = defineCollection({
+  loader: clerkLoader({
+    method: {
+      name: 'users.getUserList',
+    },
+  }),
+})
+
 export const collections = {
   peopleGetPhotos,
   photosetsGetList,
   photosetsGetPhotos,
   photosetsGetListWithPhotos,
+  clerk,
 }

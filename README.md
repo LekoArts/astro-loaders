@@ -7,3 +7,4 @@ Loaders for Astro's [content layer](https://docs.astro.build/en/guides/content-c
 ## Packages
 
 - [@lekoarts/flickr-loader](./packages/flickr/) - Load data from Flickr
+- [@lekoarts/clerk-loader](./packages/clerk/) - Load data from Clerk
