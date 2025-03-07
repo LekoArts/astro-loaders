@@ -46,6 +46,7 @@ jobs:
         run: pnpm run website:build
         env:
           FLICKR_API_KEY: ${{ secrets.FLICKR_API_KEY }}
+          CLERK_SECRET_KEY: ${{ secrets.CLERK_SECRET_KEY }}
       - name: Run Playwright
         run: pnpm run e2e:build
       - uses: actions/upload-artifact@v4
