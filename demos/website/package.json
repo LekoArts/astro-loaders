@@ -10,6 +10,7 @@
     "astro": "astro"
   },
   "dependencies": {
+    "@lekoarts/clerk-loader": "workspace:^",
     "@lekoarts/flickr-loader": "workspace:^",
     "@tailwindcss/vite": "^4.0.10",
     "astro": "catalog:astro",

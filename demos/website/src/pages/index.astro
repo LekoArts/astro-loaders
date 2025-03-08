@@ -8,6 +8,7 @@ import ExampleOutput from '../components/ExampleOutput.astro';
 import PhotosetsGetList from '../components/flickr/PhotosetsGetList.astro';
 import PhotosetsGetPhotos from '../components/flickr/PhotosetsGetPhotos.astro';
 import PhotosetsGetListWithPhotos from '../components/flickr/PhotosetsGetListWithPhotos.astro';
+import GetUserList from '../components/clerk/GetUserList.astro';
 ---
 
 <Layout>
@@ -25,27 +26,41 @@ import PhotosetsGetListWithPhotos from '../components/flickr/PhotosetsGetListWit
 		<Section>
 			<div class="flex flex-row justify-between items-center mb-8">
 				<div class="flex flex-row gap-4 items-center">
+					<svg viewBox="0 0 32 32" class="w-7 h-7"><path class="fill-[#6C47FF]" d="M16 21a5 5 0 1 0 0-10 5 5 0 0 0 0 10ZM25.01 27.838c.425.426.382 1.13-.118 1.465A15.925 15.925 0 0 1 16 32c-3.29 0-6.35-.994-8.893-2.697-.5-.335-.542-1.04-.117-1.465l3.654-3.654c.33-.33.843-.382 1.258-.17A8.96 8.96 0 0 0 16 25a8.961 8.961 0 0 0 4.098-.985c.416-.213.928-.161 1.258.17l3.654 3.653Z" style="fill: var(--light, #6C47FF) var(--dark, #9785FF);"></path><path d="M24.893 2.697c.5.335.542 1.04.117 1.464l-3.654 3.654c-.33.33-.843.383-1.258.17A9 9 0 0 0 7.985 20.098c.213.416.16.928-.17 1.258L4.161 25.01c-.425.425-1.13.383-1.464-.117A15.926 15.926 0 0 1 0 16C0 7.163 7.163 0 16 0c3.29 0 6.35.994 8.893 2.697Z" style="fill: var(--light, #BAB1FF) var(--dark, rgb(151 133 255 / 0.6));"></path></svg>
+					<h2 class="text-slate-950 dark:text-slate-200 text-balance text-3xl font-semibold tracking-[-0.015em]">Clerk</h2>
+				</div>
+				<NpmInstall url="https://github.com/LekoArts/astro-loaders/tree/main/packages/clerk" name="@lekoarts/clerk-loader" />
+			</div>
+			<h3 class="text-slate-950 dark:text-slate-200 text-base sm:text-lg break-words"><code>clerkLoader(&#123; clientOptions?: ClerkClientOptions; method: &#123; name: string; options: string | Object &#125; &#125;)</code></h3>
+			<p class="text-slate-600 dark:text-slate-400 text-base/6">Access certain <a href="https://clerk.com/docs/reference/backend-api" class="hover:underline text-slate-950 dark:text-slate-200">Clerk Backend APIs</a> by choosing a <code>method</code> name.</p>
+			<ExampleOutput>
+				<GetUserList />
+			</ExampleOutput>
+		</Section>
+		<Section>
+			<div class="flex flex-row justify-between items-center mb-8">
+				<div class="flex flex-row gap-4 items-center">
 					<img src={flickrLogo.src} alt="" class="h-7 w-7" />
 					<h2 class="text-slate-950 dark:text-slate-200 text-balance text-3xl font-semibold tracking-[-0.015em]">Flickr</h2>
 				</div>
 				<NpmInstall url="https://github.com/LekoArts/astro-loaders/tree/main/packages/flickr" name="@lekoarts/flickr-loader" />
 			</div>
-			<h3 class="text-slate-950 dark:text-slate-200 text-base sm:text-lg break-words"><code>flickrPeopleGetPhotosLoader()</code></h3>
+			<h3 class="text-slate-950 dark:text-slate-200 text-base sm:text-lg break-words"><code>flickrPeopleGetPhotosLoader(&#123; username: string &#125;)</code></h3>
 			<p class="text-slate-600 dark:text-slate-400 text-base/6">Return photos from the given user's photostream. Only photos visible to the calling user will be returned.</p>
 			<ExampleOutput>
 				<PeopleGetPhotos />
 			</ExampleOutput>
-			<h3 class="text-slate-950 dark:text-slate-200 text-base sm:text-lg break-words"><code>flickrPhotosetsGetListLoader()</code></h3>
+			<h3 class="text-slate-950 dark:text-slate-200 text-base sm:text-lg break-words"><code>flickrPhotosetsGetListLoader(&#123; username: string &#125;)</code></h3>
 			<p class="text-slate-600 dark:text-slate-400 text-base/6">Returns the photosets belonging to the specified user.</p>
 			<ExampleOutput>
 				<PhotosetsGetList />
 			</ExampleOutput>
-			<h3 class="text-slate-950 dark:text-slate-200 text-base sm:text-lg break-words"><code>flickrPhotosetsGetPhotosLoader()</code></h3>
+			<h3 class="text-slate-950 dark:text-slate-200 text-base sm:text-lg break-words"><code>flickrPhotosetsGetPhotosLoader(&#123; username: string; photoset_id: string &#125;)</code></h3>
 			<p class="text-slate-600 dark:text-slate-400 text-base/6">Get the list of photos in a photoset.</p>
 			<ExampleOutput>
 				<PhotosetsGetPhotos />
 			</ExampleOutput>
-			<h3 class="text-slate-950 dark:text-slate-200 text-base sm:text-lg break-words"><code>flickrPhotosetsGetListWithPhotosLoader()</code></h3>
+			<h3 class="text-slate-950 dark:text-slate-200 text-base sm:text-lg break-words"><code>flickrPhotosetsGetListWithPhotosLoader(&#123; username: string &#125;)</code></h3>
 			<p class="text-slate-600 dark:text-slate-400 text-base/6">This loader combines the <code>flickrPhotosetsGetListLoader()</code> and <code>flickrPhotosetsGetPhotosLoader()</code> loaders to get the most out of photosets. You'll get back the photosets and their list of photos.</p>
 			<ExampleOutput>
 				<PhotosetsGetListWithPhotos />

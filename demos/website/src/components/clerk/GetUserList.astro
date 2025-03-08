@@ -1,0 +1,12 @@
+---
+import { getCollection } from 'astro:content';
+
+const allUsers = await getCollection('clerk')
+---
+
+<p class="text-slate-600 dark:text-slate-400 text-base/6">Return values of <code>users.getUserList()</code>:</p>
+<div class="text-slate-600 dark:text-slate-400 text-base/6 flex flex-wrap flex-row gap-4">
+  {allUsers.map(({ data }) => (
+    <span data-testid='clerk-getUserList-item'>{data.username}</span>
+  ))}
+</div>
