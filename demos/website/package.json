@@ -12,8 +12,8 @@
   "dependencies": {
     "@lekoarts/clerk-loader": "workspace:^",
     "@lekoarts/flickr-loader": "workspace:^",
-    "@tailwindcss/vite": "^4.0.10",
+    "@tailwindcss/vite": "^4.0.12",
     "astro": "catalog:astro",
-    "tailwindcss": "^4.0.10"
+    "tailwindcss": "^4.0.12"
   }
 }
