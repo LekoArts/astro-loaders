@@ -1,6 +1,6 @@
 {
   "name": "astro-loaders",
-  "packageManager": "pnpm@10.6.1",
+  "packageManager": "pnpm@10.6.2",
   "author": "LekoArts",
   "license": "MIT",
   "scripts": {
