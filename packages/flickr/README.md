@@ -4,6 +4,14 @@ This package provides multiple [Flickr](https://flickr.com/) content loaders for
 
 **Want to see an overview of all my loaders? Visit [astro-loaders.lekoarts.de](https://astro-loaders.lekoarts.de) ✨**
 
+<!-- automd:badges license -->
+
+[![npm version](https://img.shields.io/npm/v/@lekoarts/flickr-loader)](https://npmjs.com/package/@lekoarts/flickr-loader)
+[![npm downloads](https://img.shields.io/npm/dm/@lekoarts/flickr-loader)](https://npm.chart.dev/@lekoarts/flickr-loader)
+[![license](https://img.shields.io/github/license/LekoArts/astro-loaders)](https://github.com/LekoArts/astro-loaders/blob/main/LICENSE)
+
+<!-- /automd -->
+
 ## Prerequisites
 
 - Astro 5 or later installed
@@ -12,9 +20,24 @@ This package provides multiple [Flickr](https://flickr.com/) content loaders for
 
 ## Installation
 
-```shell
+<!-- automd:pm-install separate auto=false -->
+
+```sh
+# npm
 npm install @lekoarts/flickr-loader
 ```
+
+```sh
+# yarn
+yarn add @lekoarts/flickr-loader
+```
+
+```sh
+# pnpm
+pnpm install @lekoarts/flickr-loader
+```
+
+<!-- /automd -->
 
 ## Usage
 

@@ -4,6 +4,14 @@ This package provides a [Clerk](https://clerk.com) content loader for Astro's [c
 
 **Want to see an overview of all my loaders? Visit [astro-loaders.lekoarts.de](https://astro-loaders.lekoarts.de) ✨**
 
+<!-- automd:badges license -->
+
+[![npm version](https://img.shields.io/npm/v/@lekoarts/clerk-loader)](https://npmjs.com/package/@lekoarts/clerk-loader)
+[![npm downloads](https://img.shields.io/npm/dm/@lekoarts/clerk-loader)](https://npm.chart.dev/@lekoarts/clerk-loader)
+[![license](https://img.shields.io/github/license/LekoArts/astro-loaders)](https://github.com/LekoArts/astro-loaders/blob/main/LICENSE)
+
+<!-- /automd -->
+
 ## Prerequisites
 
 - Astro 5 or later installed
@@ -11,9 +19,24 @@ This package provides a [Clerk](https://clerk.com) content loader for Astro's [c
 
 ## Installation
 
-```shell
+<!-- automd:pm-install separate auto=false -->
+
+```sh
+# npm
 npm install @lekoarts/clerk-loader
 ```
+
+```sh
+# yarn
+yarn add @lekoarts/clerk-loader
+```
+
+```sh
+# pnpm
+pnpm install @lekoarts/clerk-loader
+```
+
+<!-- /automd -->
 
 ## Usage
 
