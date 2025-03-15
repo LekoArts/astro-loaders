@@ -1,0 +1,46 @@
+{
+  "name": "@lekoarts/plausible-loader",
+  "type": "module",
+  "version": "1.0.0",
+  "description": "Astro content loader for Plausible",
+  "author": "LekoArts",
+  "license": "MIT",
+  "homepage": "https://github.com/LekoArts/astro-loaders",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com:LekoArts/astro-loaders.git",
+    "directory": "packages/plausible"
+  },
+  "keywords": [
+    "withastro",
+    "astro-loader",
+    "plausible"
+  ],
+  "exports": {
+    ".": "./dist/index.js"
+  },
+  "main": "dist/index.js",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "prepublishOnly": "node --run build",
+    "check": "publint && attw --pack . --profile esm-only",
+    "test": "vitest"
+  },
+  "peerDependencies": {
+    "astro": "^5.0.0"
+  },
+  "dependencies": {
+    "ky": "^1.7.5"
+  },
+  "devDependencies": {
+    "@arethetypeswrong/cli": "catalog:linting",
+    "astro": "catalog:astro",
+    "publint": "catalog:linting",
+    "tsup": "catalog:repo",
+    "typescript": "catalog:repo"
+  }
+}
