@@ -28,7 +28,7 @@
     "dev": "tsup --watch",
     "prepublishOnly": "node --run build",
     "check": "publint && attw --pack . --profile esm-only",
-    "test": "vitest"
+    "test": "vitest --typecheck"
   },
   "peerDependencies": {
     "astro": "^5.0.0"
