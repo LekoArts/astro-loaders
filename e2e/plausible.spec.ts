@@ -4,7 +4,7 @@ test.beforeEach(async ({ page }) => {
   await page.goto('/')
 })
 
-test('photosetsGetList', async ({ page }) => {
+test('plausible', async ({ page }) => {
   const queryResult = await page.getByTestId('plausible-item')
 
   await expect(queryResult).toContainText('results')

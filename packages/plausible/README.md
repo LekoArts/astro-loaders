@@ -99,11 +99,7 @@ import { plausibleLoader } from '@lekoarts/plausible-loader'
 const plausible = defineCollection({
   loader: plausibleLoader({
     api_key: 'your-api-key',
-    query: {
-      site_id: 'example.com',
-      metrics: ['visitors'],
-      date_range: '7d',
-    },
+    query: {/* Your query */},
   }),
 })
 ```
@@ -118,11 +114,7 @@ import { plausibleLoader } from '@lekoarts/plausible-loader'
 const plausible = defineCollection({
   loader: plausibleLoader({
     api_url: 'https://plausible.io',
-    query: {
-      site_id: 'example.com',
-      metrics: ['visitors'],
-      date_range: '7d',
-    },
+    query: {/* Your query */},
   }),
 })
 ```

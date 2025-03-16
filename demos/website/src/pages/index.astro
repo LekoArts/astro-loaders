@@ -22,8 +22,8 @@ import Icon from '../components/Icon.astro';
 			<Icon class="w-4 h-4 me-2" name="github" />
 			Star on Github
 		</a>
-		<p class="mt-8 text-slate-950 dark:text-slate-200 text-base font-semibold sm:text-lg break-words">Use loaders for:</p>
-		<div class="flex flex-row gap-4 mt-4 flex-wrap justify-center">
+		<p class="mt-8 text-slate-950 dark:text-slate-200 text-base font-semibold sm:text-lg break-words">Use loaders for</p>
+		<ul class="flex flex-row gap-4 mt-2 flex-wrap justify-center">
 			{[
 				{
 					name: 'Clerk',
@@ -38,11 +38,11 @@ import Icon from '../components/Icon.astro';
 					icon: <Icon name="plausible" class="h-7 w-7" />
 				}
 			].map(s => (
-				<div class="flex flex-row gap-2 items-center text-lg bg-white dark:bg-slate-900 py-2 px-4 rounded-lg shadow-sm relative">
+				<li class="flex flex-row gap-2 items-center text-lg bg-white dark:bg-slate-900 py-2 px-4 rounded-lg shadow-sm relative">
 					{s.icon} <span class="text-slate-950 dark:text-slate-200">{s.name}</span>
-				</div>
+				</li>
 			))}
-		</div>
+		</ul>
 		</div>
 		<Section>
 			<div class="flex flex-row justify-between items-center mb-8">
