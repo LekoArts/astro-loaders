@@ -6,6 +6,7 @@
   "scripts": {
     "bootstrap": "pnpm install && pnpm playwright:init && pnpm build",
     "test": "pnpm run --filter @lekoarts/* test",
+    "dev": "pnpm run --filter @lekoarts/* dev",
     "build": "pnpm run --filter @lekoarts/* build",
     "check": "pnpm run --filter @lekoarts/* check",
     "lint": "eslint .",

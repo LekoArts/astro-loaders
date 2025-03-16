@@ -1,5 +1,6 @@
 import { clerkLoader } from '@lekoarts/clerk-loader'
 import { flickrPeopleGetPhotosLoader, flickrPhotosetsGetListLoader, flickrPhotosetsGetListWithPhotosLoader, flickrPhotosetsGetPhotosLoader } from '@lekoarts/flickr-loader'
+import { plausibleLoader } from '@lekoarts/plausible-loader'
 import { defineCollection } from 'astro:content'
 import { FLICKR_USERNAME } from './constants'
 
@@ -37,10 +38,21 @@ const clerk = defineCollection({
   }),
 })
 
+const plausible = defineCollection({
+  loader: plausibleLoader({
+    query: {
+      site_id: 'lekoarts.de',
+      metrics: ['visitors'],
+      date_range: ['2024-08-01', '2024-08-15'],
+    },
+  }),
+})
+
 export const collections = {
   peopleGetPhotos,
   photosetsGetList,
   photosetsGetPhotos,
   photosetsGetListWithPhotos,
   clerk,
+  plausible,
 }

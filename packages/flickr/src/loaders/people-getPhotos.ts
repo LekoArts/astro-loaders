@@ -1,5 +1,5 @@
 import type { Loader } from 'astro/loaders'
-import type { FlickrPeopleGetPhotosLoaderOptions } from '../types/loader'
+import type { FlickrPeopleGetPhotosLoaderOptions } from '../types/loader.js'
 import { DEFAULT_OPTIONS } from '../constants.js'
 import { PeopleGetPhotos } from '../schema.js'
 import { missingApiKey } from '../utils/errors.js'

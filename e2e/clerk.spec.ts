@@ -4,7 +4,7 @@ test.beforeEach(async ({ page }) => {
   await page.goto('/')
 })
 
-test('photosetsGetList', async ({ page }) => {
+test('clerk', async ({ page }) => {
   const userList = await page.getByTestId('clerk-getUserList-item')
 
   await expect(userList).toHaveCount(6)
