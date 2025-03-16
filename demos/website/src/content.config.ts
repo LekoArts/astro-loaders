@@ -43,7 +43,7 @@ const plausible = defineCollection({
     query: {
       site_id: 'lekoarts.de',
       metrics: ['visitors'],
-      date_range: '7d',
+      date_range: ['2024-08-01', '2024-08-15'],
     },
   }),
 })
