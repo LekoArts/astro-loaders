@@ -1,4 +1,4 @@
-import type { GetPhotosQueryParams, PhotosetsGetListParams, PhotosetsGetPhotosParams } from './flickr'
+import type { GetPhotosQueryParams, PhotosetsGetListParams, PhotosetsGetPhotosParams } from './flickr.js'
 
 export interface StandardOptions {
   /**
