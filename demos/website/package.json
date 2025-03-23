@@ -13,8 +13,8 @@
     "@lekoarts/clerk-loader": "workspace:^",
     "@lekoarts/flickr-loader": "workspace:^",
     "@lekoarts/plausible-loader": "workspace:^",
-    "@tailwindcss/vite": "^4.0.14",
+    "@tailwindcss/vite": "^4.0.15",
     "astro": "catalog:astro",
-    "tailwindcss": "^4.0.14"
+    "tailwindcss": "^4.0.15"
   }
 }
