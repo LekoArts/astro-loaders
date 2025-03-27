@@ -29,7 +29,7 @@ export function clerkLoader<MethodName extends PathsAutocomplete>(
 
   return {
     name: 'clerk',
-    load: async ({ logger, store, generateDigest }) => {
+    load: async ({ logger, store, generateDigest, parseData }) => {
       logger.info(`Calling ${options.method.name}`)
 
       const [namespace, method] = options.method.name.split('.') as GetNamespaceAndMethod<MethodName>
@@ -91,11 +91,12 @@ export function clerkLoader<MethodName extends PathsAutocomplete>(
             continue
           }
 
-          const data = result._raw
+          const id = result.id
+          const data = await parseData({ id, data: result._raw })
           const digest = generateDigest(String(data.updated_at))
 
           store.set({
-            id: result.id,
+            id,
             data,
             digest,
           })
@@ -104,11 +105,12 @@ export function clerkLoader<MethodName extends PathsAutocomplete>(
         logger.info(`Loaded ${flattenedResult.length} entries from ${options.method.name}`)
       }
       else if (isObjectLike(result)) {
-        const data = result._raw
+        const id = result.id
+        const data = await parseData({ id, data: result._raw })
         const digest = generateDigest(data)
 
         store.set({
-          id: result.id,
+          id,
           data,
           digest,
         })

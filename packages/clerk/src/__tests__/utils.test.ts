@@ -1,6 +1,6 @@
-import type { PaginatedLike } from '../types'
+import type { PaginatedLike } from '../types.js'
 import { describe, expect, it, vi } from 'vitest'
-import { paginate } from '../utils'
+import { paginate } from '../utils.js'
 
 describe('paginate', () => {
   it('should handle single page of results', async () => {
