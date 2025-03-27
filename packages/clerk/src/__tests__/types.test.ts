@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { isNumber, isObjectLike, isPaginatedLike } from '../types'
+import { isNumber, isObjectLike, isPaginatedLike } from '../types.js'
 
 describe('type guards', () => {
   describe('isNumber', () => {
