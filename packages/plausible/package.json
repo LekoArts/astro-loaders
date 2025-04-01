@@ -1,7 +1,7 @@
 {
   "name": "@lekoarts/plausible-loader",
   "type": "module",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Astro content loader for Plausible",
   "author": "LekoArts",
   "license": "MIT",
