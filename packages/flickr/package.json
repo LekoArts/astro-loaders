@@ -33,7 +33,7 @@
     "astro": "^5.0.0"
   },
   "dependencies": {
-    "ky": "^1.7.5"
+    "ky": "^1.8.0"
   },
   "devDependencies": {
     "@arethetypeswrong/cli": "catalog:linting",
