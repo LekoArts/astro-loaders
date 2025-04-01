@@ -37,7 +37,7 @@ type TDateISOTime = `${THours}:${TMinutes}:${TSeconds}`
  */
 type TDateISO = `${TDateISODate}T${TDateISOTime}+${THours}:${TMinutes}`
 
-type DateRangeUnit = 'day' | '7d' | '30d' | 'month' | '6mo' | '12mo' | 'year' | 'all'
+type DateRangeUnit = 'day' | '7d' | '28d' | '30d' | '90d' | 'month' | '6mo' | '12mo' | 'year' | 'all'
 
 type Metric = 'visitors' | 'visits' | 'pageviews' | 'views_per_visit' | 'bounce_rate' | 'visit_duration' | 'events' | 'scroll_depth' | 'percentage' | 'conversion_rate' | 'group_conversion_rate' | 'average_revenue' | 'total_revenue'
 
