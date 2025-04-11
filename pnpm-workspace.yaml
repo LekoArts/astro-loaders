@@ -10,4 +10,4 @@ catalogs:
     typescript: 5.8.3
   linting:
     '@arethetypeswrong/cli': 0.17.4
-    publint: 0.3.10
+    publint: 0.3.11
