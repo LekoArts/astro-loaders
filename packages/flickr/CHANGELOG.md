@@ -1,5 +1,11 @@
 # @lekoarts/flickr-loader
 
+## 1.2.4
+
+### Patch Changes
+
+- [#70](https://github.com/LekoArts/astro-loaders/pull/70) [`f59b4ec`](https://github.com/LekoArts/astro-loaders/commit/f59b4ecb4ed91e3b6f56944372c1864d93aff1cf) Thanks [@LekoArts](https://github.com/LekoArts)! - Add all available image sizes to `extras` query parameter (`url_l` etc.). Previously only a subset was added which caused not all available sizes to be queryable.
+
 ## 1.2.3
 
 ### Patch Changes

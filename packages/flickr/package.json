@@ -1,7 +1,7 @@
 {
   "name": "@lekoarts/flickr-loader",
   "type": "module",
-  "version": "1.2.3",
+  "version": "1.2.4",
   "description": "Astro content loader for Flickr",
   "author": "LekoArts",
   "license": "MIT",
