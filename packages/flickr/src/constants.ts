@@ -1,10 +1,3 @@
-export const DEFAULT_OPTIONS = {
-  extras: 'description,last_update,date_taken,url_sq,url_t,url_s,url_q,url_m,url_n,url_z,url_c,url_l,url_o,media,views,original_format',
-  per_page: '300',
-}
-
-export const BASE_URL = 'https://api.flickr.com/services/rest/'
-
 export const SIZES = {
   sq: 'sq_75px',
   q: 'sq_150px',
@@ -19,3 +12,12 @@ export const SIZES = {
   k: '2048px',
   o: 'original',
 } as const
+
+const SIZES_AS_EXTRA_STRING = Object.keys(SIZES).map(k => `url_${k}`).join(',')
+
+export const DEFAULT_OPTIONS = {
+  extras: `description,last_update,date_taken,media,views,original_format,${SIZES_AS_EXTRA_STRING}`,
+  per_page: '300',
+}
+
+export const BASE_URL = 'https://api.flickr.com/services/rest/'
