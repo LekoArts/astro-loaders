@@ -34,7 +34,7 @@
     "astro": "^5.0.0"
   },
   "dependencies": {
-    "@clerk/backend": "^1.29.0",
+    "@clerk/backend": "^1.29.1",
     "type-fest": "^4.40.0"
   },
   "devDependencies": {
