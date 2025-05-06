@@ -1,7 +1,7 @@
 {
   "name": "@lekoarts/clerk-loader",
   "type": "module",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Astro content loader for Clerk",
   "author": "LekoArts",
   "license": "MIT",
