@@ -1,8 +1,11 @@
 import { afterAll, beforeAll, describe, expect, it } from 'vitest'
-import { normalize } from '../normalize'
+import { normalize } from '../normalize.js'
 
+// @ts-expect-error - Does not matter
 import peopleGetPhotosFixture from './fixtures/people-getPhotos.json'
+// @ts-expect-error - Does not matter
 import photosetsGetList from './fixtures/photosets-getList.json'
+// @ts-expect-error - Does not matter
 import photosetsGetPhotos from './fixtures/photosets-getPhotos.json'
 
 describe('normalize', () => {

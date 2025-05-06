@@ -1,4 +1,4 @@
-import type { FindByUsernameResponse, GetPhotosQueryParams, GetPhotosResponse, PeopleFindByUsernameParams, PhotosetsGetListParams, PhotosetsGetListResponse, PhotosetsGetPhotosParams, PhotosetsGetPhotosResponse } from '../types/flickr'
+import type { FindByUsernameResponse, GetPhotosQueryParams, GetPhotosResponse, PeopleFindByUsernameParams, PhotosetsGetListParams, PhotosetsGetListResponse, PhotosetsGetPhotosParams, PhotosetsGetPhotosResponse } from '../types/flickr.js'
 import ky from 'ky'
 import { BASE_URL, DEFAULT_OPTIONS } from '../constants.js'
 

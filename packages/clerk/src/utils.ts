@@ -9,8 +9,8 @@ import { DEFAULT_LIMIT, DEFAULT_OFFSET } from './constants.js'
  */
 export function paginate<T extends PaginatedLike>(
   fn: (limit: number, offset: number) => Promise<T>,
-  limit = DEFAULT_LIMIT,
-  offset = DEFAULT_OFFSET,
+  limit: number = DEFAULT_LIMIT,
+  offset: number = DEFAULT_OFFSET,
   results: T[] = [],
 ): Promise<T[]> {
   return fn(limit, offset).then((data) => {

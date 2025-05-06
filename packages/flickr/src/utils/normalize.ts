@@ -1,6 +1,6 @@
 import type { z } from 'astro/zod'
 import type { PeopleGetPhotos, PhotosetsGetList } from '../schema.js'
-import type { FlickrResponse } from '../types/flickr'
+import type { FlickrResponse } from '../types/flickr.js'
 import { SIZES } from '../constants.js'
 
 type Res = z.infer<typeof PeopleGetPhotos> & z.infer<typeof PhotosetsGetList>
