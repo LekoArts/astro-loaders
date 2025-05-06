@@ -1,5 +1,11 @@
 # @lekoarts/flickr-loader
 
+## 1.2.5
+
+### Patch Changes
+
+- [#76](https://github.com/LekoArts/astro-loaders/pull/76) [`1b765ca`](https://github.com/LekoArts/astro-loaders/commit/1b765cae75164526df93c110f6245f6957faf9f1) Thanks [@LekoArts](https://github.com/LekoArts)! - Internal change: Switch from tsup to tsdown. No behavior change should occur.
+
 ## 1.2.4
 
 ### Patch Changes
