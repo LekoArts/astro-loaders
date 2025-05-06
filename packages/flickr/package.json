@@ -19,12 +19,16 @@
     ".": "./dist/index.js"
   },
   "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "files": [
     "dist"
   ],
+  "engines": {
+    "node": "^18.17.1 || ^20.3.0 || >=22.0.0"
+  },
   "scripts": {
-    "build": "tsup",
-    "dev": "tsup --watch",
+    "build": "tsdown",
+    "dev": "tsdown --watch",
     "prepublishOnly": "node --run build",
     "check": "publint && attw --pack . --profile esm-only",
     "test": "vitest"
@@ -39,7 +43,7 @@
     "@arethetypeswrong/cli": "catalog:linting",
     "astro": "catalog:astro",
     "publint": "catalog:linting",
-    "tsup": "catalog:repo",
+    "tsdown": "catalog:repo",
     "typescript": "catalog:repo"
   }
 }

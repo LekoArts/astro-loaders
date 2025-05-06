@@ -19,6 +19,6 @@ const METHOD_TO_SCHEMA_MAP: Record<PathsAutocomplete, ZodTypeAny> = {
   'samlConnections.getSamlConnection': schemas_SAMLConnection,
 } as const
 
-export function clerkApiReponseToZodSchema(methodName: PathsAutocomplete) {
+export function clerkApiReponseToZodSchema(methodName: PathsAutocomplete): ZodTypeAny {
   return METHOD_TO_SCHEMA_MAP[methodName]
 }

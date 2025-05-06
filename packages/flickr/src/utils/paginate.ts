@@ -1,4 +1,4 @@
-import type { GetPhotosResponse, PhotosetsGetListResponse, PhotosetsGetPhotosResponse } from '../types/flickr'
+import type { GetPhotosResponse, PhotosetsGetListResponse, PhotosetsGetPhotosResponse } from '../types/flickr.js'
 
 type Response = GetPhotosResponse | PhotosetsGetListResponse | PhotosetsGetPhotosResponse
 

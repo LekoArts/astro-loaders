@@ -10,7 +10,7 @@
     "module": "NodeNext",
     "moduleResolution": "nodenext",
     "resolveJsonModule": true,
-    "allowJs": true,
+    "allowJs": false,
     /* Strictness */
     "strict": true,
     "noImplicitOverride": true,
