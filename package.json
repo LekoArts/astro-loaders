@@ -27,7 +27,7 @@
     "@changesets/changelog-github": "^0.5.1",
     "@changesets/cli": "^2.29.3",
     "@playwright/test": "^1.52.0",
-    "@types/node": "^22.15.15",
+    "@types/node": "^22.15.17",
     "eslint": "^9.26.0",
     "eslint-plugin-format": "^1.0.1",
     "lint-staged": "^15.5.2",
