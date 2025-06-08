@@ -7,8 +7,8 @@ settings:
 catalogs:
   astro:
     astro:
-      specifier: 5.9.0
-      version: 5.9.0
+      specifier: 5.9.1
+      version: 5.9.1
   linting:
     '@arethetypeswrong/cli':
       specifier: 0.18.1
@@ -78,7 +78,7 @@ importers:
         version: 4.1.8(vite@6.3.5(@types/node@22.15.30)(jiti@2.4.2)(lightningcss@1.30.1)(yaml@2.8.0))
       astro:
         specifier: catalog:astro
-        version: 5.9.0(@types/node@22.15.30)(jiti@2.4.2)(lightningcss@1.30.1)(rollup@4.40.1)(typescript@5.8.3)(yaml@2.8.0)
+        version: 5.9.1(@types/node@22.15.30)(jiti@2.4.2)(lightningcss@1.30.1)(rollup@4.40.1)(typescript@5.8.3)(yaml@2.8.0)
       tailwindcss:
         specifier: ^4.1.8
         version: 4.1.8
@@ -97,7 +97,7 @@ importers:
         version: 0.18.1
       astro:
         specifier: catalog:astro
-        version: 5.9.0(@types/node@22.15.30)(jiti@2.4.2)(lightningcss@1.30.1)(rollup@4.40.1)(typescript@5.8.3)(yaml@2.8.0)
+        version: 5.9.1(@types/node@22.15.30)(jiti@2.4.2)(lightningcss@1.30.1)(rollup@4.40.1)(typescript@5.8.3)(yaml@2.8.0)
       publint:
         specifier: catalog:linting
         version: 0.3.12
@@ -119,7 +119,7 @@ importers:
         version: 0.18.1
       astro:
         specifier: catalog:astro
-        version: 5.9.0(@types/node@22.15.30)(jiti@2.4.2)(lightningcss@1.30.1)(rollup@4.40.1)(typescript@5.8.3)(yaml@2.8.0)
+        version: 5.9.1(@types/node@22.15.30)(jiti@2.4.2)(lightningcss@1.30.1)(rollup@4.40.1)(typescript@5.8.3)(yaml@2.8.0)
       publint:
         specifier: catalog:linting
         version: 0.3.12
@@ -141,7 +141,7 @@ importers:
         version: 0.18.1
       astro:
         specifier: catalog:astro
-        version: 5.9.0(@types/node@22.15.30)(jiti@2.4.2)(lightningcss@1.30.1)(rollup@4.40.1)(typescript@5.8.3)(yaml@2.8.0)
+        version: 5.9.1(@types/node@22.15.30)(jiti@2.4.2)(lightningcss@1.30.1)(rollup@4.40.1)(typescript@5.8.3)(yaml@2.8.0)
       publint:
         specifier: catalog:linting
         version: 0.3.12
@@ -222,8 +222,8 @@ packages:
     resolution: {integrity: sha512-uUw47cLgB6zYOpAxFp94NG/J9ev0wcOC+UOmTCFEWtbDEn4vpR0ScoPxD7LCGcPczOd7bDJSJL/gMSz3BknYcw==}
     engines: {node: '>=20'}
 
-  '@astrojs/compiler@2.12.0':
-    resolution: {integrity: sha512-7bCjW6tVDpUurQLeKBUN9tZ5kSv5qYrGmcn0sG0IwacL7isR2ZbyyA3AdZ4uxsuUFOS2SlgReTH7wkxO6zpqWA==}
+  '@astrojs/compiler@2.12.1':
+    resolution: {integrity: sha512-WDSyVIiz7sNcJcCJxJFITu6XjfGhJ50Z0auyaWsrM+xb07IlhBLFtQuDkNy0caVHWNcKTM2LISAaHhgkRqGAVg==}
 
   '@astrojs/internal-helpers@0.6.1':
     resolution: {integrity: sha512-l5Pqf6uZu31aG+3Lv8nl/3s4DbUzdlxTWDof4pEpto6GUJNhhCbelVi9dEyurOVyqaelwmS9oSyOWOENSfgo9A==}
@@ -250,11 +250,6 @@ packages:
   '@babel/helper-validator-identifier@7.27.1':
     resolution: {integrity: sha512-D2hP9eA+Sqx1kBZgzxZh0y1trbuU+JoDkiEwqhQ36nodYqJwyEIhPSdMNd7lOm/4io72luTPWH20Yda0xOuUow==}
     engines: {node: '>=6.9.0'}
-
-  '@babel/parser@7.27.4':
-    resolution: {integrity: sha512-BRmLHGwpUqLFR2jzx9orBuX/ABDkj2jLKOXrHDTN2aOKL+jFDDKaRNo9nyYsIl9h/UE/7lMKdDjKQQyxKKDZ7g==}
-    engines: {node: '>=6.0.0'}
-    hasBin: true
 
   '@babel/parser@7.27.5':
     resolution: {integrity: sha512-OsQd175SxWkGlzbny8J3K8TnnDD0N3lrIUtB92xwyRpzaenGZhxDvxN/JgU00U3CDZNj9tPuDJ5H0WS4Nt3vKg==}
@@ -382,9 +377,6 @@ packages:
 
   '@emnapi/core@1.4.3':
     resolution: {integrity: sha512-4m62DuCE07lw01soJwPiBGC0nAww0Q+RY70VZ+n49yDIO13yyinhbWCeNnaob0lakDtWQzSdtNWzJeOJt2ma+g==}
-
-  '@emnapi/runtime@1.4.0':
-    resolution: {integrity: sha512-64WYIf4UYcdLnbKn/umDlNjQDSS8AgZrI/R9+x5ilkUVFxXcA1Ebl+gQLc/6mERA4407Xof0R7wEyEuj091CVw==}
 
   '@emnapi/runtime@1.4.3':
     resolution: {integrity: sha512-pBPWdu6MLKROBX05wSNKcNb++m5Er+KQ9QkB+WVM+pW2Kx9hoSrVTnu3BdkI5eBLZoKu/J6mW/B6i6bJB2ytXQ==}
@@ -1370,8 +1362,8 @@ packages:
     resolution: {integrity: sha512-ROM2LlXbZBZVk97crfw8PGDOBzzsJvN2uJCmwswvPUNyfH14eg90mSN3xNqsri1JS1G9cz0VzeDUhxJkTrr4Ew==}
     engines: {node: '>=20.18.0'}
 
-  astro@5.9.0:
-    resolution: {integrity: sha512-AHF7oZDBQRwggHUG0bwBhRQjrDD+vJpCtPd0/GVxDB1hGRV0SQuFWS0UHX5bYczIqFcao1z9o9o0r2rQtHrTMg==}
+  astro@5.9.1:
+    resolution: {integrity: sha512-wxoJcTbuDZNFSv6EaL0PAlrp0Wx6VnOAULCXvy0scsV70oWMeUkdxuBxfO54JxO5Qgyvwj9h99y6E0elqOpGtA==}
     engines: {node: 18.20.8 || ^20.3.0 || >=22.0.0, npm: '>=9.6.5', pnpm: '>=7.1.0'}
     hasBin: true
 
@@ -3814,7 +3806,7 @@ snapshots:
       typescript: 5.6.1-rc
       validate-npm-package-name: 5.0.1
 
-  '@astrojs/compiler@2.12.0': {}
+  '@astrojs/compiler@2.12.1': {}
 
   '@astrojs/internal-helpers@0.6.1': {}
 
@@ -3871,10 +3863,6 @@ snapshots:
   '@babel/helper-string-parser@7.27.1': {}
 
   '@babel/helper-validator-identifier@7.27.1': {}
-
-  '@babel/parser@7.27.4':
-    dependencies:
-      '@babel/types': 7.27.3
 
   '@babel/parser@7.27.5':
     dependencies:
@@ -4105,11 +4093,6 @@ snapshots:
   '@emnapi/core@1.4.3':
     dependencies:
       '@emnapi/wasi-threads': 1.0.2
-      tslib: 2.8.1
-    optional: true
-
-  '@emnapi/runtime@1.4.0':
-    dependencies:
       tslib: 2.8.1
     optional: true
 
@@ -4360,7 +4343,7 @@ snapshots:
 
   '@img/sharp-wasm32@0.33.5':
     dependencies:
-      '@emnapi/runtime': 1.4.0
+      '@emnapi/runtime': 1.4.3
     optional: true
 
   '@img/sharp-win32-ia32@0.33.5':
@@ -4906,7 +4889,7 @@ snapshots:
 
   '@vue/compiler-core@3.5.13':
     dependencies:
-      '@babel/parser': 7.27.4
+      '@babel/parser': 7.27.5
       '@vue/shared': 3.5.13
       entities: 4.5.0
       estree-walker: 2.0.2
@@ -4919,7 +4902,7 @@ snapshots:
 
   '@vue/compiler-sfc@3.5.13':
     dependencies:
-      '@babel/parser': 7.27.4
+      '@babel/parser': 7.27.5
       '@vue/compiler-core': 3.5.13
       '@vue/compiler-dom': 3.5.13
       '@vue/compiler-ssr': 3.5.13
@@ -4999,9 +4982,9 @@ snapshots:
       '@babel/parser': 7.27.5
       pathe: 2.0.3
 
-  astro@5.9.0(@types/node@22.15.30)(jiti@2.4.2)(lightningcss@1.30.1)(rollup@4.40.1)(typescript@5.8.3)(yaml@2.8.0):
+  astro@5.9.1(@types/node@22.15.30)(jiti@2.4.2)(lightningcss@1.30.1)(rollup@4.40.1)(typescript@5.8.3)(yaml@2.8.0):
     dependencies:
-      '@astrojs/compiler': 2.12.0
+      '@astrojs/compiler': 2.12.1
       '@astrojs/internal-helpers': 0.6.1
       '@astrojs/markdown-remark': 6.3.2
       '@astrojs/telemetry': 3.3.0
@@ -6221,7 +6204,7 @@ snapshots:
 
   magicast@0.3.5:
     dependencies:
-      '@babel/parser': 7.27.4
+      '@babel/parser': 7.27.5
       '@babel/types': 7.27.3
       source-map-js: 1.2.1
 
