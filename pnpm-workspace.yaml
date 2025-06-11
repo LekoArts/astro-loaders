@@ -4,9 +4,9 @@ packages:
 
 catalogs:
   astro:
-    astro: 5.9.1
+    astro: 5.9.2
   linting:
-    '@arethetypeswrong/cli': 0.18.1
+    '@arethetypeswrong/cli': 0.18.2
     publint: 0.3.12
   repo:
     tsdown: 0.12.7
