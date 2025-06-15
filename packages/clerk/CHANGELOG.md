@@ -1,5 +1,11 @@
 # @lekoarts/clerk-loader
 
+## 1.0.4
+
+### Patch Changes
+
+- [#87](https://github.com/LekoArts/astro-loaders/pull/87) [`123129d`](https://github.com/LekoArts/astro-loaders/commit/123129d8ae0adc3de25e0db7c1c30ae4451e338b) Thanks [@renovate](https://github.com/apps/renovate)! - Update internal `@clerk/backend` dependency
+
 ## 1.0.3
 
 ### Patch Changes
