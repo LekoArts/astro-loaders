@@ -1,6 +1,6 @@
 {
   "name": "astro-loaders",
-  "packageManager": "pnpm@10.12.1",
+  "packageManager": "pnpm@10.12.2",
   "author": "LekoArts",
   "license": "MIT",
   "scripts": {
@@ -23,7 +23,7 @@
     "e2e:build": "IS_BUILD=true playwright test"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "^4.15.0",
+    "@antfu/eslint-config": "^4.16.1",
     "@changesets/changelog-github": "^0.5.1",
     "@changesets/cli": "^2.29.5",
     "@playwright/test": "^1.53.1",
