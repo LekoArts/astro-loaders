@@ -7,8 +7,8 @@ settings:
 catalogs:
   astro:
     astro:
-      specifier: 5.12.0
-      version: 5.12.0
+      specifier: 5.12.1
+      version: 5.12.1
   linting:
     '@arethetypeswrong/cli':
       specifier: 0.18.2
@@ -78,7 +78,7 @@ importers:
         version: 4.1.11(vite@6.3.5(@types/node@22.16.5)(jiti@2.4.2)(lightningcss@1.30.1)(yaml@2.8.0))
       astro:
         specifier: catalog:astro
-        version: 5.12.0(@types/node@22.16.5)(jiti@2.4.2)(lightningcss@1.30.1)(rollup@4.40.1)(typescript@5.8.3)(yaml@2.8.0)
+        version: 5.12.1(@types/node@22.16.5)(jiti@2.4.2)(lightningcss@1.30.1)(rollup@4.40.1)(typescript@5.8.3)(yaml@2.8.0)
       tailwindcss:
         specifier: ^4.1.11
         version: 4.1.11
@@ -97,7 +97,7 @@ importers:
         version: 0.18.2
       astro:
         specifier: catalog:astro
-        version: 5.12.0(@types/node@22.16.5)(jiti@2.4.2)(lightningcss@1.30.1)(rollup@4.40.1)(typescript@5.8.3)(yaml@2.8.0)
+        version: 5.12.1(@types/node@22.16.5)(jiti@2.4.2)(lightningcss@1.30.1)(rollup@4.40.1)(typescript@5.8.3)(yaml@2.8.0)
       publint:
         specifier: catalog:linting
         version: 0.3.12
@@ -119,7 +119,7 @@ importers:
         version: 0.18.2
       astro:
         specifier: catalog:astro
-        version: 5.12.0(@types/node@22.16.5)(jiti@2.4.2)(lightningcss@1.30.1)(rollup@4.40.1)(typescript@5.8.3)(yaml@2.8.0)
+        version: 5.12.1(@types/node@22.16.5)(jiti@2.4.2)(lightningcss@1.30.1)(rollup@4.40.1)(typescript@5.8.3)(yaml@2.8.0)
       publint:
         specifier: catalog:linting
         version: 0.3.12
@@ -141,7 +141,7 @@ importers:
         version: 0.18.2
       astro:
         specifier: catalog:astro
-        version: 5.12.0(@types/node@22.16.5)(jiti@2.4.2)(lightningcss@1.30.1)(rollup@4.40.1)(typescript@5.8.3)(yaml@2.8.0)
+        version: 5.12.1(@types/node@22.16.5)(jiti@2.4.2)(lightningcss@1.30.1)(rollup@4.40.1)(typescript@5.8.3)(yaml@2.8.0)
       publint:
         specifier: catalog:linting
         version: 0.3.12
@@ -1392,8 +1392,8 @@ packages:
     resolution: {integrity: sha512-ROM2LlXbZBZVk97crfw8PGDOBzzsJvN2uJCmwswvPUNyfH14eg90mSN3xNqsri1JS1G9cz0VzeDUhxJkTrr4Ew==}
     engines: {node: '>=20.18.0'}
 
-  astro@5.12.0:
-    resolution: {integrity: sha512-Oov5JsMFHuUmuO+Nx6plfv3nQNK1Xl/8CgLvR8lBhZTjYnraxhuPX5COVAzbom+YLgwaDfK7KBd8zOEopRf9mg==}
+  astro@5.12.1:
+    resolution: {integrity: sha512-/gH9cLIp6UNdbJO1FPBVN/Ea+1I9hJdQoLJKYUsXIRIfHcyF/3NCg0QVDJGw1oWkyQT6x6poQsnbgY9UXitjiw==}
     engines: {node: 18.20.8 || ^20.3.0 || >=22.0.0, npm: '>=9.6.5', pnpm: '>=7.1.0'}
     hasBin: true
 
@@ -5106,7 +5106,7 @@ snapshots:
       '@babel/parser': 7.28.0
       pathe: 2.0.3
 
-  astro@5.12.0(@types/node@22.16.5)(jiti@2.4.2)(lightningcss@1.30.1)(rollup@4.40.1)(typescript@5.8.3)(yaml@2.8.0):
+  astro@5.12.1(@types/node@22.16.5)(jiti@2.4.2)(lightningcss@1.30.1)(rollup@4.40.1)(typescript@5.8.3)(yaml@2.8.0):
     dependencies:
       '@astrojs/compiler': 2.12.2
       '@astrojs/internal-helpers': 0.6.1
