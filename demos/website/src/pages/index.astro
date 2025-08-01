@@ -3,6 +3,7 @@ import PeopleGetPhotos from '../components/flickr/PeopleGetPhotos.astro';
 import Layout from '../layouts/Layout.astro';
 import Section from '../components/Section.astro';
 import flickrLogo from '../assets/flickr.svg';
+import traktLogo from '../assets/trakt.svg';
 import NpmInstall from '../components/NpmInstall.astro';
 import ExampleOutput from '../components/ExampleOutput.astro';
 import PhotosetsGetList from '../components/flickr/PhotosetsGetList.astro';
@@ -11,6 +12,7 @@ import PhotosetsGetListWithPhotos from '../components/flickr/PhotosetsGetListWit
 import GetUserList from '../components/clerk/GetUserList.astro';
 import Plausible from '../components/plausible/Plausible.astro';
 import Icon from '../components/Icon.astro';
+import UsersStats from '../components/trakt/UsersStats.astro';
 ---
 
 <Layout>
@@ -36,6 +38,10 @@ import Icon from '../components/Icon.astro';
 				{
 					name: 'Plausible',
 					icon: <Icon name="plausible" class="h-7 w-7" />
+				},
+				{
+					name: 'Trakt',
+					icon: <img src={traktLogo.src} alt="" class="h-7 w-7" />
 				}
 			].map(s => (
 				<li class="flex flex-row gap-2 items-center text-lg bg-white dark:bg-slate-900 py-2 px-4 rounded-lg shadow-sm relative">
@@ -99,6 +105,20 @@ import Icon from '../components/Icon.astro';
 			<p class="text-slate-600 dark:text-slate-400 text-base/6">Access the <a href="https://plausible.io/docs/stats-api" class="hover:underline text-slate-950 dark:text-slate-200">Plausible Stats API</a> with your custom <code>query</code>.</p>
 			<ExampleOutput>
 				<Plausible />
+			</ExampleOutput>
+		</Section>
+		<Section>
+			<div class="flex flex-row justify-between items-center mb-8">
+				<div class="flex flex-row gap-4 items-center">
+					<img src={traktLogo.src} alt="" class="h-7 w-7" />
+					<h2 class="text-slate-950 dark:text-slate-200 text-balance text-3xl font-semibold tracking-[-0.015em]">Trakt</h2>
+				</div>
+				<NpmInstall url="https://github.com/LekoArts/astro-loaders/tree/main/packages/trakt" name="@lekoarts/trakt-loader" />
+			</div>
+			<h3 class="text-slate-950 dark:text-slate-200 text-base sm:text-lg break-words"><code>traktUsersStatsLoader(&#123; id: string &#125;)</code></h3>
+			<p class="text-slate-600 dark:text-slate-400 text-base/6">Returns stats about the movies, shows, and episodes a user has watched, collected, and rated.</p>
+			<ExampleOutput>
+				<UsersStats />
 			</ExampleOutput>
 		</Section>
 	</main>

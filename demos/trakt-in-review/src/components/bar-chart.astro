@@ -1,0 +1,66 @@
+---
+type Props = {
+  items: string;
+}
+
+const { items } = Astro.props;
+---
+
+<bar-chart data-items={items} class="relative max-h-48">
+  <canvas class="chart-container"></canvas>
+</bar-chart>
+
+<script>
+  import {
+    Chart,
+    Colors,
+    BarController,
+    CategoryScale,
+    LinearScale,
+    BarElement,
+    Tooltip,
+  } from 'chart.js'
+
+  class BarChart extends HTMLElement {
+    items: Array<{ x: string, y: number }>;
+
+    constructor() {
+      super()
+
+      Chart.register(
+        Colors,
+        BarController,
+        BarElement,
+        CategoryScale,
+        LinearScale,
+        Tooltip
+      );
+
+      this.items = JSON.parse(this.dataset.items || '[]');
+      const container = this.querySelector('.chart-container') as HTMLCanvasElement;
+
+      new Chart(container, {
+        type: 'bar',
+        options: {
+          responsive: true,
+          plugins: {
+            legend: {
+              display: false,
+            }
+          }
+        },
+        data: {
+          labels: this.items.map(i => i.x),
+          datasets: [
+            {
+              label: 'Count',
+              data: this.items.map(i => i.y),
+            }
+          ]
+        }
+      })
+    }
+  }
+
+  customElements.define('bar-chart', BarChart);
+</script>
