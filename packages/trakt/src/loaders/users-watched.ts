@@ -20,6 +20,9 @@ type Res = BaseTraktWatched & {
   seasons?: any
 }
 
+/**
+ * Returns all movies or shows a user has watched sorted by most plays.
+ */
 export function traktUsersWatchedLoader({ api_key = import.meta.env.TRAKT_API_KEY, id, type, extended }: TraktUsersWatchedLoaderOptions): Loader {
   if (!api_key) {
     throw new AstroError('Missing Trakt API key. Define the TRAKT_API_KEY environment variable or pass it as an option.')

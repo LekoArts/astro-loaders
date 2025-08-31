@@ -6,6 +6,9 @@ import { PlausibleResponseSchema } from './schema.js'
 
 const PLAUSIBLE_API_URL = 'https://plausible.io'
 
+/**
+ * Access the Plausible Stats API with your custom query.
+ */
 export function plausibleLoader({
   api_key = import.meta.env.PLAUSIBLE_API_KEY,
   api_url = PLAUSIBLE_API_URL,

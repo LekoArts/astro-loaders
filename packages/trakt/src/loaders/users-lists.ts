@@ -6,6 +6,9 @@ import { createTrakt } from '../ky.js'
 import { TraktUsersListsResponseSchema } from '../schema.js'
 import { toGenitive } from '../utils.js'
 
+/**
+ * Returns all personal lists for a user.
+ */
 export function traktUsersListsLoader({ api_key = import.meta.env.TRAKT_API_KEY, id }: TraktUsersListsLoaderOptions): Loader {
   if (!api_key) {
     throw new AstroError('Missing Trakt API key. Define the TRAKT_API_KEY environment variable or pass it as an option.')

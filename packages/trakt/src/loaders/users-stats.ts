@@ -6,6 +6,9 @@ import { createTrakt } from '../ky.js'
 import { TraktUsersStatsResponseSchema } from '../schema.js'
 import { toGenitive } from '../utils.js'
 
+/**
+ * Returns stats about the movies, shows, and episodes a user has watched, collected, and rated.
+ */
 export function traktUsersStatsLoader({ api_key = import.meta.env.TRAKT_API_KEY, id }: TraktUsersStatsLoaderOptions): Loader {
   if (!api_key) {
     throw new AstroError('Missing Trakt API key. Define the TRAKT_API_KEY environment variable or pass it as an option.')
