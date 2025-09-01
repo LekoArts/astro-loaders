@@ -111,12 +111,13 @@ const stringified_movies_years = JSON.stringify(movies_years)
 			))}
 		</div>
 		<h3 class="text-xl font-medium mb-4">TV show networks</h3>
-		<div>
-			<pre>
-				<code>
-					{JSON.stringify(shows_networks, null, 2)}
-				</code>
-			</pre>
+		<div class="grid grid-cols-3 md:grid-cols-5 lg:grid-cols-6 gap-2 mb-8">
+			{shows_networks.map(e => (
+				<div class="bg-white p-3 rounded border text-center">
+					<div class="font-medium">{e.name}</div>
+					<div class="text-sm text-gray-600">({e.count})</div>
+				</div>
+			))}
 		</div>
 		<h3 class="text-xl font-medium mb-4">Highest rated TV shows</h3>
 		<div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 mb-8">

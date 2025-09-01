@@ -209,8 +209,7 @@ export function aggregateProperties(items: (TraktWatchedMovie | TraktWatchedShow
 
     const values = Array.isArray(propValue) ? propValue : [propValue]
     for (const value of values) {
-      const normalizedValue = toTitleCase(value.toString().toLowerCase())
-      propertyMap.set(normalizedValue, (propertyMap.get(normalizedValue) || 0) + 1)
+      propertyMap.set(value, (propertyMap.get(value) || 0) + 1)
     }
   }
 

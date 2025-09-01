@@ -1,6 +1,6 @@
 # Astro Trakt.tv loader
 
-This package provides a [Trakt.tv](https://trakt.tv) content loader for Astro's [content layer](https://docs.astro.build/en/guides/content-collections/). You can access a selection of Trakt's APIs by simply providing the method name.
+This package provides a [Trakt.tv](https://trakt.tv) content loader for Astro's [content layer](https://docs.astro.build/en/guides/content-collections/). The content loaders correspond to specific [Trakt API endpoints](https://trakt.docs.apiary.io/).
 
 **Want to see an overview of all my loaders? Visit [astro-loaders.lekoarts.de](https://astro-loaders.lekoarts.de) ✨**
 
@@ -15,8 +15,8 @@ This package provides a [Trakt.tv](https://trakt.tv) content loader for Astro's 
 ## Prerequisites
 
 - Astro 5 or later installed
-- A Plausible API key
-  - Go to your Plausible Analytics account, navigate to **"Account Settings"** and click on the section called **"API Keys"**.
+- A Trakt.tv API key
+  - Go to your [Trakt Applications](https://trakt.tv/oauth/applications) page and create a new application. The **Client ID** is your API key.
 
 ## Installation
 
@@ -41,80 +41,132 @@ pnpm install @lekoarts/trakt-loader
 
 ## Usage
 
-Import `@lekoarts/plausible-loader` into `src/content.config.ts` and define your collections.
+Import `@lekoarts/trakt-loader` into `src/content.config.ts` and define your collections. You can import various loaders that correspond to their respective Trakt API endpoints.
 
-**Important:** You need to either define the Plausible API key as an environment variable (`PLAUSIBLE_API_KEY`) or pass it as the `api_key` option.
+**Important:** You need to either define the Trakt API key as an environment variable (`TRAKT_API_KEY`) or pass it as the `api_key` option.
+
+### `traktUsersListsLoader`
+
+Returns all personal lists for a user.
+
+#### Required options
+
+- `id` (string): The Trakt username or slug.
+
+#### Usage
 
 ```ts
-import { plausibleLoader } from '@lekoarts/plausible-loader'
+import { traktUsersListsLoader } from '@lekoarts/trakt-loader'
 
-const plausible = defineCollection({
-  loader: plausibleLoader({
-    query: {
-      site_id: 'example.com',
-      metrics: ['visitors'],
-      date_range: '7d',
-    },
+const usersLists = defineCollection({
+  loader: traktUsersListsLoader({
+    id: 'trakt-username',
   }),
 })
 ```
 
-Similar to the Stats API [response structure](https://plausible.io/docs/stats-api#response-structure) the loader returns an object of `{ results, meta }`. If you want to access the computed `query`, you can run Astro with the `--verbose` flag to read that.
+### `traktUsersRatingsLoader`
 
-## Options
+Get a user's ratings filtered by type. You can optionally filter for a specific rating between 1 and 10. Send a comma separated string for rating if you need multiple ratings.
 
-### `query` (required)
+#### Required options
 
-The Plausible Stats API v2 accepts a `query` object. Pass the [request query](https://plausible.io/docs/stats-api#request-structure) to the endpoint through this option.
+- `id` (string): The Trakt username or slug.
+- `type` (string): One of `movies`, `shows`, `seasons`, `episodes`, or `all`.
 
-Read the documentation on the individual keys you can use in said object. You always **have to** include the `site_id`, `date_range`, and `metrics` keys.
+#### Optional options
 
-For example, to get a timeseries, pass in this object:
+- `rating` (string): Filter for a specific rating (1-10 or comma-separated).
+- `extended` (string | string[]): Request additional fields.
+
+#### Usage
+
+Fetching all movie ratings for a user:
 
 ```ts
-import { plausibleLoader } from '@lekoarts/plausible-loader'
+import { traktUsersRatingsLoader } from '@lekoarts/trakt-loader'
 
-const plausible = defineCollection({
-  loader: plausibleLoader({
-    query: {
-      site_id: 'example.com',
-      metrics: ['visitors', 'events'],
-      date_range: '7d',
-      filters: [
-        ['is', 'visit:os', ['GNU/Linux', 'Mac']]
-      ],
-      dimensions: ['time:day']
-    },
+const usersRatings = defineCollection({
+  loader: traktUsersRatingsLoader({
+    id: 'trakt-username',
+    type: 'movies',
   }),
 })
 ```
 
-### `api_key`
-
-If you didn't define the `PLAUSIBLE_API_KEY` environment variable you have to pass in your Plausible API key here.
+Fetching only 10-star show ratings with extended info:
 
 ```ts
-import { plausibleLoader } from '@lekoarts/plausible-loader'
+import { traktUsersRatingsLoader } from '@lekoarts/trakt-loader'
 
-const plausible = defineCollection({
-  loader: plausibleLoader({
-    api_key: 'your-api-key',
-    query: {/* Your query */},
+const usersRatings = defineCollection({
+  loader: traktUsersRatingsLoader({
+    id: 'trakt-username',
+    type: 'shows',
+    rating: 10,
+    extended: ['full'],
   }),
 })
 ```
 
-### `api_url`
+### `traktUsersStatsLoader`
 
-If you self-host Plausible, you can set the URL to your instance here. By default, `https://plausible.io` is used.
+Returns stats about the movies, shows, and episodes a user has watched, collected, and rated.
+
+#### Required options
+
+- `id` (string): The Trakt username or slug.
+
+#### Usage
 
 ```ts
-import { plausibleLoader } from '@lekoarts/plausible-loader'
+import { traktUsersStatsLoader } from '@lekoarts/trakt-loader'
 
-const plausible = defineCollection({
-  loader: plausibleLoader({
-    api_url: 'https://plausible.io',
-    query: {/* Your query */},
+const usersStats = defineCollection({
+  loader: traktUsersStatsLoader({
+    id: 'trakt-username',
+  }),
+})
+```
+
+### `traktUsersWatchedLoader`
+
+Returns all movies or shows a user has watched sorted by most plays.
+
+#### Required options
+
+- `id` (string): The Trakt username or slug.
+- `type` (string): Either `movies` or `shows`.
+
+#### Optional options
+
+- `extended` (string | string[]): Request additional fields.
+
+#### Usage
+
+Fetching all watched movies:
+
+```ts
+import { traktUsersWatchedLoader } from '@lekoarts/trakt-loader'
+
+const usersWatched = defineCollection({
+  loader: traktUsersWatchedLoader({
+    id: 'trakt-username',
+    type: 'movies',
+  }),
+})
+```
+
+Fetching all watched shows with extended info:
+
+```ts
+import { traktUsersWatchedLoader } from '@lekoarts/trakt-loader'
+
+const usersWatched = defineCollection({
+  loader: traktUsersWatchedLoader({
+    id: 'trakt-username',
+    type: 'shows',
+    extended: ['full'],
   }),
 })
 ```
