@@ -6,17 +6,15 @@ import { createTrakt } from '../ky.js'
 import { TraktUsersWatchedResponseSchema } from '../schema.js'
 import { toGenitive } from '../utils.js'
 
+interface TraktIdHelper {
+  ids: {
+    trakt: number
+  }
+}
+
 type Res = BaseTraktWatched & {
-  show?: {
-    ids: {
-      trakt: number
-    }
-  }
-  movie?: {
-    ids: {
-      trakt: number
-    }
-  }
+  show?: TraktIdHelper
+  movie?: TraktIdHelper
   seasons?: any
 }
 

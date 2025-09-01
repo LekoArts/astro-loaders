@@ -37,6 +37,17 @@ export interface TraktUsersStatsLoaderOptions extends StandardOptions {}
 
 export interface TraktUsersListsLoaderOptions extends StandardOptions {}
 
+export interface TraktUsersRatingsLoaderOptions extends StandardOptions, TraktApiParamsExtended<typeof TraktApiExtended.Full | typeof TraktApiExtended.Images> {
+  /**
+   * The type of content to fetch ratings for.
+   */
+  type: 'movies' | 'shows' | 'seasons' | 'episodes' | 'all'
+  /**
+   * The specific rating to fetch. Send a comma separated string for rating if you need multiple ratings.
+   */
+  rating?: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | string
+}
+
 export interface TraktUsersWatchedLoaderOptions extends StandardOptions, TraktApiParamsExtended<typeof TraktApiExtended.Full | typeof TraktApiExtended.NoSeasons> {
   type: 'movies' | 'shows'
 }
