@@ -167,7 +167,7 @@ const TraktShowExtended = TraktShowShort.extend({
   trailer: z.string().url().nullable(),
   homepage: z.string().url().nullable(),
   status: z.enum(['returning series', 'continuing', 'in production', 'planned', 'upcoming', 'pilot', 'canceled', 'ended']),
-  rating: z.number(),
+  rating: z.number().min(0).max(10),
   votes: z.number(),
   comment_count: z.number(),
   language: z.string().length(2),
@@ -217,11 +217,38 @@ export function TraktUsersWatchedResponseSchema({ type, extended }: TraktWatched
   }
 }
 
-export const BaseTraktRating = z.object({
-  rating: z.number().min(1).max(10),
-  rated_at: z.string().datetime(),
-  type: z.enum(['movie', 'show', 'season', 'episode']),
-})
+export function BaseTraktRating({ type }: { type: TraktUsersRatingsLoaderOptions['type'] }) {
+  if (type === 'all') {
+    return z.object({
+      rating: z.number().min(0).max(10),
+      rated_at: z.string().datetime(),
+      type: z.enum(['movie', 'show', 'season', 'episode']),
+    })
+  }
+
+  let _type: 'movie' | 'show' | 'season' | 'episode'
+
+  switch (type) {
+    case 'movies':
+      _type = 'movie'
+      break
+    case 'shows':
+      _type = 'show'
+      break
+    case 'seasons':
+      _type = 'season'
+      break
+    case 'episodes':
+      _type = 'episode'
+      break
+  }
+
+  return z.object({
+    rating: z.number().min(0).max(10),
+    rated_at: z.string().datetime(),
+    type: z.literal(_type),
+  })
+}
 
 const TraktSeasonShort = z.object({
   number: z.number(),
@@ -233,7 +260,7 @@ const TraktSeasonShort = z.object({
 })
 
 const TraktSeasonExtended = TraktSeasonShort.extend({
-  rating: z.number(),
+  rating: z.number().min(0).max(10),
   votes: z.number(),
   episode_count: z.number(),
   aired_episodes: z.number(),
@@ -261,7 +288,7 @@ const TraktEpisodeShort = z.object({
 const TraktEpisodeExtended = TraktEpisodeShort.extend({
   number_abs: z.number().nullable(),
   overview: z.string().nullable(),
-  rating: z.number(),
+  rating: z.number().min(0).max(10),
   votes: z.number(),
   comment_count: z.number(),
   first_aired: z.string().datetime(),
@@ -279,67 +306,67 @@ type TraktRatingsResponseSchemaParams = Omit<TraktUsersRatingsLoaderOptions, 'ap
 export function TraktRatingsResponseSchema({ type, extended }: TraktRatingsResponseSchemaParams) {
   const movieSchema = () => {
     if (hasFull(extended)) {
-      return BaseTraktRating.extend({
+      return BaseTraktRating({ type }).extend({
         movie: TraktMovieExtended,
       })
     }
     else if (hasImages(extended) && hasFull(extended)) {
-      return BaseTraktRating.extend({
+      return BaseTraktRating({ type }).extend({
         movie: TraktMovieExtended,
       })
     }
     else if (hasImages(extended)) {
-      return BaseTraktRating.extend({
+      return BaseTraktRating({ type }).extend({
         movie: TraktMovieShort.extend({
           images: TraktImage,
         }),
       })
     }
 
-    return BaseTraktRating.extend({
+    return BaseTraktRating({ type }).extend({
       movie: TraktMovieShort,
     })
   }
 
   const showSchema = () => {
     if (hasFull(extended)) {
-      return BaseTraktRating.extend({
+      return BaseTraktRating({ type }).extend({
         show: TraktShowExtended,
       })
     }
     else if (hasImages(extended) && hasFull(extended)) {
-      return BaseTraktRating.extend({
+      return BaseTraktRating({ type }).extend({
         show: TraktShowExtended,
       })
     }
     else if (hasImages(extended)) {
-      return BaseTraktRating.extend({
+      return BaseTraktRating({ type }).extend({
         show: TraktShowShort.extend({
           images: TraktImage,
         }),
       })
     }
 
-    return BaseTraktRating.extend({
+    return BaseTraktRating({ type }).extend({
       show: TraktShowShort,
     })
   }
 
   const seasonSchema = () => {
     if (hasFull(extended)) {
-      return BaseTraktRating.extend({
+      return BaseTraktRating({ type }).extend({
         show: TraktShowExtended,
         season: TraktSeasonExtended,
       })
     }
     else if (hasImages(extended) && hasFull(extended)) {
-      return BaseTraktRating.extend({
+      return BaseTraktRating({ type }).extend({
         show: TraktShowExtended,
         season: TraktSeasonExtended,
       })
     }
     else if (hasImages(extended)) {
-      return BaseTraktRating.extend({
+      return BaseTraktRating({ type }).extend({
         show: TraktShowShort.extend({
           images: TraktImage,
         }),
@@ -349,7 +376,7 @@ export function TraktRatingsResponseSchema({ type, extended }: TraktRatingsRespo
       })
     }
 
-    return BaseTraktRating.extend({
+    return BaseTraktRating({ type }).extend({
       show: TraktShowShort,
       season: TraktSeasonShort,
     })
@@ -357,19 +384,19 @@ export function TraktRatingsResponseSchema({ type, extended }: TraktRatingsRespo
 
   const episodeSchema = () => {
     if (hasFull(extended)) {
-      return BaseTraktRating.extend({
+      return BaseTraktRating({ type }).extend({
         episode: TraktEpisodeExtended,
         show: TraktShowExtended,
       })
     }
     else if (hasFull(extended) && hasImages(extended)) {
-      return BaseTraktRating.extend({
+      return BaseTraktRating({ type }).extend({
         episode: TraktEpisodeExtended,
         show: TraktShowExtended,
       })
     }
     else if (hasImages(extended)) {
-      return BaseTraktRating.extend({
+      return BaseTraktRating({ type }).extend({
         episode: TraktEpisodeShort.extend({
           images: TraktImage,
         }),
@@ -379,7 +406,7 @@ export function TraktRatingsResponseSchema({ type, extended }: TraktRatingsRespo
       })
     }
 
-    return BaseTraktRating.extend({
+    return BaseTraktRating({ type }).extend({
       episode: TraktEpisodeShort,
       show: TraktShowShort,
     })

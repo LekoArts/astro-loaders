@@ -4,4 +4,4 @@ import type { BaseTraktRating as BaseTraktRatingSchema, BaseTraktWatched as Base
 export type UsersStatsResponse = z.infer<typeof TraktUsersStatsResponseSchema>
 export type UsersListsResponse = z.infer<typeof TraktUsersListsResponseSchema>
 export type BaseTraktWatched = z.infer<typeof BaseTraktWatchedSchema>
-export type BaseTraktRatings = z.infer<typeof BaseTraktRatingSchema>
+export type BaseTraktRatings = z.infer<ReturnType<typeof BaseTraktRatingSchema>>

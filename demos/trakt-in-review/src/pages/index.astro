@@ -2,14 +2,17 @@
 import { getCollection } from 'astro:content';
 import { getEntry } from 'astro:content';
 import Layout from '../layouts/Layout.astro';
-import { getAllTimeTotals, sortByPlays, aggregateGenres, aggregateProperties, aggregateYears, calculateAdjustedPercentage, getRandomColor } from '../utils';
+import { getAllTimeTotals, sortByPlays, aggregateGenres, aggregateProperties, aggregateYears, calculateAdjustedPercentage, getRandomColor, sortByRating, aggregateRatings } from '../utils';
 import { countries } from '../dict/countries'
 import BarChart from '../components/bar-chart.astro';
+import HorizontalChart from '../components/horizontal-chart.astro';
 
 const res_stats = await getEntry('traktStats', 'arsaurea')
 const res_lists = await getCollection('traktLists')
 const res_watched_shows = await getCollection('traktWatchedShows')
 const res_watched_movies = await getCollection('traktWatchedMovies')
+const res_ratings_movies = await getCollection('traktMovieRatings')
+const res_ratings_shows = await getCollection('traktShowRatings')
 
 if (!res_stats) {
 	throw new Error('No stats found for the trakt user "arsaurea".');
@@ -19,13 +22,19 @@ const stats = getAllTimeTotals(res_stats, res_lists);
 
 const top_shows = sortByPlays(res_watched_shows).slice(0, 10)
 const top_movies = sortByPlays(res_watched_movies).slice(0, 10)
+const top_rated_shows = sortByRating(res_ratings_shows).slice(0, 10)
+const top_rated_movies = sortByRating(res_ratings_movies).slice(0, 10)
 
 const shows_genres = aggregateGenres(res_watched_shows)
 const movies_genres = aggregateGenres(res_watched_movies)
 const shows_countries = aggregateProperties(res_watched_shows, 'country')
 const movies_countries = aggregateProperties(res_watched_movies, 'country')
+const shows_networks = aggregateProperties(res_watched_shows, 'network')
+const movies_networks = aggregateProperties(res_watched_movies, 'network')
 const shows_years = aggregateYears(res_watched_shows)
 const movies_years = aggregateYears(res_watched_movies)
+const rating_shows = aggregateRatings(res_ratings_shows)
+const rating_movies = aggregateRatings(res_ratings_movies)
 
 const stringified_shows_years = JSON.stringify(shows_years)
 const stringified_movies_years = JSON.stringify(movies_years)
@@ -88,20 +97,7 @@ const stringified_movies_years = JSON.stringify(movies_years)
 		</div>
 		<h3 class="text-xl font-medium mb-4">TV show genres</h3>
 		<div class="mb-16 mt-14">
-			<div class="flex h-8">
-				{shows_genres.map((genre, index) => {
-					const adjustedPercentage = calculateAdjustedPercentage(shows_genres, genre.count);
-					const { colorClass, borderClass } = getRandomColor(index);
-					return (
-						<div 
-							class={`${colorClass} relative group`}
-							style={`width: ${adjustedPercentage}%`}
-						>
-							<div class={`absolute left-0 bottom-8 text-xs border-l-2 text-left pl-2 pt-1 pb-1 group-even:top-8 group-even:bottom-auto group-even:pt-1 group-even:pb-0 ${borderClass}`}>{genre.name} <div class="whitespace-nowrap text-[11px] text-gray-600">{genre.count} shows</div></div>
-						</div>
-					);
-				})}
-			</div>
+			<HorizontalChart items={shows_genres} type="shows" />
 		</div>
 		<h3 class="text-xl font-medium mb-4">TV show release years</h3>
 		<BarChart items={stringified_shows_years} />
@@ -115,9 +111,26 @@ const stringified_movies_years = JSON.stringify(movies_years)
 			))}
 		</div>
 		<h3 class="text-xl font-medium mb-4">TV show networks</h3>
-		<h3 class="text-xl font-medium mb-4">List progress</h3>
+		<div>
+			<pre>
+				<code>
+					{JSON.stringify(shows_networks, null, 2)}
+				</code>
+			</pre>
+		</div>
 		<h3 class="text-xl font-medium mb-4">Highest rated TV shows</h3>
+		<div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 mb-8">
+			{top_rated_shows.map(e => (
+				<div class="bg-white p-3 rounded border text-center">
+					<div class="font-medium">{e.data.show.title}</div>
+					<div class="text-sm text-gray-600">(Rating: {e.data.rating})</div>
+				</div>
+			))}
+		</div>
 		<h3 class="text-xl font-medium mb-4">All ratings</h3>
+		<div class="mb-16 mt-14">
+			<HorizontalChart items={rating_shows} type="shows" />
+		</div>
 		<h2 class="text-2xl font-semibold mb-6 mt-12">Movies</h2>
 		<div class="grid md:grid-cols-2 gap-6 mb-8">
 			<div class="bg-gray-100 p-6 rounded-lg">
@@ -144,20 +157,7 @@ const stringified_movies_years = JSON.stringify(movies_years)
 		</div>
 		<h3 class="text-xl font-medium mb-4">Movie genres</h3>
 		<div class="mb-16 mt-14">
-			<div class="flex h-8">
-				{movies_genres.map((genre, index) => {
-					const adjustedPercentage = calculateAdjustedPercentage(movies_genres, genre.count);
-					const { colorClass, borderClass } = getRandomColor(index);
-					return (
-						<div 
-							class={`${colorClass} relative group`}
-							style={`width: ${adjustedPercentage}%`}
-						>
-							<div class={`absolute left-0 bottom-8 text-xs border-l-2 text-left pl-2 pt-1 pb-1 group-even:top-8 group-even:bottom-auto group-even:pt-1 group-even:pb-0 ${borderClass}`}>{genre.name} <div class="whitespace-nowrap text-[11px] text-gray-600">{genre.count} movies</div></div>
-						</div>
-					);
-				})}
-			</div>
+			<HorizontalChart items={movies_genres} type="movies" />
 		</div>
 		<h3 class="text-xl font-medium mb-4">Movie release years</h3>
 		<BarChart items={stringified_movies_years} />
@@ -171,9 +171,19 @@ const stringified_movies_years = JSON.stringify(movies_years)
 			))}
 		</div>
 		<h3 class="text-xl font-medium mb-4">Movie studios</h3>
-		<h3 class="text-xl font-medium mb-4">List progress</h3>
 		<h3 class="text-xl font-medium mb-4">Highest rated movies</h3>
+		<div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 mb-8">
+			{top_rated_movies.map(e => (
+				<div class="bg-white p-3 rounded border text-center">
+					<div class="font-medium">{e.data.movie.title}</div>
+					<div class="text-sm text-gray-600">(Rating: {e.data.rating})</div>
+				</div>
+			))}
+		</div>
 		<h3 class="text-xl font-medium mb-4">All ratings</h3>
+		<div class="mb-16 mt-14">
+			<HorizontalChart items={rating_movies} type="movies" />
+		</div>
 		<h2 class="text-2xl font-semibold mb-6 mt-12">Most watched actors</h2>
 		<h2 class="text-2xl font-semibold mb-6">Most watched actresses</h2>
 		<h2 class="text-2xl font-semibold mb-6">Most watched directors</h2>

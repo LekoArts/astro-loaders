@@ -3,6 +3,8 @@ import { borderColors, colors } from './constants'
 
 type TraktWatchedMovie = CollectionEntry<'traktWatchedMovies'>
 type TraktWatchedShow = CollectionEntry<'traktWatchedShows'>
+type TraktRatedMovie = CollectionEntry<'traktMovieRatings'>
+type TraktRatedShow = CollectionEntry<'traktShowRatings'>
 
 /**
  * Get the last item in an array.
@@ -265,4 +267,67 @@ export function getRandomColor(index: number): { colorClass: string, borderClass
     colorClass: colors[index % colors.length],
     borderClass: borderColors[index % borderColors.length],
   }
+}
+
+/**
+ * Sort an array of movie/show objects by their 'rating' property.
+ * @param items The array of movie/show objects to sort.
+ * @returns A new array sorted by 'rating' in descending order.
+ *
+ * @example
+ * ```ts
+ * const sorted = sortByRating(watchedItems)
+ * console.log(sorted[0].data.rating) // Highest rating first
+ * ```
+ */
+export function sortByRating<T extends TraktRatedMovie | TraktRatedShow>(items: T[]) {
+  return [...items].sort((a, b) => (b.data.rating || 0) - (a.data.rating || 0))
+}
+
+const DICT_RATING: Record<number, string> = {
+  1: 'Weak',
+  2: 'Terrible',
+  3: 'Bad',
+  4: 'Poor',
+  5: 'Meh',
+  6: 'Fair',
+  7: 'Good',
+  8: 'Great',
+  9: 'Superb',
+  10: 'Totally Ninja!',
+}
+
+/**
+ * A show/movie object contains a 'rating' property. It's the rating as a number.
+ * Aggregate all ratings by their unique value and sort them by their count. During the aggregation missing ratings in between the min and max rating are added with a count of 0.
+ *
+ * @example
+ * ```ts
+ * const ratings = aggregateRatings(watchedItems)
+ * console.log(ratings) // [ { name: 5, count: 5 }, { name: 6, count: 10 }, ... ]
+ * ```
+ */
+export function aggregateRatings(items: (TraktRatedMovie | TraktRatedShow)[]) {
+  const ratingMap = new Map<number, number>()
+
+  for (const item of items) {
+    const rating = item.data.rating
+    if (!rating)
+      continue
+
+    ratingMap.set(rating, (ratingMap.get(rating) || 0) + 1)
+  }
+
+  const minRating = Math.min(...ratingMap.keys())
+  const maxRating = Math.max(...ratingMap.keys())
+
+  for (let rating = minRating; rating <= maxRating; rating++) {
+    if (!ratingMap.has(rating)) {
+      ratingMap.set(rating, 0)
+    }
+  }
+
+  return Array.from(ratingMap.entries())
+    .map(([rating, count]) => ({ name: `${rating} - ${DICT_RATING[rating]}`, count, rating }))
+    .sort((a, b) => a.rating - b.rating)
 }
