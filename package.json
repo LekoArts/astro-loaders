@@ -28,7 +28,7 @@
     "@changesets/cli": "^2.29.6",
     "@playwright/test": "^1.55.0",
     "@types/node": "^22.18.1",
-    "eslint": "^9.34.0",
+    "eslint": "^9.35.0",
     "eslint-plugin-format": "^1.0.1",
     "lint-staged": "^16.1.6",
     "simple-git-hooks": "^2.13.1",
