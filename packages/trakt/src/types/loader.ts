@@ -51,3 +51,22 @@ export interface TraktUsersRatingsLoaderOptions extends StandardOptions, TraktAp
 export interface TraktUsersWatchedLoaderOptions extends StandardOptions, TraktApiParamsExtended<typeof TraktApiExtended.Full | typeof TraktApiExtended.NoSeasons> {
   type: 'movies' | 'shows'
 }
+
+export interface TraktUsersHistoryLoaderOptions extends StandardOptions, TraktApiParamsExtended<typeof TraktApiExtended.Full | typeof TraktApiExtended.Images> {
+  /**
+   * Get the history for a specific type.
+   */
+  type: 'movies' | 'shows' | 'seasons' | 'episodes'
+  /**
+   * Trakt ID for a specific item.
+   */
+  item_id?: number
+  /**
+   * Starting date for the history.
+   */
+  start_at?: string
+  /**
+   * Ending date for the history.
+   */
+  end_at?: string
+}
