@@ -26,7 +26,7 @@ runs:
       if: ${{ inputs.enable-corepack == 'true' }}
       shell: bash
       run: |
-        npm install -g corepack
+        npm install -g --force corepack
         corepack enable
         echo "Corepack enabled"
 
@@ -34,8 +34,6 @@ runs:
       if: ${{ inputs.enable-corepack == 'false' }}
       with:
         run_install: false
-        # If you're not setting the packageManager field in package.json, add the version here
-        # version: 8.6.7
 
     - name: Expose pnpm config(s) through "$GITHUB_OUTPUT"
       id: pnpm-config
