@@ -12,10 +12,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v5
-      - uses: actions/setup-node@v5
-        with:
-          node-version: lts/*
-          check-latest: true
       - uses: actions/cache@v4
         id: playwright-cache
         with:
@@ -37,8 +33,6 @@ jobs:
             ${{ runner.os }}-astro-
       - name: Install dependencies
         uses: ./.github/actions/pnpm-install
-      - name: Build Packages
-        run: pnpm run build
       - name: Install Playwright
         if: steps.playwright-cache.outputs.cache-hit != 'true'
         run: npx playwright install chromium --with-deps
