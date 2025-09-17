@@ -33,6 +33,8 @@ jobs:
             ${{ runner.os }}-astro-
       - name: Install dependencies
         uses: ./.github/actions/pnpm-install
+      - name: Build Packages
+        run: pnpm run build
       - name: Install Playwright
         if: steps.playwright-cache.outputs.cache-hit != 'true'
         run: npx playwright install chromium --with-deps
