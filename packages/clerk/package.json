@@ -39,7 +39,7 @@
   },
   "dependencies": {
     "@clerk/backend": "^2.14.0",
-    "type-fest": "^5.0.0"
+    "type-fest": "^5.0.1"
   },
   "devDependencies": {
     "@arethetypeswrong/cli": "catalog:linting",
