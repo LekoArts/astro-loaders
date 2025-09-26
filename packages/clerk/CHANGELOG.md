@@ -1,5 +1,11 @@
 # @lekoarts/clerk-loader
 
+## 1.0.5
+
+### Patch Changes
+
+- [#122](https://github.com/LekoArts/astro-loaders/pull/122) [`e615fa5`](https://github.com/LekoArts/astro-loaders/commit/e615fa587cbf4eb7f8eb62cff02d90fb6e26fe56) Thanks [@renovate](https://github.com/apps/renovate)! - Update internal dependency `type-fest` to `5.0.0`
+
 ## 1.0.4
 
 ### Patch Changes
