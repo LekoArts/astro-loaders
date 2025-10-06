@@ -1,6 +1,6 @@
 {
   "name": "astro-loaders",
-  "packageManager": "pnpm@10.17.1",
+  "packageManager": "pnpm@10.18.0",
   "author": "LekoArts",
   "license": "MIT",
   "scripts": {
@@ -28,11 +28,11 @@
     "@changesets/cli": "^2.29.7",
     "@playwright/test": "^1.55.1",
     "@types/node": "^22.18.8",
-    "eslint": "^9.36.0",
+    "eslint": "^9.37.0",
     "eslint-plugin-format": "^1.0.2",
     "lint-staged": "^16.2.3",
     "simple-git-hooks": "^2.13.1",
-    "vite": "^7.1.7",
+    "vite": "^7.1.9",
     "vitest": "^3.2.4"
   },
   "simple-git-hooks": {
