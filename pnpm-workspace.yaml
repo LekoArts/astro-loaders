@@ -4,10 +4,10 @@ packages:
 
 catalogs:
   astro:
-    astro: 5.14.6
+    astro: 5.15.1
   linting:
     '@arethetypeswrong/cli': 0.18.2
-    publint: 0.3.14
+    publint: 0.3.15
   repo:
-    tsdown: 0.15.8
+    tsdown: 0.15.9
     typescript: 5.9.3
