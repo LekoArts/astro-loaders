@@ -23,7 +23,7 @@
     "e2e:build": "IS_BUILD=true playwright test"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "^5.4.1",
+    "@antfu/eslint-config": "^6.0.0",
     "@changesets/changelog-github": "^0.5.1",
     "@changesets/cli": "^2.29.7",
     "@playwright/test": "^1.56.1",
