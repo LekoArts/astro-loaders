@@ -23,7 +23,7 @@
     "e2e:build": "IS_BUILD=true playwright test"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "^6.0.0",
+    "@antfu/eslint-config": "^6.1.0",
     "@changesets/changelog-github": "^0.5.1",
     "@changesets/cli": "^2.29.7",
     "@playwright/test": "^1.56.1",
@@ -33,7 +33,7 @@
     "lint-staged": "^16.2.6",
     "simple-git-hooks": "^2.13.1",
     "vite": "^7.1.12",
-    "vitest": "^4.0.3"
+    "vitest": "^4.0.4"
   },
   "simple-git-hooks": {
     "pre-commit": "pnpm lint-staged"
