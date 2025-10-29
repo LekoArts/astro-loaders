@@ -49,6 +49,9 @@ export interface TraktUsersRatingsLoaderOptions extends StandardOptions, TraktAp
 }
 
 export interface TraktUsersWatchedLoaderOptions extends StandardOptions, TraktApiParamsExtended<typeof TraktApiExtended.Full | typeof TraktApiExtended.NoSeasons> {
+  /**
+   * Whether to get movies or shows the user has watched.
+   */
   type: 'movies' | 'shows'
 }
 
