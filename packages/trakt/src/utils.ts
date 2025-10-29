@@ -6,7 +6,7 @@ import { DEFAULT_PAGE } from './constants.js'
  */
 export function toGenitive(str: string): string {
   // Simple rules for genitive case in English
-  if (str.endsWith('s')) {
+  if (str.toLowerCase().endsWith('s')) {
     return `${str}'`
   }
   else {
@@ -24,7 +24,7 @@ interface PaginationHeaders {
 /**
  * Extract pagination information from Trakt API response headers
  */
-function getPaginationHeaders(response: KyResponse): PaginationHeaders | null {
+export function getPaginationHeaders(response: KyResponse): PaginationHeaders | null {
   const page = response.headers.get('X-Pagination-Page')
   const limit = response.headers.get('X-Pagination-Limit')
   const pageCount = response.headers.get('X-Pagination-Page-Count')
