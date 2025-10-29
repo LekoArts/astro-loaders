@@ -20,11 +20,11 @@ import UsersStats from '../components/trakt/UsersStats.astro';
 		<div class="flex flex-col items-center">
 			<h1 class="text-slate-950 dark:text-white text-balance font-bold tracking-tight text-center text-3xl/9 sm:text-5xl md:text-6xl mt-6 md:mt-20">Astro Loaders by LekoArts</h1>
 		<p class="mt-8 mb-4 max-w-2xl text-base/6 text-slate-600 dark:text-slate-400 sm:text-lg mx-auto text-center">Need to pull in content using Astro's content layer? Reach for one of the provided loaders below and stop dealing with complicated third-party APIs.</p>
-		<a href="https://github.com/LekoArts/astro-loaders" target="_blank" class="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 inline-flex items-center shadow-lg shadow-blue-500/50 dark:shadow-blue-800/40">
+		<a href="https://github.com/LekoArts/astro-loaders" target="_blank" class="text-white bg-linear-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-linear-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 inline-flex items-center shadow-lg shadow-blue-500/50 dark:shadow-blue-800/40">
 			<Icon class="w-4 h-4 me-2" name="github" />
 			Star on Github
 		</a>
-		<p class="mt-8 text-slate-950 dark:text-slate-200 text-base font-semibold sm:text-lg break-words">Use loaders for</p>
+		<p class="mt-8 text-slate-950 dark:text-slate-200 text-base font-semibold sm:text-lg wrap-break-word">Use loaders for</p>
 		<ul class="flex flex-row gap-4 mt-2 flex-wrap justify-center">
 			{[
 				{
@@ -58,7 +58,7 @@ import UsersStats from '../components/trakt/UsersStats.astro';
 				</div>
 				<NpmInstall url="https://github.com/LekoArts/astro-loaders/tree/main/packages/clerk" name="@lekoarts/clerk-loader" />
 			</div>
-			<h3 class="text-slate-950 dark:text-slate-200 text-base sm:text-lg break-words"><code>clerkLoader(&#123; clientOptions?: ClerkClientOptions; method: &#123; name: string; options: string | Object &#125; &#125;)</code></h3>
+			<h3 class="text-slate-950 dark:text-slate-200 text-base sm:text-lg wrap-break-word"><code>clerkLoader(&#123; clientOptions?: ClerkClientOptions; method: &#123; name: string; options: string | Object &#125; &#125;)</code></h3>
 			<p class="text-slate-600 dark:text-slate-400 text-base/6">Access certain <a href="https://clerk.com/docs/reference/backend-api" class="hover:underline text-slate-950 dark:text-slate-200">Clerk Backend APIs</a> by choosing a <code>method</code> name.</p>
 			<ExampleOutput>
 				<GetUserList />
@@ -72,22 +72,22 @@ import UsersStats from '../components/trakt/UsersStats.astro';
 				</div>
 				<NpmInstall url="https://github.com/LekoArts/astro-loaders/tree/main/packages/flickr" name="@lekoarts/flickr-loader" />
 			</div>
-			<h3 class="text-slate-950 dark:text-slate-200 text-base sm:text-lg break-words"><code>flickrPeopleGetPhotosLoader(&#123; username: string &#125;)</code></h3>
+			<h3 class="text-slate-950 dark:text-slate-200 text-base sm:text-lg wrap-break-word"><code>flickrPeopleGetPhotosLoader(&#123; username: string &#125;)</code></h3>
 			<p class="text-slate-600 dark:text-slate-400 text-base/6">Return photos from the given user's photostream. Only photos visible to the calling user will be returned.</p>
 			<ExampleOutput>
 				<PeopleGetPhotos />
 			</ExampleOutput>
-			<h3 class="text-slate-950 dark:text-slate-200 text-base sm:text-lg break-words"><code>flickrPhotosetsGetListLoader(&#123; username: string &#125;)</code></h3>
+			<h3 class="text-slate-950 dark:text-slate-200 text-base sm:text-lg wrap-break-word"><code>flickrPhotosetsGetListLoader(&#123; username: string &#125;)</code></h3>
 			<p class="text-slate-600 dark:text-slate-400 text-base/6">Returns the photosets belonging to the specified user.</p>
 			<ExampleOutput>
 				<PhotosetsGetList />
 			</ExampleOutput>
-			<h3 class="text-slate-950 dark:text-slate-200 text-base sm:text-lg break-words"><code>flickrPhotosetsGetPhotosLoader(&#123; username: string; photoset_id: string &#125;)</code></h3>
+			<h3 class="text-slate-950 dark:text-slate-200 text-base sm:text-lg wrap-break-word"><code>flickrPhotosetsGetPhotosLoader(&#123; username: string; photoset_id: string &#125;)</code></h3>
 			<p class="text-slate-600 dark:text-slate-400 text-base/6">Get the list of photos in a photoset.</p>
 			<ExampleOutput>
 				<PhotosetsGetPhotos />
 			</ExampleOutput>
-			<h3 class="text-slate-950 dark:text-slate-200 text-base sm:text-lg break-words"><code>flickrPhotosetsGetListWithPhotosLoader(&#123; username: string &#125;)</code></h3>
+			<h3 class="text-slate-950 dark:text-slate-200 text-base sm:text-lg wrap-break-word"><code>flickrPhotosetsGetListWithPhotosLoader(&#123; username: string &#125;)</code></h3>
 			<p class="text-slate-600 dark:text-slate-400 text-base/6">This loader combines the <code>flickrPhotosetsGetListLoader()</code> and <code>flickrPhotosetsGetPhotosLoader()</code> loaders to get the most out of photosets. You'll get back the photosets and their list of photos.</p>
 			<ExampleOutput>
 				<PhotosetsGetListWithPhotos />
@@ -101,7 +101,7 @@ import UsersStats from '../components/trakt/UsersStats.astro';
 				</div>
 				<NpmInstall url="https://github.com/LekoArts/astro-loaders/tree/main/packages/plausible" name="@lekoarts/plausible-loader" />
 			</div>
-			<h3 class="text-slate-950 dark:text-slate-200 text-base sm:text-lg break-words"><code>plausibleLoader(&#123; query: PlausibleQuery &#125;)</code></h3>
+			<h3 class="text-slate-950 dark:text-slate-200 text-base sm:text-lg wrap-break-word"><code>plausibleLoader(&#123; query: PlausibleQuery &#125;)</code></h3>
 			<p class="text-slate-600 dark:text-slate-400 text-base/6">Access the <a href="https://plausible.io/docs/stats-api" class="hover:underline text-slate-950 dark:text-slate-200">Plausible Stats API</a> with your custom <code>query</code>.</p>
 			<ExampleOutput>
 				<Plausible />
@@ -115,15 +115,19 @@ import UsersStats from '../components/trakt/UsersStats.astro';
 				</div>
 				<NpmInstall url="https://github.com/LekoArts/astro-loaders/tree/main/packages/trakt" name="@lekoarts/trakt-loader" />
 			</div>
-			<h3 class="text-slate-950 dark:text-slate-200 text-base sm:text-lg break-words"><code>traktUsersStatsLoader(&#123; id: string &#125;)</code></h3>
+			<h3 class="text-slate-950 dark:text-slate-200 text-base sm:text-lg wrap-break-word"><code>traktUsersStatsLoader(&#123; id: string &#125;)</code></h3>
 			<p class="text-slate-600 dark:text-slate-400 text-base/6">Returns stats about the movies, shows, and episodes a user has watched, collected, and rated.</p>
 			<ExampleOutput>
 				<UsersStats />
 			</ExampleOutput>
-			<h3 class="text-slate-950 dark:text-slate-200 text-base sm:text-lg break-words"><code>traktUsersWatchedLoader(&#123; id: string; type: 'movies' | 'shows'; extended: string[] &#125;)</code></h3>
+			<h3 class="text-slate-950 dark:text-slate-200 text-base sm:text-lg wrap-break-word"><code>traktUsersWatchedLoader(&#123; id: string; type: 'movies' | 'shows'; extended: string[] &#125;)</code></h3>
 			<p class="text-slate-600 dark:text-slate-400 text-base/6 mb-10">Returns all movies or shows a user has watched sorted by most plays.</p>
-			<h3 class="text-slate-950 dark:text-slate-200 text-base sm:text-lg break-words"><code>traktUsersListsLoader(&#123; id: string &#125;)</code></h3>
-			<p class="text-slate-600 dark:text-slate-400 text-base/6">Returns all personal lists for a user. </p>
+			<h3 class="text-slate-950 dark:text-slate-200 text-base sm:text-lg wrap-break-word"><code>traktUsersListsLoader(&#123; id: string &#125;)</code></h3>
+			<p class="text-slate-600 dark:text-slate-400 text-base/6 mb-10">Returns all personal lists for a user.</p>
+			<h3 class="text-slate-950 dark:text-slate-200 text-base sm:text-lg wrap-break-word"><code>traktUsersRatingsLoader(&#123; id: string; type: string; rating?: string; extended?: string[] &#125;)</code></h3>
+			<p class="text-slate-600 dark:text-slate-400 text-base/6 mb-10">Get a user's ratings filtered by type. You can optionally filter for a specific rating between 1 and 10.</p>
+			<h3 class="text-slate-950 dark:text-slate-200 text-base sm:text-lg wrap-break-word"><code>traktUsersHistoryLoader(&#123; id: string; type: string; item_id?: number; start_at?: string; end_at?: string; extended?: string[] &#125;)</code></h3>
+			<p class="text-slate-600 dark:text-slate-400 text-base/6">Returns movies and episodes that a user has watched, sorted by most recent.</p>
 		</Section>
 	</main>
 	<footer class="mt-12 py-10 mx-auto container text-center text-slate-600 dark:text-slate-400">

@@ -170,3 +170,49 @@ const usersWatched = defineCollection({
   }),
 })
 ```
+
+### `traktUsersHistoryLoader`
+
+Returns movies and episodes that a user has watched, sorted by most recent. You can optionally limit the type to movies or episodes.
+
+#### Required options
+
+- `id` (string): The Trakt username or slug.
+- `type` (string): One of `movies`, `shows`, `seasons`, or `episodes`.
+
+#### Optional options
+
+- `item_id` (number): Trakt ID for a specific item to limit the history.
+- `start_at` (string): Starting date for the history.
+- `end_at` (string): Ending date for the history.
+- `extended` (string | string[]): Request additional fields.
+
+#### Usage
+
+Fetching all watched episodes:
+
+```ts
+import { traktUsersHistoryLoader } from '@lekoarts/trakt-loader'
+
+const usersHistory = defineCollection({
+  loader: traktUsersHistoryLoader({
+    id: 'trakt-username',
+    type: 'episodes',
+  }),
+})
+```
+
+Fetching movie history for a specific date range:
+
+```ts
+import { traktUsersHistoryLoader } from '@lekoarts/trakt-loader'
+
+const usersHistory = defineCollection({
+  loader: traktUsersHistoryLoader({
+    id: 'trakt-username',
+    type: 'movies',
+    start_at: '2024-01-01T00:00:00.000Z',
+    end_at: '2024-12-31T23:59:59.999Z',
+  }),
+})
+```
