@@ -1,6 +1,7 @@
 import { clerkLoader } from '@lekoarts/clerk-loader'
 import { flickrPeopleGetPhotosLoader, flickrPhotosetsGetListLoader, flickrPhotosetsGetListWithPhotosLoader, flickrPhotosetsGetPhotosLoader } from '@lekoarts/flickr-loader'
 import { plausibleLoader } from '@lekoarts/plausible-loader'
+import { traktUsersStatsLoader } from '@lekoarts/trakt-loader'
 import { defineCollection } from 'astro:content'
 import { FLICKR_USERNAME } from './constants'
 
@@ -48,6 +49,12 @@ const plausible = defineCollection({
   }),
 })
 
+const traktStats = defineCollection({
+  loader: traktUsersStatsLoader({
+    id: 'arsaurea',
+  }),
+})
+
 export const collections = {
   peopleGetPhotos,
   photosetsGetList,
@@ -55,4 +62,5 @@ export const collections = {
   photosetsGetListWithPhotos,
   clerk,
   plausible,
+  traktStats,
 }

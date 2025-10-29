@@ -1,0 +1,52 @@
+{
+  "name": "@lekoarts/trakt-loader",
+  "type": "module",
+  "version": "0.0.1",
+  "description": "Astro content loader for Trakt.tv",
+  "author": "LekoArts",
+  "license": "MIT",
+  "homepage": "https://github.com/LekoArts/astro-loaders",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com:LekoArts/astro-loaders.git",
+    "directory": "packages/trakt"
+  },
+  "keywords": [
+    "withastro",
+    "astro-loader",
+    "trakt",
+    "trakt.tv",
+    "trakt-tv"
+  ],
+  "exports": {
+    ".": "./dist/index.js"
+  },
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "engines": {
+    "node": "^18.17.1 || ^20.3.0 || >=22.0.0"
+  },
+  "scripts": {
+    "build": "tsdown",
+    "dev": "tsdown --watch",
+    "prepublishOnly": "node --run build",
+    "check": "publint && attw --pack . --profile esm-only",
+    "test": "vitest --typecheck"
+  },
+  "peerDependencies": {
+    "astro": "^5.0.0"
+  },
+  "dependencies": {
+    "ky": "^1.8.1"
+  },
+  "devDependencies": {
+    "@arethetypeswrong/cli": "catalog:linting",
+    "astro": "catalog:astro",
+    "publint": "catalog:linting",
+    "tsdown": "catalog:repo",
+    "typescript": "catalog:repo"
+  }
+}

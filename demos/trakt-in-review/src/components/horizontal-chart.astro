@@ -1,0 +1,28 @@
+---
+import { calculateAdjustedPercentage, getRandomColor } from '../utils';
+
+interface Props {
+  items: {
+    name: string
+    count: number
+  }[]
+  type: string
+}
+
+const { type, items } = Astro.props
+---
+
+<div class="flex h-8">
+  {items.map((item, index) => {
+    const adjustedPercentage = calculateAdjustedPercentage(items, item.count);
+    const { colorClass, borderClass } = getRandomColor(index);
+    return (
+      <div 
+        class={`${colorClass} relative group`}
+        style={`width: ${adjustedPercentage}%`}
+      >
+        <div class={`absolute left-0 bottom-8 text-xs border-l-2 text-left pl-2 pt-1 pb-1 group-even:top-8 group-even:bottom-auto group-even:pt-1 group-even:pb-0 ${borderClass}`}>{item.name} <div class="whitespace-nowrap text-[11px] text-gray-600">{item.count} {type}</div></div>
+      </div>
+    );
+  })}
+</div>

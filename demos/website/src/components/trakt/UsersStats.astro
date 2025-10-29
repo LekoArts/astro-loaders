@@ -1,0 +1,7 @@
+---
+import { getCollection } from 'astro:content';
+
+const result = await getCollection('traktStats')
+---
+
+<div class="text-slate-600 dark:text-slate-400 text-base/6 flex flex-wrap flex-row gap-4 max-h-52 overflow-auto"><pre><code data-testid='trakt-item'>{JSON.stringify(result[0].data, null, 2)}</code></pre></div>

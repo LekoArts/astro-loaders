@@ -1,5 +1,5 @@
 {
-  "name": "website",
+  "name": "trakt-in-review",
   "type": "module",
   "version": "0.0.1",
   "private": true,
@@ -10,12 +10,10 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@lekoarts/clerk-loader": "workspace:^",
-    "@lekoarts/flickr-loader": "workspace:^",
-    "@lekoarts/plausible-loader": "workspace:^",
     "@lekoarts/trakt-loader": "workspace:^",
-    "@tailwindcss/vite": "^4.1.16",
+    "@tailwindcss/vite": "^4.1.11",
     "astro": "catalog:astro",
-    "tailwindcss": "^4.1.16"
+    "chart.js": "^4.5.0",
+    "tailwindcss": "^4.1.11"
   }
 }

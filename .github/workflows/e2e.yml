@@ -44,6 +44,7 @@ jobs:
           FLICKR_API_KEY: ${{ secrets.FLICKR_API_KEY }}
           CLERK_SECRET_KEY: ${{ secrets.CLERK_SECRET_KEY }}
           PLAUSIBLE_API_KEY: ${{ secrets.PLAUSIBLE_API_KEY }}
+          TRAKT_API_KEY: ${{ secrets.TRAKT_API_KEY }}
       - name: Run Playwright
         run: pnpm run e2e:build
       - uses: actions/upload-artifact@v5

@@ -1,0 +1,214 @@
+---
+import { getCollection } from 'astro:content';
+import { getEntry } from 'astro:content';
+import Layout from '../layouts/Layout.astro';
+import { getAllTimeTotals, sortByPlays, aggregateGenres, aggregateProperties, aggregateYears, sortByRating, aggregateRatings } from '../utils';
+import { countries } from '../dict/countries'
+import BarChart from '../components/bar-chart.astro';
+import HorizontalChart from '../components/horizontal-chart.astro';
+
+const res_stats = await getEntry('traktStats', 'arsaurea')
+const res_lists = await getCollection('traktLists')
+const res_watched_shows = await getCollection('traktWatchedShows')
+const res_watched_movies = await getCollection('traktWatchedMovies')
+const res_ratings_movies = await getCollection('traktMovieRatings')
+const res_ratings_shows = await getCollection('traktShowRatings')
+const res_history_movies = await getCollection('traktHistoryMovies')
+const res_history_episodes = await getCollection('traktHistoryEpisodes')
+
+if (!res_stats) {
+	throw new Error('No stats found for the trakt user "arsaurea".');
+}
+
+const stats = getAllTimeTotals(res_stats, res_lists);
+
+const top_shows = sortByPlays(res_watched_shows).slice(0, 10)
+const top_movies = sortByPlays(res_watched_movies).slice(0, 10)
+const top_rated_shows = sortByRating(res_ratings_shows).slice(0, 10)
+const top_rated_movies = sortByRating(res_ratings_movies).slice(0, 10)
+
+const last_episode_play = res_history_episodes[0].data
+const first_episode_play = res_history_episodes[res_history_episodes.length - 1].data
+const last_movie_play = res_history_movies[0].data
+const first_movie_play = res_history_movies[res_history_movies.length - 1].data
+
+const first_play = new Date(first_episode_play.watched_at) < new Date(first_movie_play.watched_at) ? first_episode_play : first_movie_play
+const last_play = new Date(last_episode_play.watched_at) > new Date(last_movie_play.watched_at) ? last_episode_play : last_movie_play
+
+const year_start = new Date(first_play.watched_at).getFullYear()
+const year_end = new Date(last_play.watched_at).getFullYear()
+
+const shows_genres = aggregateGenres(res_watched_shows)
+const movies_genres = aggregateGenres(res_watched_movies)
+const shows_countries = aggregateProperties(res_watched_shows, 'country')
+const movies_countries = aggregateProperties(res_watched_movies, 'country')
+const shows_networks = aggregateProperties(res_watched_shows, 'network')
+const shows_years = aggregateYears(res_watched_shows)
+const movies_years = aggregateYears(res_watched_movies)
+const rating_shows = aggregateRatings(res_ratings_shows)
+const rating_movies = aggregateRatings(res_ratings_movies)
+
+const stringified_shows_years = JSON.stringify(shows_years)
+const stringified_movies_years = JSON.stringify(movies_years)
+---
+
+<Layout>
+	<main class="max-w-7xl mx-auto px-6 py-8">
+		<h1 class="text-4xl font-bold text-center mb-12">All time {year_start} - {year_end} stats</h1>
+		<h2 class="text-2xl font-semibold mb-6">All time totals</h2>
+		<div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 mb-12">
+			 <div class="bg-gray-100 p-4 rounded-lg text-center">
+				<div class="text-2xl font-bold text-blue-600">{stats.totals.plays}</div>
+				<div class="text-sm text-gray-600">plays</div>
+			 </div>
+			 <div class="bg-gray-100 p-4 rounded-lg text-center">
+				<div class="text-2xl font-bold text-blue-600">{stats.totals.hours}</div>
+				<div class="text-sm text-gray-600">hours</div>
+			 </div>
+			 <div class="bg-gray-100 p-4 rounded-lg text-center">
+				<div class="text-2xl font-bold text-blue-600">{stats.totals.collected}</div>
+				<div class="text-sm text-gray-600">collected</div>
+			 </div>
+			 <div class="bg-gray-100 p-4 rounded-lg text-center">
+				<div class="text-2xl font-bold text-blue-600">{stats.totals.ratings}</div>
+				<div class="text-sm text-gray-600">ratings</div>
+			 </div>
+			 <div class="bg-gray-100 p-4 rounded-lg text-center">
+				<div class="text-2xl font-bold text-blue-600">{stats.totals.comments}</div>
+				<div class="text-sm text-gray-600">comments</div>
+			 </div>
+			 <div class="bg-gray-100 p-4 rounded-lg text-center">
+				<div class="text-2xl font-bold text-blue-600">{stats.totals.lists}</div>
+				<div class="text-sm text-gray-600">lists</div>
+			 </div>
+		</div>
+		<h2 class="text-2xl font-semibold mb-6">First play</h2>
+		<div class="bg-white p-3 rounded border text-center mb-8">
+			<div class="font-medium">{first_play.type === 'movie' ? first_play.movie.title : first_play.show.title}</div>
+			<div class="text-sm text-gray-600">({first_play.watched_at})</div>
+		</div>
+		<h2 class="text-2xl font-semibold mb-6">TV shows</h2>
+		<div class="grid md:grid-cols-2 gap-6 mb-8">
+			<div class="bg-gray-100 p-6 rounded-lg">
+				<div class="text-xl font-bold text-green-600 mb-2">{stats.shows.hours} hours watched</div>
+				<div class="text-sm text-gray-600">per year</div>
+				<div class="text-sm text-gray-600">per month</div>
+				<div class="text-sm text-gray-600">per day</div>
+			</div>
+			<div class="bg-gray-100 p-6 rounded-lg">
+				<div class="text-xl font-bold text-green-600 mb-2">{stats.shows.plays} episode plays</div>
+				<div class="text-sm text-gray-600">per year</div>
+				<div class="text-sm text-gray-600">per month</div>
+				<div class="text-sm text-gray-600">per day</div>
+			</div>
+		</div>
+		<h3 class="text-xl font-medium mb-4">Your top shows</h3>
+		<div class="grid md:grid-cols-2 gap-2 mb-8">
+			{top_shows.map(e => (
+				<div class="flex justify-between items-center bg-white p-3 rounded border">
+					<span class="font-medium">{e.data.show.title}</span>
+					<span class="text-sm text-gray-600">({e.data.plays})</span>
+				</div>
+			))}
+		</div>
+		<h3 class="text-xl font-medium mb-4">TV show genres</h3>
+		<div class="mb-16 mt-14">
+			<HorizontalChart items={shows_genres} type="shows" />
+		</div>
+		<h3 class="text-xl font-medium mb-4">TV show release years</h3>
+		<BarChart items={stringified_shows_years} />
+		<h3 class="text-xl font-medium mt-12 mb-4">TV show countries</h3>
+		<div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 mb-8">
+			{shows_countries.map(e => (
+				<div class="bg-white p-3 rounded border text-center">
+					<div class="font-medium">{countries[e.name.toUpperCase()]}</div>
+					<div class="text-sm text-gray-600">({e.count})</div>
+				</div>
+			))}
+		</div>
+		<h3 class="text-xl font-medium mb-4">TV show networks</h3>
+		<div class="grid grid-cols-3 md:grid-cols-5 lg:grid-cols-6 gap-2 mb-8">
+			{shows_networks.map(e => (
+				<div class="bg-white p-3 rounded border text-center">
+					<div class="font-medium">{e.name}</div>
+					<div class="text-sm text-gray-600">({e.count})</div>
+				</div>
+			))}
+		</div>
+		<h3 class="text-xl font-medium mb-4">Highest rated TV shows</h3>
+		<div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 mb-8">
+			{top_rated_shows.map(e => (
+				<div class="bg-white p-3 rounded border text-center">
+					<div class="font-medium">{e.data.show.title}</div>
+					<div class="text-sm text-gray-600">(Rating: {e.data.rating})</div>
+				</div>
+			))}
+		</div>
+		<h3 class="text-xl font-medium mb-4">All ratings</h3>
+		<div class="mb-16 mt-14">
+			<HorizontalChart items={rating_shows} type="shows" />
+		</div>
+		<h2 class="text-2xl font-semibold mb-6 mt-12">Movies</h2>
+		<div class="grid md:grid-cols-2 gap-6 mb-8">
+			<div class="bg-gray-100 p-6 rounded-lg">
+				<div class="text-xl font-bold text-purple-600 mb-2">{stats.movies.hours} hours watched</div>
+				<div class="text-sm text-gray-600">per year</div>
+				<div class="text-sm text-gray-600">per month</div>
+				<div class="text-sm text-gray-600">per day</div>
+			</div>
+			<div class="bg-gray-100 p-6 rounded-lg">
+				<div class="text-xl font-bold text-purple-600 mb-2">{stats.movies.plays} movie plays</div>
+				<div class="text-sm text-gray-600">per year</div>
+				<div class="text-sm text-gray-600">per month</div>
+				<div class="text-sm text-gray-600">per day</div>
+			</div>
+		</div>
+		<h3 class="text-xl font-medium mb-4">Your top movies</h3>
+		<div class="grid md:grid-cols-2 gap-2 mb-8">
+			{top_movies.map(e => (
+				<div class="flex justify-between items-center bg-white p-3 rounded border">
+					<span class="font-medium">{e.data.movie.title}</span>
+					<span class="text-sm text-gray-600">({e.data.plays})</span>
+				</div>
+			))}
+		</div>
+		<h3 class="text-xl font-medium mb-4">Movie genres</h3>
+		<div class="mb-16 mt-14">
+			<HorizontalChart items={movies_genres} type="movies" />
+		</div>
+		<h3 class="text-xl font-medium mb-4">Movie release years</h3>
+		<BarChart items={stringified_movies_years} />
+		<h3 class="text-xl font-medium mt-12 mb-4">Movie countries</h3>
+		<div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 mb-8">
+			{movies_countries.map(e => (
+				<div class="bg-white p-3 rounded border text-center">
+					<div class="font-medium">{countries[e.name.toUpperCase()]}</div>
+					<div class="text-sm text-gray-600">({e.count})</div>
+				</div>
+			))}
+		</div>
+		<h3 class="text-xl font-medium mb-4">Movie studios</h3>
+		<h3 class="text-xl font-medium mb-4">Highest rated movies</h3>
+		<div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 mb-8">
+			{top_rated_movies.map(e => (
+				<div class="bg-white p-3 rounded border text-center">
+					<div class="font-medium">{e.data.movie.title}</div>
+					<div class="text-sm text-gray-600">(Rating: {e.data.rating})</div>
+				</div>
+			))}
+		</div>
+		<h3 class="text-xl font-medium mb-4">All ratings</h3>
+		<div class="mb-16 mt-14">
+			<HorizontalChart items={rating_movies} type="movies" />
+		</div>
+		<h2 class="text-2xl font-semibold mb-6 mt-12">Most watched actors</h2>
+		<h2 class="text-2xl font-semibold mb-6">Most watched actresses</h2>
+		<h2 class="text-2xl font-semibold mb-6">Most watched directors</h2>
+		<h2 class="text-2xl font-semibold mb-6">Most watched writers</h2>
+		<h2 class="text-2xl font-semibold mb-6">Most recent play</h2>
+		<div class="bg-white p-3 rounded border text-center">
+			<div class="font-medium">{last_play.type === 'movie' ? last_play.movie.title : last_play.show.title}</div>
+			<div class="text-sm text-gray-600">({last_play.watched_at})</div>
+		</div>
+	</main>
+</Layout>

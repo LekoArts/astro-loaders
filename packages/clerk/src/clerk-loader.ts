@@ -7,6 +7,9 @@ import { clerkApiReponseToZodSchema } from './schema.js'
 import { isNumber, isObjectLike, isPaginatedLike } from './types.js'
 import { paginate } from './utils.js'
 
+/**
+ * Access certain Clerk Backend APIs by choosing a method name.
+ */
 export function clerkLoader<MethodName extends PathsAutocomplete>(
   options: ClerkLoaderOptions<MethodName>,
 ): Loader {
