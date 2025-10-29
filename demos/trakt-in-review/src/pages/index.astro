@@ -2,7 +2,7 @@
 import { getCollection } from 'astro:content';
 import { getEntry } from 'astro:content';
 import Layout from '../layouts/Layout.astro';
-import { getAllTimeTotals, sortByPlays, aggregateGenres, aggregateProperties, aggregateYears, calculateAdjustedPercentage, getRandomColor, sortByRating, aggregateRatings } from '../utils';
+import { getAllTimeTotals, sortByPlays, aggregateGenres, aggregateProperties, aggregateYears, sortByRating, aggregateRatings } from '../utils';
 import { countries } from '../dict/countries'
 import BarChart from '../components/bar-chart.astro';
 import HorizontalChart from '../components/horizontal-chart.astro';
@@ -13,6 +13,8 @@ const res_watched_shows = await getCollection('traktWatchedShows')
 const res_watched_movies = await getCollection('traktWatchedMovies')
 const res_ratings_movies = await getCollection('traktMovieRatings')
 const res_ratings_shows = await getCollection('traktShowRatings')
+const res_history_movies = await getCollection('traktHistoryMovies')
+const res_history_episodes = await getCollection('traktHistoryEpisodes')
 
 if (!res_stats) {
 	throw new Error('No stats found for the trakt user "arsaurea".');
@@ -24,6 +26,17 @@ const top_shows = sortByPlays(res_watched_shows).slice(0, 10)
 const top_movies = sortByPlays(res_watched_movies).slice(0, 10)
 const top_rated_shows = sortByRating(res_ratings_shows).slice(0, 10)
 const top_rated_movies = sortByRating(res_ratings_movies).slice(0, 10)
+
+const last_episode_play = res_history_episodes[0].data
+const first_episode_play = res_history_episodes[res_history_episodes.length - 1].data
+const last_movie_play = res_history_movies[0].data
+const first_movie_play = res_history_movies[res_history_movies.length - 1].data
+
+const first_play = new Date(first_episode_play.watched_at) < new Date(first_movie_play.watched_at) ? first_episode_play : first_movie_play
+const last_play = new Date(last_episode_play.watched_at) > new Date(last_movie_play.watched_at) ? last_episode_play : last_movie_play
+
+const year_start = new Date(first_play.watched_at).getFullYear()
+const year_end = new Date(last_play.watched_at).getFullYear()
 
 const shows_genres = aggregateGenres(res_watched_shows)
 const movies_genres = aggregateGenres(res_watched_movies)
@@ -41,7 +54,7 @@ const stringified_movies_years = JSON.stringify(movies_years)
 
 <Layout>
 	<main class="max-w-7xl mx-auto px-6 py-8">
-		<h1 class="text-4xl font-bold text-center mb-12">All time stats</h1>
+		<h1 class="text-4xl font-bold text-center mb-12">All time {year_start} - {year_end} stats</h1>
 		<h2 class="text-2xl font-semibold mb-6">All time totals</h2>
 		<div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 mb-12">
 			 <div class="bg-gray-100 p-4 rounded-lg text-center">
@@ -70,6 +83,10 @@ const stringified_movies_years = JSON.stringify(movies_years)
 			 </div>
 		</div>
 		<h2 class="text-2xl font-semibold mb-6">First play</h2>
+		<div class="bg-white p-3 rounded border text-center mb-8">
+			<div class="font-medium">{first_play.type === 'movie' ? first_play.movie.title : first_play.show.title}</div>
+			<div class="text-sm text-gray-600">({first_play.watched_at})</div>
+		</div>
 		<h2 class="text-2xl font-semibold mb-6">TV shows</h2>
 		<div class="grid md:grid-cols-2 gap-6 mb-8">
 			<div class="bg-gray-100 p-6 rounded-lg">
@@ -189,5 +206,9 @@ const stringified_movies_years = JSON.stringify(movies_years)
 		<h2 class="text-2xl font-semibold mb-6">Most watched directors</h2>
 		<h2 class="text-2xl font-semibold mb-6">Most watched writers</h2>
 		<h2 class="text-2xl font-semibold mb-6">Most recent play</h2>
+		<div class="bg-white p-3 rounded border text-center">
+			<div class="font-medium">{last_play.type === 'movie' ? last_play.movie.title : last_play.show.title}</div>
+			<div class="text-sm text-gray-600">({last_play.watched_at})</div>
+		</div>
 	</main>
 </Layout>

@@ -35,9 +35,10 @@ export function traktUsersRatingsLoader({ api_key = import.meta.env.TRAKT_API_KE
       logger.info(`Fetching ${toGenitive(id)} '${type}' ratings`)
 
       const extendedNormalized = Array.isArray(extended) ? extended.join(',') : extended
-      const extPostfix = extended ? `?extended=${extendedNormalized}` : ''
+      const searchParams = extended ? { extended: extendedNormalized } : {}
       const ratingPostfix = rating ? `/${rating}` : ''
-      const response = await trakt.get<Array<Res>>(`users/${id}/ratings/${type}${ratingPostfix}${extPostfix}`).json()
+
+      const response = await trakt.get<Array<Res>>(`users/${id}/ratings/${type}${ratingPostfix}`, { searchParams }).json()
 
       for (const entry of response) {
         let trakt_id: number | undefined

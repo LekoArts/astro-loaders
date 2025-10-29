@@ -34,8 +34,9 @@ export function traktUsersWatchedLoader({ api_key = import.meta.env.TRAKT_API_KE
       logger.info(`Fetching ${toGenitive(id)} watched ${type}`)
 
       const extendedNormalized = Array.isArray(extended) ? extended.join(',') : extended
-      const postfix = extended ? `?extended=${extendedNormalized}` : ''
-      const response = await trakt.get<Array<Res>>(`users/${id}/watched/${type}${postfix}`).json()
+      const searchParams = extended ? { extended: extendedNormalized } : {}
+
+      const response = await trakt.get<Array<Res>>(`users/${id}/watched/${type}`, { searchParams }).json()
 
       for (const entry of response) {
         const trakt_id = type === 'movies' ? entry.movie?.ids.trakt : entry.show?.ids.trakt

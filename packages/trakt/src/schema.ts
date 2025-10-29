@@ -1,4 +1,8 @@
-import type { TraktUsersRatingsLoaderOptions, TraktUsersWatchedLoaderOptions } from './types/loader.js'
+/**
+ * Helpful reference for types found in https://github.com/dvcol/trakt-http-client
+ */
+
+import type { TraktUsersHistoryLoaderOptions, TraktUsersRatingsLoaderOptions, TraktUsersWatchedLoaderOptions } from './types/loader.js'
 import { z } from 'astro/zod'
 
 function hasFull(extended: unknown) {
@@ -276,7 +280,7 @@ const TraktSeasonExtended = TraktSeasonShort.extend({
 const TraktEpisodeShort = z.object({
   season: z.number(),
   number: z.number(),
-  title: z.string(),
+  title: z.string().nullable(),
   ids: z.object({
     trakt: z.number(),
     imdb: z.string().nullable(),
@@ -428,5 +432,65 @@ export function TraktRatingsResponseSchema({ type, extended }: TraktRatingsRespo
       seasonSchema(),
       episodeSchema(),
     ])
+  }
+}
+
+export function BaseTraktHistory({ type }: { type: TraktUsersHistoryLoaderOptions['type'] }) {
+  let _type: 'movie' | 'episode'
+
+  switch (type) {
+    case 'movies':
+      _type = 'movie'
+      break
+    case 'episodes':
+      _type = 'episode'
+      break
+    case 'seasons':
+      _type = 'episode'
+      break
+    case 'shows':
+      _type = 'episode'
+      break
+  }
+
+  return z.object({
+    id: z.number(),
+    watched_at: z.string().datetime(),
+    action: z.enum(['scrobble', 'checkin', 'watch']),
+    type: z.literal(_type),
+  })
+}
+
+type TraktUsersHistoryResponseSchemaParams = Omit<TraktUsersHistoryLoaderOptions, 'api_key' | 'id' | 'item_id' | 'start_at' | 'end_at' | 'page' | 'limit'>
+
+export function TraktUsersHistoryResponseSchema({ type, extended }: TraktUsersHistoryResponseSchemaParams) {
+  // If type is movie, it should return movie history item
+  // If type is shows, seasons, episodes, it should return episode history item
+
+  if (type === 'movies') {
+    if (hasFull(extended)) {
+      return BaseTraktHistory({ type }).extend({
+        movie: TraktMovieExtended,
+      })
+    }
+    else {
+      return BaseTraktHistory({ type }).extend({
+        movie: TraktMovieShort,
+      })
+    }
+  }
+  else {
+    if (hasFull(extended)) {
+      return BaseTraktHistory({ type }).extend({
+        episode: TraktEpisodeExtended,
+        show: TraktShowExtended,
+      })
+    }
+    else {
+      return BaseTraktHistory({ type }).extend({
+        episode: TraktEpisodeShort,
+        show: TraktShowShort,
+      })
+    }
   }
 }

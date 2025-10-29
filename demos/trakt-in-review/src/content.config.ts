@@ -1,4 +1,4 @@
-import { traktUsersListsLoader, traktUsersRatingsLoader, traktUsersStatsLoader, traktUsersWatchedLoader } from '@lekoarts/trakt-loader'
+import { traktUsersHistoryLoader, traktUsersListsLoader, traktUsersRatingsLoader, traktUsersStatsLoader, traktUsersWatchedLoader } from '@lekoarts/trakt-loader'
 import { defineCollection } from 'astro:content'
 
 const TRAKT_USERNAME = 'arsaurea'
@@ -45,6 +45,20 @@ const traktShowRatings = defineCollection({
   }),
 })
 
+const traktHistoryMovies = defineCollection({
+  loader: traktUsersHistoryLoader({
+    id: TRAKT_USERNAME,
+    type: 'movies',
+  }),
+})
+
+const traktHistoryEpisodes = defineCollection({
+  loader: traktUsersHistoryLoader({
+    id: TRAKT_USERNAME,
+    type: 'episodes',
+  }),
+})
+
 export const collections = {
   traktStats,
   traktLists,
@@ -52,4 +66,6 @@ export const collections = {
   traktWatchedMovies,
   traktMovieRatings,
   traktShowRatings,
+  traktHistoryMovies,
+  traktHistoryEpisodes,
 }

@@ -52,7 +52,7 @@ export interface TraktUsersWatchedLoaderOptions extends StandardOptions, TraktAp
   type: 'movies' | 'shows'
 }
 
-export interface TraktUsersHistoryLoaderOptions extends StandardOptions, TraktApiParamsExtended<typeof TraktApiExtended.Full | typeof TraktApiExtended.Images> {
+export interface TraktUsersHistoryLoaderOptions extends StandardOptions, TraktApiParamsExtended<typeof TraktApiExtended.Full> {
   /**
    * Get the history for a specific type.
    */
