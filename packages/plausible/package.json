@@ -8,7 +8,7 @@
   "homepage": "https://github.com/LekoArts/astro-loaders",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com:LekoArts/astro-loaders.git",
+    "url": "git+https://github.com/LekoArts/astro-loaders.git",
     "directory": "packages/plausible"
   },
   "keywords": [
