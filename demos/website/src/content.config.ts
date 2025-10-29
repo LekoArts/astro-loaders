@@ -20,14 +20,14 @@ const photosetsGetList = defineCollection({
 const photosetsGetPhotos = defineCollection({
   loader: flickrPhotosetsGetPhotosLoader({
     username: FLICKR_USERNAME,
-    photoset_id: '72177720313250218',
+    photoset_id: '72177720329881463',
   }),
 })
 
 const photosetsGetListWithPhotos = defineCollection({
   loader: flickrPhotosetsGetListWithPhotosLoader({
     username: FLICKR_USERNAME,
-    in: ['72177720317993398', '72177720317980095'],
+    in: ['72177720329881458', '72177720329881463'],
   }),
 })
 

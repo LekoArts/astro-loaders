@@ -1,7 +1,7 @@
 {
   "name": "@lekoarts/clerk-loader",
   "type": "module",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Astro content loader for Clerk",
   "author": "LekoArts",
   "license": "MIT",
@@ -38,8 +38,8 @@
     "astro": "^5.0.0"
   },
   "dependencies": {
-    "@clerk/backend": "^2.10.1",
-    "type-fest": "^4.41.0"
+    "@clerk/backend": "^2.19.0",
+    "type-fest": "^5.1.0"
   },
   "devDependencies": {
     "@arethetypeswrong/cli": "catalog:linting",
