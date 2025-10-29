@@ -1,5 +1,11 @@
 # @lekoarts/flickr-loader
 
+## 1.2.6
+
+### Patch Changes
+
+- [`866053f`](https://github.com/LekoArts/astro-loaders/commit/866053f1d4f6f3a2e6044cb40c7864e8f8fca835) Thanks [@LekoArts](https://github.com/LekoArts)! - Fix typo in package.json
+
 ## 1.2.5
 
 ### Patch Changes
@@ -45,7 +51,6 @@
   Flickr API: [`flickr.photosets.getPhotos`](https://www.flickr.com/services/api/flickr.photosets.getPhotos.html)
 
   ##### Required options
-
   - `username` (string)
   - `photoset_id` (string)
 
@@ -69,11 +74,9 @@
   Flickr API: [`flickr.photosets.getList`](https://www.flickr.com/services/api/flickr.photosets.getList.html) + [`flickr.photosets.getPhotos`](https://www.flickr.com/services/api/flickr.photosets.getPhotos.html)
 
   ##### Required options
-
   - `username` (string)
 
   ##### Optional options
-
   - `in` (string[]) - Array of photoset IDs to match against
   - `nin` (string[]) - Array of photoset IDs to exclude
 
@@ -124,7 +127,6 @@
 - [#5](https://github.com/LekoArts/astro-loaders/pull/5) [`75d239b`](https://github.com/LekoArts/astro-loaders/commit/75d239ba438b2e7dfb288d8d576925b1aa56d147) Thanks [@LekoArts](https://github.com/LekoArts)! - Add `flickrPhotosetsGetListLoader()` loader. It returns the photosets belonging to the specified user. Flickr API: [`flickr.photosets.getList`](https://www.flickr.com/services/api/flickr.photosets.getList.html).
 
   Required options:
-
   - `username`
 
   Usage:

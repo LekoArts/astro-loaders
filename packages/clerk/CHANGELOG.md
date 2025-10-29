@@ -1,5 +1,11 @@
 # @lekoarts/clerk-loader
 
+## 1.0.6
+
+### Patch Changes
+
+- [`866053f`](https://github.com/LekoArts/astro-loaders/commit/866053f1d4f6f3a2e6044cb40c7864e8f8fca835) Thanks [@LekoArts](https://github.com/LekoArts)! - Fix typo in package.json
+
 ## 1.0.5
 
 ### Patch Changes
