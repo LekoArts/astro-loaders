@@ -11,9 +11,9 @@
   },
   "dependencies": {
     "@lekoarts/trakt-loader": "workspace:^",
-    "@tailwindcss/vite": "^4.1.16",
+    "@tailwindcss/vite": "^4.1.17",
     "astro": "catalog:astro",
     "chart.js": "^4.5.1",
-    "tailwindcss": "^4.1.16"
+    "tailwindcss": "^4.1.17"
   }
 }
