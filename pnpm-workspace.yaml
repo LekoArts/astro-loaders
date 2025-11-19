@@ -4,7 +4,7 @@ packages:
 
 catalogs:
   astro:
-    astro: 5.15.6
+    astro: 5.15.9
   linting:
     '@arethetypeswrong/cli': 0.18.2
     publint: 0.3.15
