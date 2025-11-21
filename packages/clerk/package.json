@@ -38,8 +38,8 @@
     "astro": "^5.0.0"
   },
   "dependencies": {
-    "@clerk/backend": "^2.19.1",
-    "type-fest": "^5.1.0"
+    "@clerk/backend": "^2.23.2",
+    "type-fest": "^5.2.0"
   },
   "devDependencies": {
     "@arethetypeswrong/cli": "catalog:linting",
