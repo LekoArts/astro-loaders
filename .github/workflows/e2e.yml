@@ -47,7 +47,7 @@ jobs:
           TRAKT_API_KEY: ${{ secrets.TRAKT_API_KEY }}
       - name: Run Playwright
         run: pnpm run e2e:build
-      - uses: actions/upload-artifact@v5
+      - uses: actions/upload-artifact@v6
         if: ${{ cancelled() || failure() }}
         with:
           name: playwright-traces-${{ github.run_id }}-${{ github.run-attempt }}
