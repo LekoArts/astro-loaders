@@ -9,5 +9,5 @@ catalogs:
     '@arethetypeswrong/cli': 0.18.2
     publint: 0.3.16
   repo:
-    tsdown: 0.18.3
+    tsdown: 0.18.4
     typescript: 5.9.3
