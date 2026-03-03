@@ -29,7 +29,7 @@
     "@playwright/test": "^1.58.2",
     "@types/node": "^24.10.13",
     "eslint": "^9.39.3",
-    "eslint-plugin-format": "^1.4.0",
+    "eslint-plugin-format": "^2.0.1",
     "lint-staged": "^16.2.7",
     "simple-git-hooks": "^2.13.1",
     "vite": "^7.3.1",
