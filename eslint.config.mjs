@@ -5,5 +5,6 @@ export default antfu({
   typescript: true,
   rules: {
     'pnpm/json-enforce-catalog': 'off',
+    'pnpm/yaml-enforce-settings': 'off',
   },
 })
