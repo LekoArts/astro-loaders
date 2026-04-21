@@ -35,7 +35,7 @@
     "test": "vitest --typecheck"
   },
   "peerDependencies": {
-    "astro": "^5.0.0"
+    "astro": "^5.0.0 || ^6.0.0"
   },
   "dependencies": {
     "ky": "^1.14.3"
