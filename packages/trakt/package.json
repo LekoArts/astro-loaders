@@ -1,7 +1,7 @@
 {
   "name": "@lekoarts/trakt-loader",
   "type": "module",
-  "version": "1.0.1",
+  "version": "2.0.0",
   "description": "Astro content loader for Trakt.tv",
   "author": "LekoArts",
   "license": "MIT",
