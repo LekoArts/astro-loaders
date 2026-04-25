@@ -2,4 +2,4 @@
 "@lekoarts/clerk-loader": patch
 ---
 
-Update internal @clerk/backend version to v3
+Update internal `@clerk/backend` version to v3

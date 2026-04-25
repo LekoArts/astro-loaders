@@ -1,7 +1,7 @@
 ---
 import { getCollection } from 'astro:content';
 
-const allUsers = await getCollection('clerk')
+const allUsers = (await getCollection('clerk')).sort((a, b) => a.data.username.localeCompare(b.data.username))
 ---
 
 <p class="text-slate-600 dark:text-slate-400 text-base/6">Return values of <code>users.getUserList()</code>:</p>

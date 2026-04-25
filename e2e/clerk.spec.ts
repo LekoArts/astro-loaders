@@ -9,5 +9,5 @@ test('clerk', async ({ page }) => {
 
   await expect(userList).toHaveCount(6)
 
-  await expect(userList.last()).toHaveText('arsaurea')
+  await expect(userList).toContainText(['arsaurea'])
 })

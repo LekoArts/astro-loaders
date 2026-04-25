@@ -2,7 +2,7 @@
 import { getCollection } from 'astro:content';
 import ArtImage from '../ArtImage.astro';
 
-const photosetsGetPhotos = await getCollection('photosetsGetListWithPhotos')
+const photosetsGetPhotos = (await getCollection('photosetsGetListWithPhotos')).sort((a, b) => a.data.title.localeCompare(b.data.title))
 ---
 
 {photosetsGetPhotos.slice(0,2).map(({ data: photoset }, index) => (
