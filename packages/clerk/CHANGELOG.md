@@ -1,5 +1,17 @@
 # @lekoarts/clerk-loader
 
+## 2.0.0
+
+### Major Changes
+
+- [#197](https://github.com/LekoArts/astro-loaders/pull/197) [`2315f2e`](https://github.com/LekoArts/astro-loaders/commit/2315f2ef6afe6af9113c9a1cd14ecabc595bbf77) Thanks [@LekoArts](https://github.com/LekoArts)! - Require Astro 6 or later
+
+- [#197](https://github.com/LekoArts/astro-loaders/pull/197) [`2315f2e`](https://github.com/LekoArts/astro-loaders/commit/2315f2ef6afe6af9113c9a1cd14ecabc595bbf77) Thanks [@LekoArts](https://github.com/LekoArts)! - Require Node.js 22.13.0 or later
+
+### Patch Changes
+
+- [#197](https://github.com/LekoArts/astro-loaders/pull/197) [`2315f2e`](https://github.com/LekoArts/astro-loaders/commit/2315f2ef6afe6af9113c9a1cd14ecabc595bbf77) Thanks [@LekoArts](https://github.com/LekoArts)! - Update internal `@clerk/backend` version to v3
+
 ## 1.0.6
 
 ### Patch Changes
