@@ -7,6 +7,6 @@ export function createPlausible(api_key: string, api_url: string): KyInstance {
       'user-agent': '@lekoarts/plausible-loader',
       'authorization': `Bearer ${api_key}`,
     },
-    prefixUrl: api_url,
+    prefix: api_url,
   })
 }

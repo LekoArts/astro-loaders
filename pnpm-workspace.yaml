@@ -2,9 +2,11 @@ packages:
   - 'packages/*'
   - 'demos/*'
 
+catalog:
+  astro: 5.18.1
+  ky: ^2.0.2
+
 catalogs:
-  astro:
-    astro: 5.18.1
   linting:
     '@arethetypeswrong/cli': 0.18.2
     publint: 0.3.18

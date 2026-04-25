@@ -24,64 +24,64 @@ export function normalize(res: FlickrResponse): Res {
     id: rest.id,
   } as Res
 
-  if (Object.prototype.hasOwnProperty.call(copy, 'owner')) {
+  if (Object.hasOwn(copy, 'owner')) {
     if (typeof copy.owner !== 'undefined') {
       output.owner = copy.owner
     }
   }
 
   ;(Object.keys(SIZES) as SizesArray).forEach((suffix) => {
-    if (Object.prototype.hasOwnProperty.call(copy, `height_${suffix}`)) {
+    if (Object.hasOwn(copy, `height_${suffix}`)) {
       copy[`height_${suffix}`] = Number.parseInt(copy[`height_${suffix}`] as string, 10)
     }
-    if (Object.prototype.hasOwnProperty.call(copy, `width_${suffix}`)) {
+    if (Object.hasOwn(copy, `width_${suffix}`)) {
       copy[`width_${suffix}`] = Number.parseInt(copy[`width_${suffix}`] as string, 10)
     }
   })
 
-  if (Object.prototype.hasOwnProperty.call(copy, 'ispublic')) {
+  if (Object.hasOwn(copy, 'ispublic')) {
     output.is_public = copy.ispublic === 1
   }
 
-  if (Object.prototype.hasOwnProperty.call(copy, 'isfriend')) {
+  if (Object.hasOwn(copy, 'isfriend')) {
     output.is_friend = copy.isfriend === 1
   }
 
-  if (Object.prototype.hasOwnProperty.call(copy, 'isfamily')) {
+  if (Object.hasOwn(copy, 'isfamily')) {
     output.is_family = copy.isfamily === 1
   }
 
-  if (Object.prototype.hasOwnProperty.call(copy, 'description')) {
+  if (Object.hasOwn(copy, 'description')) {
     output.description = copy.description?._content
   }
 
-  if (Object.prototype.hasOwnProperty.call(copy, 'lastupdate')) {
+  if (Object.hasOwn(copy, 'lastupdate')) {
     if (copy.lastupdate) {
       output.date_last_update = new Date(+copy.lastupdate * 1000)
     }
   }
 
-  if (Object.prototype.hasOwnProperty.call(copy, 'datetaken')) {
+  if (Object.hasOwn(copy, 'datetaken')) {
     if (copy.datetaken) {
       output.date_taken = new Date(copy.datetaken)
     }
   }
 
-  if (Object.prototype.hasOwnProperty.call(copy, 'views')) {
+  if (Object.hasOwn(copy, 'views')) {
     if (typeof copy.views !== 'undefined') {
       output.views = Number.parseInt(copy.views, 10)
     }
   }
 
-  if (Object.prototype.hasOwnProperty.call(copy, 'media')) {
+  if (Object.hasOwn(copy, 'media')) {
     output.media = copy.media
   }
 
-  if (Object.prototype.hasOwnProperty.call(copy, 'media_status')) {
+  if (Object.hasOwn(copy, 'media_status')) {
     output.media_status = copy.media_status
   }
 
-  if (Object.prototype.hasOwnProperty.call(copy, 'title')) {
+  if (Object.hasOwn(copy, 'title')) {
     if (typeof copy.title === 'string') {
       output.title = copy.title
     }
@@ -90,45 +90,45 @@ export function normalize(res: FlickrResponse): Res {
     }
   }
 
-  if (Object.prototype.hasOwnProperty.call(copy, 'username')) {
+  if (Object.hasOwn(copy, 'username')) {
     output.username = copy.username!
   }
 
-  if (Object.prototype.hasOwnProperty.call(copy, 'primary')) {
+  if (Object.hasOwn(copy, 'primary')) {
     output.primary = copy.primary!
   }
 
-  if (Object.prototype.hasOwnProperty.call(copy, 'count_views')) {
+  if (Object.hasOwn(copy, 'count_views')) {
     if (typeof copy.count_views !== 'undefined') {
       output.views = Number.parseInt(copy.count_views, 10)
     }
   }
 
-  if (Object.prototype.hasOwnProperty.call(copy, 'count_comments')) {
+  if (Object.hasOwn(copy, 'count_comments')) {
     if (copy.count_comments) {
       output.comments = Number.parseInt(copy.count_comments, 10)
     }
   }
 
-  if (Object.prototype.hasOwnProperty.call(copy, 'count_photos')) {
+  if (Object.hasOwn(copy, 'count_photos')) {
     if (typeof copy.count_photos !== 'undefined') {
       output.photos = copy.count_photos
     }
   }
 
-  if (Object.prototype.hasOwnProperty.call(copy, 'count_videos')) {
+  if (Object.hasOwn(copy, 'count_videos')) {
     if (typeof copy.count_videos !== 'undefined') {
       output.videos = copy.count_videos
     }
   }
 
-  if (Object.prototype.hasOwnProperty.call(copy, 'date_create')) {
+  if (Object.hasOwn(copy, 'date_create')) {
     if (copy.date_create) {
       output.date_create = new Date(+copy.date_create * 1000)
     }
   }
 
-  if (Object.prototype.hasOwnProperty.call(copy, 'date_update')) {
+  if (Object.hasOwn(copy, 'date_update')) {
     if (copy.date_update) {
       output.date_last_update = new Date(+copy.date_update * 1000)
     }
@@ -144,7 +144,7 @@ export function normalize(res: FlickrResponse): Res {
   output.imageUrls = {}
 
   for (const key in copy) {
-    if (Object.prototype.hasOwnProperty.call(copy, key)) {
+    if (Object.hasOwn(copy, key)) {
       const firstElem = key.toString().split(`_`).shift()
       const lastElem = key.toString().split(`_`).pop() as SizesUnion
 
@@ -157,7 +157,7 @@ export function normalize(res: FlickrResponse): Res {
       }
 
       for (const image in output.imageUrls) {
-        if (Object.prototype.hasOwnProperty.call(output.imageUrls, image)) {
+        if (Object.hasOwn(output.imageUrls, image)) {
           // @ts-expect-error - Fixme
           const element: ImageUrl = output.imageUrls[image]
 
