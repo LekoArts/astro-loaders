@@ -46,6 +46,6 @@ ${JSON.stringify(executedQuery, null, 2)}
 
       logger.info('Loaded successfully')
     },
-    schema: () => PlausibleResponseSchema,
+    schema: PlausibleResponseSchema,
   }
 }

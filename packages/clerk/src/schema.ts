@@ -1,9 +1,9 @@
-import type { ZodTypeAny } from 'astro/zod'
+import type { ZodType } from 'astro/zod'
 import type { PathsAutocomplete } from './types.js'
 import { z } from 'astro/zod'
 import { GetEmailAddressResponse, GetOrganizationResponse, GetPhoneNumberResponse, GetSAMLConnectionResponse, GetUserListResponse, GetUserResponse, ListInvitationsResponse, ListOrganizationInvitationsResponse, ListOrganizationMembershipsResponse, ListOrganizationsResponse, UsersGetOrganizationMembershipsResponse } from './openapi.js'
 
-const METHOD_TO_SCHEMA_MAP: Record<PathsAutocomplete, ZodTypeAny> = {
+const METHOD_TO_SCHEMA_MAP: Record<PathsAutocomplete, ZodType> = {
   'users.getUserList': GetUserListResponse.element,
   'users.getUser': GetUserResponse,
   'users.getCount': z.object({ count: z.number() }),
@@ -19,6 +19,6 @@ const METHOD_TO_SCHEMA_MAP: Record<PathsAutocomplete, ZodTypeAny> = {
   'samlConnections.getSamlConnection': GetSAMLConnectionResponse,
 } as const
 
-export function clerkApiReponseToZodSchema(methodName: PathsAutocomplete): ZodTypeAny {
+export function clerkApiReponseToZodSchema(methodName: PathsAutocomplete): ZodType {
   return METHOD_TO_SCHEMA_MAP[methodName]
 }

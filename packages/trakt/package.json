@@ -40,7 +40,8 @@
     "astro": "^6.0.0"
   },
   "dependencies": {
-    "ky": "catalog:"
+    "ky": "catalog:",
+    "zod-to-ts": "^2.0.0"
   },
   "devDependencies": {
     "@arethetypeswrong/cli": "catalog:linting",

@@ -2,6 +2,7 @@ import type { Loader } from 'astro/loaders'
 import type { TraktUsersHistoryLoaderOptions } from '../types/loader.js'
 import type { BaseTraktHistory } from '../types/trakt.js'
 import { AstroError } from 'astro/errors'
+import { createAuxiliaryTypeStore, createTypeAlias, zodToTs } from 'zod-to-ts'
 import { DEFAULT_LIMIT } from '../constants.js'
 import { createTrakt } from '../ky.js'
 import { TraktUsersHistoryResponseSchema } from '../schema.js'
@@ -79,6 +80,16 @@ export function traktUsersHistoryLoader({ api_key = import.meta.env.TRAKT_API_KE
         })
       }
     },
-    schema: TraktUsersHistoryResponseSchema({ type, extended }),
+    createSchema: async () => {
+      const schema = TraktUsersHistoryResponseSchema({ type, extended })
+      const identifier = 'Entry'
+      const { node } = zodToTs(schema, { auxiliaryTypeStore: createAuxiliaryTypeStore() })
+      const typeAlias = createTypeAlias(node, identifier)
+
+      return {
+        schema,
+        types: `export ${typeAlias}`,
+      }
+    },
   }
 }

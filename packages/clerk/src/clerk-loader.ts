@@ -2,6 +2,7 @@ import type { Loader } from 'astro/loaders'
 import type { ClerkLoaderOptions, GetNamespaceAndMethod, PaginatedLike, PathsAutocomplete, SimplifiedReturnType } from './types.js'
 import { createClerkClient } from '@clerk/backend'
 import { AstroError } from 'astro/errors'
+import { createAuxiliaryTypeStore, createTypeAlias, zodToTs } from 'zod-to-ts'
 import { DEFAULT_LIMIT, DEFAULT_OFFSET } from './constants.js'
 import { clerkApiReponseToZodSchema } from './schema.js'
 import { isNumber, isObjectLike, isPaginatedLike } from './types.js'
@@ -122,6 +123,16 @@ export function clerkLoader<MethodName extends PathsAutocomplete>(
         throw new AstroError(`Unexpected return type from ${options.method.name}`)
       }
     },
-    schema: () => clerkApiReponseToZodSchema(options.method.name),
+    createSchema: async () => {
+      const schema = clerkApiReponseToZodSchema(options.method.name)
+      const identifier = 'Entry'
+      const { node } = zodToTs(schema, { auxiliaryTypeStore: createAuxiliaryTypeStore() })
+      const typeAlias = createTypeAlias(node, identifier)
+
+      return {
+        schema,
+        types: `export ${typeAlias}`,
+      }
+    },
   }
 }
