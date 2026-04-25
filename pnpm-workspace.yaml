@@ -3,7 +3,7 @@ packages:
   - 'demos/*'
 
 catalog:
-  astro: 5.18.1
+  astro: ^6.1.9
   ky: ^2.0.2
 
 catalogs:
