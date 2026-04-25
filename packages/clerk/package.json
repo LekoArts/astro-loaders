@@ -28,6 +28,7 @@
     "node": ">=22.13.0"
   },
   "scripts": {
+    "openapi": "orval --config orval.config.ts",
     "build": "tsdown",
     "dev": "tsdown --watch",
     "prepublishOnly": "node --run build",
@@ -38,12 +39,13 @@
     "astro": "^6.0.0"
   },
   "dependencies": {
-    "@clerk/backend": "^2.33.3",
+    "@clerk/backend": "^3.4.1",
     "type-fest": "^5.6.0"
   },
   "devDependencies": {
     "@arethetypeswrong/cli": "catalog:linting",
     "astro": "catalog:",
+    "orval": "^8.8.1",
     "publint": "catalog:linting",
     "tsdown": "catalog:repo",
     "typescript": "catalog:repo"
