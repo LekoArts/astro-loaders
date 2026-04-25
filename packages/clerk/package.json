@@ -25,9 +25,10 @@
     "dist"
   ],
   "engines": {
-    "node": "^18.17.1 || ^20.3.0 || >=22.0.0"
+    "node": ">=22.13.0"
   },
   "scripts": {
+    "openapi": "orval --config orval.config.ts",
     "build": "tsdown",
     "dev": "tsdown --watch",
     "prepublishOnly": "node --run build",
@@ -35,15 +36,17 @@
     "test": "vitest"
   },
   "peerDependencies": {
-    "astro": "^5.0.0"
+    "astro": "^6.0.0"
   },
   "dependencies": {
-    "@clerk/backend": "^2.33.3",
-    "type-fest": "^5.6.0"
+    "@clerk/backend": "^3.4.1",
+    "type-fest": "^5.6.0",
+    "zod-to-ts": "^2.0.0"
   },
   "devDependencies": {
     "@arethetypeswrong/cli": "catalog:linting",
-    "astro": "catalog:astro",
+    "astro": "catalog:",
+    "orval": "^8.8.1",
     "publint": "catalog:linting",
     "tsdown": "catalog:repo",
     "typescript": "catalog:repo"

@@ -2,6 +2,7 @@ import type { Loader } from 'astro/loaders'
 import type { TraktUsersRatingsLoaderOptions } from '../types/loader.js'
 import type { BaseTraktRatings } from '../types/trakt.js'
 import { AstroError } from 'astro/errors'
+import { createAuxiliaryTypeStore, createTypeAlias, zodToTs } from 'zod-to-ts'
 import { createTrakt } from '../ky.js'
 import { TraktRatingsResponseSchema } from '../schema.js'
 import { toGenitive } from '../utils.js'
@@ -72,6 +73,16 @@ export function traktUsersRatingsLoader({ api_key = import.meta.env.TRAKT_API_KE
         })
       }
     },
-    schema: TraktRatingsResponseSchema({ type, extended }),
+    createSchema: async () => {
+      const schema = TraktRatingsResponseSchema({ type, extended })
+      const identifier = 'Entry'
+      const { node } = zodToTs(schema, { auxiliaryTypeStore: createAuxiliaryTypeStore() })
+      const typeAlias = createTypeAlias(node, identifier)
+
+      return {
+        schema,
+        types: `export ${typeAlias}`,
+      }
+    },
   }
 }

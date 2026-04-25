@@ -9,6 +9,6 @@ export function createTrakt(api_key: string): KyInstance {
       'trakt-api-version': '2',
       'trakt-api-key': api_key,
     },
-    prefixUrl: API_URL,
+    prefix: API_URL,
   })
 }

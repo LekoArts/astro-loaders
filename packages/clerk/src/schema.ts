@@ -1,24 +1,24 @@
-import type { ZodTypeAny } from 'astro/zod'
+import type { ZodType } from 'astro/zod'
 import type { PathsAutocomplete } from './types.js'
 import { z } from 'astro/zod'
-import { get_GetEmailAddress, get_GetOrganization, get_GetPhoneNumber, get_GetUser, get_GetUserList, get_ListInvitations, Organization, OrganizationInvitation, OrganizationMembership, schemas_SAMLConnection } from './openapi.js'
+import { GetEmailAddressResponse, GetOrganizationResponse, GetPhoneNumberResponse, GetSAMLConnectionResponse, GetUserListResponse, GetUserResponse, ListInvitationsResponse, ListOrganizationInvitationsResponse, ListOrganizationMembershipsResponse, ListOrganizationsResponse, UsersGetOrganizationMembershipsResponse } from './openapi.js'
 
-const METHOD_TO_SCHEMA_MAP: Record<PathsAutocomplete, ZodTypeAny> = {
-  'users.getUserList': get_GetUserList.response.element,
-  'users.getUser': get_GetUser.response,
+const METHOD_TO_SCHEMA_MAP: Record<PathsAutocomplete, ZodType> = {
+  'users.getUserList': GetUserListResponse.element,
+  'users.getUser': GetUserResponse,
   'users.getCount': z.object({ count: z.number() }),
-  'users.getOrganizationMembershipList': OrganizationMembership,
-  'organizations.getOrganization': get_GetOrganization.response,
-  'organizations.getOrganizationList': Organization,
-  'organizations.getOrganizationMembershipList': OrganizationMembership,
-  'organizations.getOrganizationInvitationList': OrganizationInvitation,
-  'invitations.getInvitationList': get_ListInvitations.response.element,
-  'emailAddresses.getEmailAddress': get_GetEmailAddress.response,
-  'phoneNumbers.getPhoneNumber': get_GetPhoneNumber.response,
-  'samlConnections.getSamlConnectionList': schemas_SAMLConnection,
-  'samlConnections.getSamlConnection': schemas_SAMLConnection,
+  'users.getOrganizationMembershipList': UsersGetOrganizationMembershipsResponse.shape.data.element,
+  'organizations.getOrganization': GetOrganizationResponse,
+  'organizations.getOrganizationList': ListOrganizationsResponse.shape.data.element,
+  'organizations.getOrganizationMembershipList': ListOrganizationMembershipsResponse.shape.data.element,
+  'organizations.getOrganizationInvitationList': ListOrganizationInvitationsResponse.shape.data.element,
+  'invitations.getInvitationList': ListInvitationsResponse.element,
+  'emailAddresses.getEmailAddress': GetEmailAddressResponse,
+  'phoneNumbers.getPhoneNumber': GetPhoneNumberResponse,
+  'samlConnections.getSamlConnectionList': GetSAMLConnectionResponse,
+  'samlConnections.getSamlConnection': GetSAMLConnectionResponse,
 } as const
 
-export function clerkApiReponseToZodSchema(methodName: PathsAutocomplete): ZodTypeAny {
+export function clerkApiReponseToZodSchema(methodName: PathsAutocomplete): ZodType {
   return METHOD_TO_SCHEMA_MAP[methodName]
 }

@@ -18,7 +18,7 @@ type TraktRatedShow = CollectionEntry<'traktShowRatings'>
  * ```
  */
 export function getLastItem<T>(arr: T[]) {
-  return arr[arr.length - 1]
+  return arr.at(-1)
 }
 
 /**
@@ -140,6 +140,9 @@ export function isTraktWatchedShow(item: TraktWatchedMovie | TraktWatchedShow): 
   return 'show' in item.data
 }
 
+const WORDS_REGEX = /(?:^|\s|-)(\w)/g
+const DASH_REGEX = /-/g
+
 /**
  * Transform lowercase string or kebab-case string to Title Case.
  * @param str The string to transform.
@@ -157,8 +160,8 @@ export function isTraktWatchedShow(item: TraktWatchedMovie | TraktWatchedShow): 
 export function toTitleCase(str: string): string {
   return str
     .toLowerCase()
-    .replace(/(?:^|\s|-)(\w)/g, match => match.toUpperCase())
-    .replace(/-/g, ' ')
+    .replace(WORDS_REGEX, match => match.toUpperCase())
+    .replace(DASH_REGEX, ' ')
 }
 
 /**

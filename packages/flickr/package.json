@@ -24,7 +24,7 @@
     "dist"
   ],
   "engines": {
-    "node": "^18.17.1 || ^20.3.0 || >=22.0.0"
+    "node": ">=22.13.0"
   },
   "scripts": {
     "build": "tsdown",
@@ -34,14 +34,14 @@
     "test": "vitest"
   },
   "peerDependencies": {
-    "astro": "^5.0.0"
+    "astro": "^6.0.0"
   },
   "dependencies": {
-    "ky": "^1.14.3"
+    "ky": "catalog:"
   },
   "devDependencies": {
     "@arethetypeswrong/cli": "catalog:linting",
-    "astro": "catalog:astro",
+    "astro": "catalog:",
     "publint": "catalog:linting",
     "tsdown": "catalog:repo",
     "typescript": "catalog:repo"

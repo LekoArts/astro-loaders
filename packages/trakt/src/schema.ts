@@ -72,8 +72,8 @@ export const TraktUsersListsResponseSchema = z.object({
     'collected',
   ]),
   sort_how: z.enum(['asc', 'desc']),
-  created_at: z.string().datetime(),
-  updated_at: z.string().datetime(),
+  created_at: z.iso.datetime(),
+  updated_at: z.iso.datetime(),
   item_count: z.number(),
   comment_count: z.number(),
   likes: z.number(),
@@ -95,9 +95,9 @@ const TraktImage = z.object({
 
 export const BaseTraktWatched = z.object({
   plays: z.number(),
-  last_watched_at: z.string().datetime(),
-  last_updated_at: z.string().datetime(),
-  reset_at: z.string().datetime().nullable().optional(),
+  last_watched_at: z.iso.datetime(),
+  last_updated_at: z.iso.datetime(),
+  reset_at: z.iso.datetime().nullable().optional(),
 })
 
 const TraktMovieShort = z.object({
@@ -117,7 +117,7 @@ const TraktMovieExtended = TraktMovieShort.extend({
   released: z.string().nullable(),
   runtime: z.number(),
   country: z.string().length(2).nullable(),
-  updated_at: z.string().datetime(),
+  updated_at: z.iso.datetime(),
   trailer: z.string().url().nullable(),
   homepage: z.string().url().nullable(),
   status: z.enum(['released', 'in production', 'post production', 'planned', 'rumored', 'canceled']),
@@ -134,7 +134,7 @@ const TraktMovieExtended = TraktMovieShort.extend({
 const TraktWatchedEpisode = z.object({
   number: z.number(),
   plays: z.number(),
-  last_watched_at: z.string().datetime(),
+  last_watched_at: z.iso.datetime(),
 })
 
 const TraktWatchedSeason = z.object({
@@ -157,7 +157,7 @@ const TraktShowShort = z.object({
 const TraktShowExtended = TraktShowShort.extend({
   tagline: z.string(),
   overview: z.string().nullable(),
-  first_aired: z.string().datetime(),
+  first_aired: z.iso.datetime(),
   airs: z.object({
     day: z.string().nullable(),
     time: z.string().nullable(),
@@ -167,7 +167,7 @@ const TraktShowExtended = TraktShowShort.extend({
   certification: z.string().nullable(),
   network: z.string().nullable(),
   country: z.string().length(2),
-  updated_at: z.string().datetime(),
+  updated_at: z.iso.datetime(),
   trailer: z.string().url().nullable(),
   homepage: z.string().url().nullable(),
   status: z.enum(['returning series', 'continuing', 'in production', 'planned', 'upcoming', 'pilot', 'canceled', 'ended']),
@@ -225,7 +225,7 @@ export function BaseTraktRating({ type }: { type: TraktUsersRatingsLoaderOptions
   if (type === 'all') {
     return z.object({
       rating: z.number().min(0).max(10),
-      rated_at: z.string().datetime(),
+      rated_at: z.iso.datetime(),
       type: z.enum(['movie', 'show', 'season', 'episode']),
     })
   }
@@ -249,7 +249,7 @@ export function BaseTraktRating({ type }: { type: TraktUsersRatingsLoaderOptions
 
   return z.object({
     rating: z.number().min(0).max(10),
-    rated_at: z.string().datetime(),
+    rated_at: z.iso.datetime(),
     type: z.literal(_type),
   })
 }
@@ -270,8 +270,8 @@ const TraktSeasonExtended = TraktSeasonShort.extend({
   aired_episodes: z.number(),
   title: z.string(),
   overview: z.string().nullable(),
-  first_aired: z.string().datetime(),
-  updated_at: z.string().datetime(),
+  first_aired: z.iso.datetime(),
+  updated_at: z.iso.datetime(),
   network: z.string().nullable(),
   original_title: z.string().nullable(),
   images: TraktImage.partial().optional(),
@@ -295,8 +295,8 @@ const TraktEpisodeExtended = TraktEpisodeShort.extend({
   rating: z.number().min(0).max(10),
   votes: z.number(),
   comment_count: z.number(),
-  first_aired: z.string().datetime(),
-  updated_at: z.string().datetime(),
+  first_aired: z.iso.datetime(),
+  updated_at: z.iso.datetime(),
   available_translations: z.array(z.string().length(2)),
   runtime: z.number(),
   episode_type: z.enum(['season_finale', 'standard', 'series_premiere']),
@@ -416,22 +416,22 @@ export function TraktRatingsResponseSchema({ type, extended }: TraktRatingsRespo
     })
   }
 
-  if (type === 'movies')
-    return movieSchema()
-  if (type === 'shows')
-    return showSchema()
-  if (type === 'seasons')
-    return seasonSchema()
-  if (type === 'episodes')
-    return episodeSchema()
-
-  if (type === 'all') {
-    return z.union([
-      movieSchema(),
-      showSchema(),
-      seasonSchema(),
-      episodeSchema(),
-    ])
+  switch (type) {
+    case 'movies':
+      return movieSchema()
+    case 'shows':
+      return showSchema()
+    case 'seasons':
+      return seasonSchema()
+    case 'episodes':
+      return episodeSchema()
+    case 'all':
+      return z.union([
+        movieSchema(),
+        showSchema(),
+        seasonSchema(),
+        episodeSchema(),
+      ])
   }
 }
 
@@ -455,7 +455,7 @@ export function BaseTraktHistory({ type }: { type: TraktUsersHistoryLoaderOption
 
   return z.object({
     id: z.number(),
-    watched_at: z.string().datetime(),
+    watched_at: z.iso.datetime(),
     action: z.enum(['scrobble', 'checkin', 'watch']),
     type: z.literal(_type),
   })

@@ -2,6 +2,7 @@ import type { Loader } from 'astro/loaders'
 import type { TraktUsersWatchedLoaderOptions } from '../types/loader.js'
 import type { BaseTraktWatched } from '../types/trakt.js'
 import { AstroError } from 'astro/errors'
+import { createAuxiliaryTypeStore, createTypeAlias, zodToTs } from 'zod-to-ts'
 import { createTrakt } from '../ky.js'
 import { TraktUsersWatchedResponseSchema } from '../schema.js'
 import { toGenitive } from '../utils.js'
@@ -56,6 +57,16 @@ export function traktUsersWatchedLoader({ api_key = import.meta.env.TRAKT_API_KE
         })
       }
     },
-    schema: TraktUsersWatchedResponseSchema({ type, extended }),
+    createSchema: async () => {
+      const schema = TraktUsersWatchedResponseSchema({ type, extended })
+      const identifier = 'Entry'
+      const { node } = zodToTs(schema, { auxiliaryTypeStore: createAuxiliaryTypeStore() })
+      const typeAlias = createTypeAlias(node, identifier)
+
+      return {
+        schema,
+        types: `export ${typeAlias}`,
+      }
+    },
   }
 }
