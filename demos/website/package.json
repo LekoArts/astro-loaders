@@ -14,8 +14,8 @@
     "@lekoarts/flickr-loader": "workspace:^",
     "@lekoarts/plausible-loader": "workspace:^",
     "@lekoarts/trakt-loader": "workspace:^",
-    "@tailwindcss/vite": "^4.2.4",
+    "@tailwindcss/vite": "^4.3.0",
     "astro": "catalog:",
-    "tailwindcss": "^4.2.4"
+    "tailwindcss": "^4.3.0"
   }
 }
