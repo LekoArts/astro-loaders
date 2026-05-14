@@ -46,7 +46,7 @@
   "devDependencies": {
     "@arethetypeswrong/cli": "catalog:linting",
     "astro": "catalog:",
-    "orval": "^8.9.1",
+    "orval": "^8.10.0",
     "publint": "catalog:linting",
     "tsdown": "catalog:repo",
     "typescript": "catalog:repo"
