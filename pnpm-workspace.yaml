@@ -16,5 +16,5 @@ catalogs:
     '@arethetypeswrong/cli': 0.18.3
     publint: 0.3.21
   repo:
-    tsdown: 0.22.1
+    tsdown: 0.22.2
     typescript: 6.0.3
