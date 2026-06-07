@@ -3,13 +3,13 @@ packages:
   - 'demos/*'
 
 catalog:
-  astro: ^6.3.2
+  astro: ^6.4.4
   ky: ^2.0.2
 
 catalogs:
   linting:
-    '@arethetypeswrong/cli': 0.18.2
+    '@arethetypeswrong/cli': 0.18.3
     publint: 0.3.21
   repo:
-    tsdown: 0.22.0
+    tsdown: 0.22.1
     typescript: 5.9.3
