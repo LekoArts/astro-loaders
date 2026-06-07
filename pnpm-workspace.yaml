@@ -2,6 +2,11 @@ packages:
   - 'packages/*'
   - 'demos/*'
 
+allowBuilds:
+  esbuild: true
+  sharp: true
+  simple-git-hooks: true
+
 catalog:
   astro: ^6.4.4
   ky: ^2.0.2
