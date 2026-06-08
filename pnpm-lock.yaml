@@ -117,7 +117,7 @@ importers:
         version: 5.7.0
       zod-to-ts:
         specifier: ^2.0.0
-        version: 2.0.0(typescript@6.0.3)(zod@4.4.3)
+        version: 2.1.0(typescript@6.0.3)(zod@4.4.3)
     devDependencies:
       '@arethetypeswrong/cli':
         specifier: catalog:linting
@@ -189,7 +189,7 @@ importers:
         version: 2.0.2
       zod-to-ts:
         specifier: ^2.0.0
-        version: 2.0.0(typescript@6.0.3)(zod@4.4.3)
+        version: 2.1.0(typescript@6.0.3)(zod@4.4.3)
     devDependencies:
       '@arethetypeswrong/cli':
         specifier: catalog:linting
@@ -4434,10 +4434,10 @@ packages:
     resolution: {integrity: sha512-CzhO+pFNo8ajLM2d2IW/R93ipy99LWjtwblvC1RsoSUMZgyLbYFr221TnSNT7GjGdYui6P459mw9JH/g/zW2ug==}
     engines: {node: '>=18'}
 
-  zod-to-ts@2.0.0:
-    resolution: {integrity: sha512-aHsUgIl+CQutKAxtRNeZslLCLXoeuSq+j5HU7q3kvi/c2KIAo6q4YjT7/lwFfACxLB923ELHYMkHmlxiqFy4lw==}
+  zod-to-ts@2.1.0:
+    resolution: {integrity: sha512-jZP1GokTqR99FLmtGU+B9acjD9u/R++b++Vxe1sWpBQDd82/9/j5LyLZZ7/Oy3h2nxcz5NihikgX4D0hhdu3+g==}
     peerDependencies:
-      typescript: ^5.0.0
+      typescript: ^5 || ^6
       zod: ^3.25.0 || ^4.0.0
 
   zod@4.4.3:
@@ -8869,7 +8869,7 @@ snapshots:
 
   yoctocolors@2.1.2: {}
 
-  zod-to-ts@2.0.0(typescript@6.0.3)(zod@4.4.3):
+  zod-to-ts@2.1.0(typescript@6.0.3)(zod@4.4.3):
     dependencies:
       typescript: 6.0.3
       zod: 4.4.3
