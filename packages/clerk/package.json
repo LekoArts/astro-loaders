@@ -36,7 +36,7 @@
     "test": "vitest"
   },
   "peerDependencies": {
-    "astro": "^6.0.0"
+    "astro": "^7.1.0"
   },
   "dependencies": {
     "@clerk/backend": "^3.5.0",
