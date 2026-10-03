@@ -1,8 +1,8 @@
 ---
-"@lekoarts/clerk-loader": major
-"@lekoarts/flickr-loader": major
-"@lekoarts/plausible-loader": major
-"@lekoarts/trakt-loader": major
+"@lekoarts/clerk-loader": minor
+"@lekoarts/flickr-loader": minor
+"@lekoarts/plausible-loader": minor
+"@lekoarts/trakt-loader": minor
 ---
 
-Require Astro 7 and update the build toolchain for Vite 8 and tsdown 0.23.
+Add Astro 7 support while retaining compatibility with Astro 6.
