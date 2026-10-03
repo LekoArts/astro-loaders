@@ -37,17 +37,17 @@
     "test": "vitest --typecheck"
   },
   "peerDependencies": {
-    "astro": "^6.0.0"
+    "astro": "^7.0.0"
   },
   "dependencies": {
     "ky": "catalog:",
-    "zod-to-ts": "^2.0.0"
+    "typescript": "^6.0.3",
+    "zod-to-ts": "^2.1.0"
   },
   "devDependencies": {
     "@arethetypeswrong/cli": "catalog:linting",
     "astro": "catalog:",
     "publint": "catalog:linting",
-    "tsdown": "catalog:repo",
-    "typescript": "catalog:repo"
+    "tsdown": "catalog:repo"
   }
 }

@@ -8,7 +8,7 @@ allowBuilds:
   simple-git-hooks: true
 
 catalog:
-  astro: ^6.4.4
+  astro: ^7.0.0
   ky: ^2.0.2
 
 catalogs:
@@ -16,5 +16,5 @@ catalogs:
     '@arethetypeswrong/cli': 0.18.5
     publint: 0.3.24
   repo:
-    tsdown: 0.22.14
-    typescript: 6.0.3
+    tsdown: 0.23.0
+    typescript: 7.0.2
