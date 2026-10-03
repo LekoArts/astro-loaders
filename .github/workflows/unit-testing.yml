@@ -16,5 +16,7 @@ jobs:
         uses: ./.github/actions/pnpm-install
         with:
           node-version: ${{ matrix.version }}
+      - name: Typecheck with TypeScript 6
+        run: pnpm run typecheck
       - name: Run Vitest
         run: pnpm run test

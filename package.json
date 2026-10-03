@@ -9,6 +9,7 @@
     "dev": "pnpm run --filter @lekoarts/* dev",
     "build": "pnpm run --filter @lekoarts/* build",
     "check": "pnpm run --filter @lekoarts/* check",
+    "typecheck": "tsc --noEmit -p packages/clerk/tsconfig.json && tsc --noEmit -p packages/flickr/tsconfig.json && tsc --noEmit -p packages/plausible/tsconfig.json && tsc --noEmit -p packages/trakt/tsconfig.json",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "changeset": "changeset",
@@ -32,7 +33,8 @@
     "eslint-plugin-format": "^2.0.1",
     "lint-staged": "^17.0.0",
     "simple-git-hooks": "^2.13.1",
-    "vite": "^7.3.3",
+    "typescript": "catalog:repo",
+    "vite": "^8.0.13",
     "vitest": "^5.0.0"
   },
   "simple-git-hooks": {
