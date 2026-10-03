@@ -1,5 +1,11 @@
 # @lekoarts/trakt-loader
 
+## 2.1.0
+
+### Minor Changes
+
+- [#227](https://github.com/LekoArts/astro-loaders/pull/227) [`cc50392`](https://github.com/LekoArts/astro-loaders/commit/cc50392c8f509675fac0bf2a35ead5127d33bd14) Thanks [@LekoArts](https://github.com/LekoArts)! - Add Astro 7 support while retaining compatibility with Astro 6.
+
 ## 2.0.0
 
 ### Major Changes
