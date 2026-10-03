@@ -41,14 +41,14 @@
   "dependencies": {
     "@clerk/backend": "^3.5.0",
     "type-fest": "^5.7.0",
-    "typescript": "^6.0.3",
-    "zod-to-ts": "^2.1.0"
+    "zod-to-ts": "^2.0.0"
   },
   "devDependencies": {
     "@arethetypeswrong/cli": "catalog:linting",
     "astro": "catalog:",
     "orval": "^8.10.0",
     "publint": "catalog:linting",
-    "tsdown": "catalog:repo"
+    "tsdown": "catalog:repo",
+    "typescript": "catalog:repo"
   }
 }
