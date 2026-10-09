@@ -14,7 +14,7 @@ catalog:
 catalogs:
   linting:
     '@arethetypeswrong/cli': 0.18.5
-    publint: 0.3.24
+    publint: 0.3.25
   repo:
     tsdown: 0.23.0
     typescript: 6.0.3
