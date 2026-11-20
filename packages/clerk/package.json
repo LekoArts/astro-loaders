@@ -40,7 +40,7 @@
   },
   "dependencies": {
     "@clerk/backend": "^3.5.0",
-    "type-fest": "^5.7.0",
+    "type-fest": "^6.0.0",
     "zod-to-ts": "^2.0.0"
   },
   "devDependencies": {
